@@ -1,0 +1,25 @@
+<RCC>
+    <qresource prefix="/qml">
+        <file>qml/main.qml</file>
+        <file>qml/MenuItemDelegate.qml</file>
+        <file>qml/ScreenParrot.qml</file>
+        <file>qml/ScreenSettings.qml</file>
+        <file>qml/MainMenu.qml</file>
+        <file>qml/ScreenWhiteBull.qml</file>
+        <file>qml/i18n/speech-apps_en.qm</file>
+        <file>qml/i18n/speech-apps_en.ts</file>
+        <file>qml/i18n/speech-apps_ru.qm</file>
+        <file>qml/i18n/speech-apps_ru.ts</file>
+        <file>qml/SpeechScreen.qml</file>
+    </qresource>
+    <qresource prefix="/images">
+        <file>images/delegate.png</file>
+        <file>images/delegate_pressed.png</file>
+        <file>images/test.png</file>
+        <file>images/shadow.png</file>
+        <file>images/Chicken-64.png</file>
+        <file>images/Settings-64.png</file>
+        <file>images/Talk-64.png</file>
+        <file>images/Return-32.png</file>
+    </qresource>
+</RCC>
