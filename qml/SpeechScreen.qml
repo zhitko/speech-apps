@@ -5,6 +5,8 @@ import QtQuick.Layouts 1.0
 Item {
     id: speechScreenId
 
+    property bool isRecording: false
+
     property string text: ""
 
     function appendText(actor, text) {
@@ -15,51 +17,29 @@ Item {
         volumeBar.setValue(value)
     }
 
-    anchors.fill: parent
+    function startStopManualRecording () {
+        if (isRecording) {
+            console.log("SpeechScreen::stopManualRecording")
+            speechController.stopRecording()
+        } else {
+            console.log("SpeechScreen::startManualRecording")
+            speechController.startRecording()
+        }
+
+        isRecording = !isRecording
+    }
 
     RowLayout {
         anchors.fill: parent
-        ColumnLayout {
+        TextArea {
+            id: mainText
             Layout.fillWidth: true
             Layout.fillHeight: true
-            TextArea {
-                id: mainText
-                Layout.fillWidth: true
-                Layout.fillHeight: true
-                clip: true
-                textFormat: TextEdit.RichText
-                readOnly: true
-                text: speechScreenId.text
-                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-            }
-
-            RowLayout {
-                id: inputRow
-                height: 32
-                spacing: 5
-                Layout.fillWidth: true
-
-                Image {
-                    id: inputImage
-                    Layout.maximumHeight: 32
-                    Layout.maximumWidth: 32
-                    fillMode: Image.PreserveAspectFit
-                    source: "qrc:/images/images/Talk-64.png"
-                }
-
-                TextInput {
-                    id: userInput
-                    Layout.fillWidth: true
-                    Layout.maximumHeight: 32
-                    clip: true
-                    font.pixelSize: 20
-                    verticalAlignment: Text.AlignVCenter
-                    onAccepted: {
-                        appendText(qsTr("User"), text)
-                        text = "";
-                    }
-                }
-            }
+            clip: true
+            textFormat: TextEdit.RichText
+            readOnly: true
+            text: speechScreenId.text
+            wrapMode: Text.WrapAtWordBoundaryOrAnywhere
         }
         ProgressBar {
             id: volumeBar

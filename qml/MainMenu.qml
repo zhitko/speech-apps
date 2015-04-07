@@ -1,4 +1,6 @@
 import QtQuick 2.4
+import QtQuick.Controls 1.3
+import QtQuick.Layouts 1.0
 
 Item {
     id: rootMenu
@@ -26,6 +28,8 @@ Item {
         }
     }
 
+    property Item lastScreen
+
     state: "menu"
     states: [
         State {
@@ -35,91 +39,114 @@ Item {
             PropertyChanges { target: screenParrot; visible: false }
             PropertyChanges { target: screenWhiteBull; visible: false }
             PropertyChanges { target: screenSettings; visible: false }
+            StateChangeScript {
+                name: "onShowParrotScreen"
+                script: if(!!rootMenu.lastScreen) rootMenu.lastScreen.free()
+            }
         }
         , State {
             name: "parrot"
             PropertyChanges { target: imageListView; visible: false }
             PropertyChanges { target: backMenu; visible: true; title_text: menuModel.get(0).title_text; }
             PropertyChanges { target: screenParrot; visible: true }
+            PropertyChanges { target: screenWhiteBull; visible: false }
+            PropertyChanges { target: screenSettings; visible: false }
+            PropertyChanges { target: rootMenu; lastScreen: screenParrot }
+            StateChangeScript {
+                name: "onShowParrotScreen"
+                script: screenParrot.show()
+            }
         }
         , State {
             name: "white-bull"
             PropertyChanges { target: imageListView; visible: false }
             PropertyChanges { target: backMenu; visible: true; title_text: menuModel.get(1).title_text; }
             PropertyChanges { target: screenWhiteBull; visible: true }
+            PropertyChanges { target: screenParrot; visible: false }
+            PropertyChanges { target: screenSettings; visible: false }
+            PropertyChanges { target: rootMenu; lastScreen: screenWhiteBull }
+            StateChangeScript {
+                name: "onShowWhiteBullScreen"
+                script: screenWhiteBull.show()
+            }
         }
         , State {
             name: "settings"
             PropertyChanges { target: imageListView; visible: 0 }
             PropertyChanges { target: backMenu; visible: true; title_text: menuModel.get(2).title_text; }
             PropertyChanges { target: screenSettings; visible: true }
+            PropertyChanges { target: screenParrot; visible: false }
+            PropertyChanges { target: screenWhiteBull; visible: false }
+            PropertyChanges { target: rootMenu; lastScreen: screenSettings }
+            StateChangeScript {
+                name: "onShowSettingsScreen"
+                script: screenSettings.show()
+            }
         }
     ]
 
-    Item {
-        property string title_text: ""
+    ColumnLayout {
+        anchors.fill: parent
 
-        id: backMenu
+        RowLayout {
+            property string title_text: ""
 
-        anchors.margins: 5
-        anchors.top: parent.top
-        anchors.right: parent.right
-        anchors.left: parent.left
+            id: backMenu
 
-        height: 32
+            Layout.minimumWidth: parent.width
 
-        Image {
-            id: image
-            width: 32
             height: 32
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.left: parent.left
-            source: "qrc:/images/images/Return-32.png"
+
+            Image {
+                id: image
+                width: 32
+                height: 32
+                source: "qrc:/images/images/Return-32.png"
+                MouseArea {
+                    anchors.fill: image
+                    onClicked: rootMenu.state = "menu"
+                }
+            }
+
+            Text {
+                anchors.centerIn: backMenu
+
+                height: 32
+                font.pixelSize: 16
+                text: backMenu.title_text
+                elide: Text.ElideRight
+            }
         }
 
-        Text {
-            anchors.horizontalCenter: parent.horizontalCenter
-            height: 32
-            verticalAlignment: Text.AlignVCenter
-            font.pixelSize: height * 0.5
-            text: backMenu.title_text
-            elide: Text.ElideRight
-        }
+        Item {
+            Layout.fillHeight: true
+            Layout.fillWidth: true
 
-        MouseArea {
-            anchors.fill: image
-            onClicked: rootMenu.state = "menu"
-        }
-    }
+            ScreenParrot {
+                id: screenParrot
+                anchors.fill: parent
+            }
+            ScreenWhiteBull {
+                id: screenWhiteBull
+                anchors.fill: parent
+            }
+            ScreenSettings {
+                id: screenSettings
+                anchors.fill: parent
+            }
 
-    Item {
-        anchors.margins: 5
-        anchors.top: backMenu.bottom
-        anchors.bottom: parent.bottom
-        anchors.right: parent.right
-        anchors.left: parent.left
+            ListView {
+                id: imageListView
+                anchors.fill: parent
+                model: menuModel
+                delegate: mainMenuDelegate.delegate
+                clip: true
+            }
 
-        ScreenParrot {
-            id: screenParrot
+            MenuItemDelegate {
+                id: mainMenuDelegate
+                menu: rootMenu
+            }
         }
-        ScreenWhiteBull {
-            id: screenWhiteBull
-        }
-        ScreenSettings {
-            id: screenSettings
-        }
-
-        ListView {
-            id: imageListView
-            anchors.fill: parent
-            model: menuModel
-            delegate: mainMenuDelegate.delegate
-            clip: true
-        }
-    }
-
-    MenuItemDelegate {
-        id: mainMenuDelegate
-        menu: rootMenu
     }
 }

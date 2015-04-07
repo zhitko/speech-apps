@@ -21,5 +21,9 @@
         <file>images/Settings-64.png</file>
         <file>images/Talk-64.png</file>
         <file>images/Return-32.png</file>
+        <file>images/Microphone-32.png</file>
+        <file>images/Microphone-32 (1).png</file>
+        <file>images/Speaker-32.png</file>
+        <file>images/Speaker-32 (1).png</file>
     </qresource>
 </RCC>

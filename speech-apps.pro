@@ -1,6 +1,6 @@
 TEMPLATE = app
 
-QMAKE_CFLAGS += -std=gnu99 -lalut -lalc
+QMAKE_CFLAGS += -std=gnu99
 
 QT += qml quick widgets
 
@@ -16,10 +16,14 @@ unix {
 }
 
 SOURCES += main.cpp \
-    applicationcontroller.cpp
+    applicationcontroller.cpp \
+    speechcontroller.cpp \
+    Google/googlespeech.cpp
 
 HEADERS += \
-    applicationcontroller.h
+    applicationcontroller.h \
+    speechcontroller.h \
+    Google/googlespeech.h
 
 # Sound IO
 SOURCES += \

@@ -2,6 +2,7 @@
 #define APPLICATIONCONTROLLER_H
 
 #include <QObject>
+#include <qqml.h>
 
 class ApplicationController : public QObject
 {
