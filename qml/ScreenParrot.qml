@@ -36,6 +36,24 @@ Item {
                     speechScreen.startStopManualRecording()
                 }
             }
+
+            Button {
+                iconSource: "qrc:/images/images/Speaker-32.png"
+                onClicked: {
+                    speechScreen.playLast()
+                }
+            }
+
+            Button {
+                iconSource: "qrc:/images/images/Talk-64.png"
+                onClicked: {
+                    speechScreen.recognizeLast()
+                }
+            }
+
+            Item {
+                Layout.fillWidth: true
+            }
         }
     }
 }

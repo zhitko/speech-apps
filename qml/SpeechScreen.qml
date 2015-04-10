@@ -29,6 +29,16 @@ Item {
         isRecording = !isRecording
     }
 
+    function playLast () {
+        console.log("SpeechScreen::playLast")
+        speechController.playLast()
+    }
+
+    function recognizeLast () {
+        console.log("SpeechScreen::recognizeLast")
+        speechController.recognizeLast()
+    }
+
     RowLayout {
         anchors.fill: parent
         TextArea {

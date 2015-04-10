@@ -3,9 +3,9 @@
 #include "buffer.h"
 
 extern "C" {
-    #include "SPTK/SPTK.h"
-    #include "SPTK/pitch/pitch.h"
-    #include "SPTK/x2x/x2x.h"
+    #include "utills/SPTK/SPTK.h"
+    #include "utills/SPTK/pitch/pitch.h"
+    #include "utills/SPTK/x2x/x2x.h"
 }
 
 #include <QDebug>

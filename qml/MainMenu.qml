@@ -72,7 +72,7 @@ Item {
         }
         , State {
             name: "settings"
-            PropertyChanges { target: imageListView; visible: 0 }
+            PropertyChanges { target: imageListView; visible: false }
             PropertyChanges { target: backMenu; visible: true; title_text: menuModel.get(2).title_text; }
             PropertyChanges { target: screenSettings; visible: true }
             PropertyChanges { target: screenParrot; visible: false }

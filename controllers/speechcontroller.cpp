@@ -3,7 +3,9 @@
 #include <QDateTime>
 #include <QApplication>
 
-#include "sound/soundrecorder.h"
+#include "services/sound/soundrecorder.h"
+#include "services/sound/soundplayer.h"
+#include "services/Google/googlespeech.h"
 
 SpeechController::SpeechController(QObject *parent) : QObject(parent),
     recorder(NULL)
@@ -67,8 +69,35 @@ void SpeechController::recordFinished(SoundRecorder * recorder)
     qDebug() << "SpeechController::recordFinished >> save wav file";
     waveCloseFile(waveFile);
     qDebug() << "SpeechController::recordFinished >> close wav file";
+    this->wavFileList.append(path);
 
     recorder->deleteLater();
     qDebug() << "SpeechController::recordFinished >> free recorder";
     this->recorder = NULL;
+}
+
+void SpeechController::playLast()
+{
+    qDebug() << "SpeechController::playLast";
+    if(this->wavFileList.length() != 0)
+    {
+        QString file = this->wavFileList.last();
+        SoundPlayer * player = new SoundPlayer(file);
+        player->start();
+    }
+}
+
+void SpeechController::recognizeLast()
+{
+    qDebug() << "SpeechController::recognizeLast";
+    if(this->wavFileList.length() != 0)
+    {
+        QString file = this->wavFileList.last();
+        GoogleSpeech * googleSpeech = new GoogleSpeech();
+        googleSpeech->sent(file);
+    }else{
+        QString file = QApplication::applicationDirPath() + DATA_PATH + USER_DATA_PATH + "test.wav";
+        GoogleSpeech * googleSpeech = new GoogleSpeech();
+        googleSpeech->sent(file);
+    }
 }

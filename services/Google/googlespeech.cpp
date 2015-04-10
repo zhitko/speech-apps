@@ -25,7 +25,6 @@ void GoogleSpeech::sent(QString file_name, QString lang, QString key)
     nam = new QNetworkAccessManager(this);
     QObject::connect(nam, SIGNAL(finished(QNetworkReply*)), this, SLOT(finishedSlot(QNetworkReply*)));
 
-//    QUrl url("http://www.google.com/speech-api/v1/recognize?client=chromium&lang=ru-Ru&maxresults=10");
     QString url_s = QString("https://www.google.com/speech-api/v2/recognize?output=json&lang=%1&key=%2").arg(lang).arg(key);
     QUrl url(url_s);
 
@@ -33,6 +32,11 @@ void GoogleSpeech::sent(QString file_name, QString lang, QString key)
     request.setHeader(QNetworkRequest::ContentTypeHeader, "audio/l16; rate=16000");
     m_file = new QFile(file_name);
     m_file->open(QFile::ReadOnly);
+
+    QSslConfiguration config = request.sslConfiguration();
+    config.setProtocol(QSsl::TlsV1SslV3);
+    request.setSslConfiguration(config);
+
     nam->post(request, m_file);
 }
 
@@ -58,6 +62,7 @@ void GoogleSpeech::finishedSlot(QNetworkReply * reply)
         }
 
         emit getText(answer);
+        qDebug() << "GoogleSpeech::finishedSlot >> " << answer;
     }
     else
     {

@@ -5,7 +5,7 @@
 #include <QDebug>
 #include <QTranslator>
 
-#include "speechcontroller.h"
+#include "controllers/speechcontroller.h"
 
 int main(int argc, char *argv[])
 {

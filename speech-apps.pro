@@ -15,294 +15,318 @@ unix {
     LIBS += -lopenal
 }
 
-SOURCES += main.cpp \
-    applicationcontroller.cpp \
-    speechcontroller.cpp \
-    Google/googlespeech.cpp
+SOURCES += main.cpp
 
-HEADERS += \
-    applicationcontroller.h \
-    speechcontroller.h \
-    Google/googlespeech.h
+# -----------------------------
+# Controllers
+# -----------------------------
 
-# Sound IO
 SOURCES += \
-    sound/autosoundrecorder.cpp \
-    sound/buffer.cpp \
-    sound/soundplayer.cpp \
-    sound/soundrecorder.cpp
+    controllers/applicationcontroller.cpp \
+    controllers/speechcontroller.cpp
 
 HEADERS += \
-    sound/autosoundrecorder.h \
-    sound/buffer.h \
-    sound/soundplayer.h \
-    sound/soundrecorder.h
+    controllers/applicationcontroller.h \
+    controllers/speechcontroller.h
+
+# -----------------------------
+# Services
+# -----------------------------
+
+# Google speech to text service
+
+SOURCES += \
+    services/Google/googlespeech.cpp
+
+HEADERS += \
+    services/Google/googlespeech.h
+
+# Sound IO service
+
+SOURCES += \
+    services/sound/autosoundrecorder.cpp \
+    services/sound/buffer.cpp \
+    services/sound/soundplayer.cpp \
+    services/sound/soundrecorder.cpp
+
+HEADERS += \
+    services/sound/autosoundrecorder.h \
+    services/sound/buffer.h \
+    services/sound/soundplayer.h \
+    services/sound/soundrecorder.h
+
+# -----------------------------
+# Utills
+# -----------------------------
 
 # DP Analyse
+
 SOURCES += \
-    dp-analyse/spectrdp.cpp \
-    dp-analyse/vectordp.cpp
+    utills/dp-analyse/spectrdp.cpp \
+    utills/dp-analyse/vectordp.cpp
 
 HEADERS += \
-    dp-analyse/dp.h \
-    dp-analyse/spectrdp.h \
-    dp-analyse/vectordp.h
+    utills/dp-analyse/dp.h \
+    utills/dp-analyse/spectrdp.h \
+    utills/dp-analyse/vectordp.h
 
 # OpenAL
+
 SOURCES += \
-    OpenAL/openal_wrapper.c\
-    OpenAL/wavFile.c
+    utills/OpenAL/openal_wrapper.c\
+    utills/OpenAL/wavFile.c
 
 HEADERS  += \
-    OpenAL/openal_wrapper.h \
+    utills/OpenAL/openal_wrapper.h \
     OpenAL/wavFile.h
 
 # SPTK
-INCLUDEPATH += ./SPTK
+
+INCLUDEPATH += ./utills/SPTK
 
 SOURCES +=  \
-    SPTK/sptk.c\
-    SPTK/agexp.c\
-    SPTK/cholesky.c \
-    SPTK/fileio.c \
-    SPTK/fillz.c \
-    SPTK/getfp.c \
-    SPTK/getmem.c \
-    SPTK/gexp.c \
-    SPTK/glog.c \
-    SPTK/invert.c \
-    SPTK/matrix.c \
-    SPTK/movem.c \
-    SPTK/mseq.c \
-    SPTK/theq.c \
-    SPTK/toeplitz.c \
-    SPTK/vector.c \
-#    SPTK/acep/acep.c \
-#    SPTK/acep/_acep.c \
-#    SPTK/acorr/acorr.c \
-    SPTK/acorr/_acorr.c \
-#    SPTK/agcep/agcep.c \
-#    SPTK/agcep/_agcep.c \
-#    SPTK/amcep/amcep.c \
-#    SPTK/amcep/_amcep.c \
-#    SPTK/average/average.c \
-#    SPTK/average/_average.c \
-#    SPTK/b2mc/b2mc.c \
-#    SPTK/b2mc/_b2mc.c \
-#    SPTK/bcp/bcp.c \
-#    SPTK/bcut/bcut.c \
-#    SPTK/c2acr/c2acr.c \
-#    SPTK/c2acr/_c2acr.c \
-#    SPTK/c2ir/c2ir.c \
-#    SPTK/c2ir/_c2ir.c \
-#    SPTK/c2sp/c2sp.c \
-#    SPTK/c2sp/_c2sp.c \
-#    SPTK/cat2/cat2.c \
-#    SPTK/cdist/cdist.c \
-#    SPTK/clip/clip.c \
-#    SPTK/clip/_clip.c \
-#    SPTK/da/dawrite.c \
-#    SPTK/da/winplay.c \
-#    SPTK/dct/dct.c \
-#    SPTK/dct/_dct.c \
-#    SPTK/decimate/decimate.c \
-#    SPTK/delay/delay.c \
-#    SPTK/delta/delta.c \
-#    SPTK/df2/df2.c \
-#    SPTK/df2/_df2.c \
-#    SPTK/dfs/dfs.c \
-#    SPTK/dfs/_dfs.c \
-#    SPTK/dmp/dmp.c \
-#    SPTK/ds/ds.c \
-#    SPTK/dtw/dtw.c \
-#    SPTK/echo2/echo2.c \
-#    SPTK/excite/excite.c \
-#    SPTK/extract/extract.c \
-#    SPTK/fd/fd.c \
-#    SPTK/fft2/fft2.c \
-#    SPTK/fft2/_fft2.c \
-#    SPTK/fft/fft.c \
-    SPTK/fft/_fft.c \
-#    SPTK/fftcep/fftcep.c \
-#    SPTK/fftcep/_fftcep.c \
-#    SPTK/fftr2/fftr2.c \
-#    SPTK/fftr2/_fftr2.c \
-#    SPTK/fftr/fftr.c \
-    SPTK/fftr/_fftr.c \
-#    SPTK/fig+fdrw/fdrw.c \
-#    SPTK/fig+fdrw/fig.c \
-#    SPTK/fig+fdrw/fig0.c \
-#    SPTK/fig+fdrw/fig1.c \
-#    SPTK/fig+fdrw/plot.c \
-#    SPTK/fig+fdrw/plsub.c \
-    SPTK/frame/frame.c \
-#    SPTK/freqt/freqt.c \
-#    SPTK/freqt/_freqt.c \
-#    SPTK/gc2gc/gc2gc.c \
-#    SPTK/gc2gc/_gc2gc.c \
-#    SPTK/gcep/gcep.c \
-#    SPTK/gcep/_gcep.c \
-#    SPTK/glsadf/glsadf.c \
-#    SPTK/glsadf/_glsadf.c \
-#    SPTK/gmm/gmm.c \
-#    SPTK/gmm/_gmm.c \
-#    SPTK/gmm/gmmp.c \
-#    SPTK/gnorm/gnorm.c \
-#    SPTK/gnorm/_gnorm.c \
-#    SPTK/grpdelay/grpdelay.c \
-#    SPTK/grpdelay/_grpdelay.c \
-#    SPTK/histogram/histogram.c \
-#    SPTK/histogram/_histogram.c \
-#    SPTK/idct/idct.c \
-#    SPTK/ifft2/ifft2.c \
-#    SPTK/ifft2/_ifft2.c \
-#    SPTK/ifft/ifft.c \
-#    SPTK/ifft/_ifft.c \
-#    SPTK/ifftr/ifftr.c \
-#    SPTK/ifftr/_ifftr.c \
-#    SPTK/ignorm/ignorm.c \
-#    SPTK/ignorm/_ignorm.c \
-#    SPTK/impulse/impulse.c \
-#    SPTK/imsvq/imsvq.c \
-#    SPTK/imsvq/_imsvq.c \
-#    SPTK/interpolate/interpolate.c \
-#    SPTK/ivq/ivq.c \
-#    SPTK/ivq/_ivq.c \
-#    SPTK/lbg/lbg.c \
-#    SPTK/lbg/_lbg.c \
-#    SPTK/levdur/levdur.c \
-    SPTK/levdur/_levdur.c \
-#    SPTK/linear_intpl/linear_intpl.c \
-#    SPTK/lmadf/lmadf.c \
-#    SPTK/lmadf/_lmadf.c \
-#    SPTK/lpc2c/lpc2c.c \
-#    SPTK/lpc2c/_lpc2c.c \
-#    SPTK/lpc2lsp/lpc2lsp.c \
-#    SPTK/lpc2lsp/_lpc2lsp.c \
-#    SPTK/lpc2par/lpc2par.c \
-#    SPTK/lpc2par/_lpc2par.c \
-    SPTK/lpc/lpc.c \
-    SPTK/lpc/_lpc.c \
-#    SPTK/lsp2lpc/lsp2lpc.c \
-#    SPTK/lsp2lpc/_lsp2lpc.c \
-#    SPTK/lsp2sp/lsp2sp.c \
-#    SPTK/lsp2sp/_lsp2sp.c \
-#    SPTK/lspcheck/lspcheck.c \
-#    SPTK/lspcheck/_lspcheck.c \
-#    SPTK/lspdf/lspdf.c \
-#    SPTK/lspdf/_lspdf.c \
-#    SPTK/ltcdf/ltcdf.c \
-#    SPTK/ltcdf/_ltcdf.c \
-#    SPTK/mc2b/mc2b.c \
-#    SPTK/mc2b/_mc2b.c \
-#    SPTK/mcep/mcep.c \
-#    SPTK/mcep/_mcep.c \
-#    SPTK/merge/merge.c \
-#    SPTK/mfcc/mfcc.c \
-#    SPTK/mfcc/_mfcc.c \
-#    SPTK/mgc2mgc/mgc2mgc.c \
-#    SPTK/mgc2mgc/_mgc2mgc.c \
-#    SPTK/mgc2sp/mgc2sp.c \
-#    SPTK/mgc2sp/_mgc2sp.c \
-#    SPTK/mgcep/mgcep.c \
-#    SPTK/mgcep/_mgcep.c \
-#    SPTK/mglsadf/mglsadf.c \
-#    SPTK/mglsadf/_mglsadf.c \
-#    SPTK/minmax/minmax.c \
-#    SPTK/mlpg/mlpg.c \
-#    SPTK/mlpg/_mlpg.c \
-#    SPTK/mlsacheck/mlsacheck.c \
-#    SPTK/mlsadf/mlsadf.c \
-#    SPTK/mlsadf/_mlsadf.c \
-#    SPTK/msvq/msvq.c \
-#    SPTK/msvq/_msvq.c \
-#    SPTK/nan/nan.c \
-#    SPTK/norm0/norm0.c \
-#    SPTK/norm0/_norm0.c \
-#    SPTK/nrand/nrand.c \
-    SPTK/nrand/_nrand.c \
-#    SPTK/par2lpc/par2lpc.c \
-#    SPTK/par2lpc/_par2lpc.c \
-#    SPTK/pca/pca.c \
-#    SPTK/pca/pcas.c \
-#    SPTK/phase/phase.c \
-#    SPTK/phase/_phase.c \
-    SPTK/pitch/pitch.c \
-    SPTK/pitch/snack/jkGetF0.c \
-    SPTK/pitch/snack/sigproc.c \
-    SPTK/pitch/swipe/swipe.c \
-#    SPTK/poledf/poledf.c \
-#    SPTK/poledf/_poledf.c \
-#    SPTK/psgr/dict.c \
-#    SPTK/psgr/eps.c \
-#    SPTK/psgr/plot.c \
-#    SPTK/psgr/psgr.c \
-#    SPTK/ramp/ramp.c \
-#    SPTK/rawtowav/rawtowav.c \
-#    SPTK/reverse/reverse.c \
-#    SPTK/reverse/_reverse.c \
-#    SPTK/rmse/rmse.c \
-#    SPTK/rmse/_rmse.c \
-#    SPTK/root_pol/root_pol.c \
-#    SPTK/root_pol/_root_pol.c \
-#    SPTK/sin/sin.c \
-#    SPTK/smcep/smcep.c \
-#    SPTK/smcep/_smcep.c \
-#    SPTK/snr/snr.c \
-#    SPTK/sopr/sopr.c \
-    SPTK/spec/spec.c \
-#    SPTK/step/step.c \
-#    SPTK/swab/swab.c \
-#    SPTK/symmetrize/symmetrize.c \
-#    SPTK/train/train.c \
-#    SPTK/transpose/transpose.c \
-#    SPTK/transpose/_transpose.c \
-#    SPTK/uels/uels.c \
-#    SPTK/uels/_uels.c \
-#    SPTK/ulaw/ulaw.c \
-#    SPTK/ulaw/_ulaw.c \
-#    SPTK/us/us.c \
-#    SPTK/vc/vc.c \
-#    SPTK/vc/_vc.c \
-#    SPTK/vc/hts_engine_API/HTS_misc.c \
-#    SPTK/vc/hts_engine_API/HTS_pstream.c \
-#    SPTK/vc/hts_engine_API/HTS_sstream.c \
-#    SPTK/vopr/vopr.c \
-#    SPTK/vq/vq.c \
-#    SPTK/vq/_vq.c \
-#    SPTK/vstat/vstat.c \
-#    SPTK/vsum/vsum.c \
-    SPTK/window/window.c \
-    SPTK/window/_window.c \
-    SPTK/x2x/x2x.c \
-#    SPTK/xgr/plot.c \
-#    SPTK/xgr/window.c \
-#    SPTK/xgr/xgr.c \
-#    SPTK/zcross/zcross.c \
-#    SPTK/zcross/_zcross.c \
-#    SPTK/zerodf/zerodf.c \
-#    SPTK/zerodf/_zerodf.c \
+    utills/SPTK/sptk.c\
+    utills/SPTK/agexp.c\
+    utills/SPTK/cholesky.c \
+    utills/SPTK/fileio.c \
+    utills/SPTK/fillz.c \
+    utills/SPTK/getfp.c \
+    utills/SPTK/getmem.c \
+    utills/SPTK/gexp.c \
+    utills/SPTK/glog.c \
+    utills/SPTK/invert.c \
+    utills/SPTK/matrix.c \
+    utills/SPTK/movem.c \
+    utills/SPTK/mseq.c \
+    utills/SPTK/theq.c \
+    utills/SPTK/toeplitz.c \
+    utills/SPTK/vector.c \
+#    utills/SPTK/acep/acep.c \
+#    utills/SPTK/acep/_acep.c \
+#    utills/SPTK/acorr/acorr.c \
+    utills/SPTK/acorr/_acorr.c \
+#    utills/SPTK/agcep/agcep.c \
+#    utills/SPTK/agcep/_agcep.c \
+#    utills/SPTK/amcep/amcep.c \
+#    utills/SPTK/amcep/_amcep.c \
+#    utills/SPTK/average/average.c \
+#    utills/SPTK/average/_average.c \
+#    utills/SPTK/b2mc/b2mc.c \
+#    utills/SPTK/b2mc/_b2mc.c \
+#    utills/SPTK/bcp/bcp.c \
+#    utills/SPTK/bcut/bcut.c \
+#    utills/SPTK/c2acr/c2acr.c \
+#    utills/SPTK/c2acr/_c2acr.c \
+#    utills/SPTK/c2ir/c2ir.c \
+#    utills/SPTK/c2ir/_c2ir.c \
+#    utills/SPTK/c2sp/c2sp.c \
+#    utills/SPTK/c2sp/_c2sp.c \
+#    utills/SPTK/cat2/cat2.c \
+#    utills/SPTK/cdist/cdist.c \
+#    utills/SPTK/clip/clip.c \
+#    utills/SPTK/clip/_clip.c \
+#    utills/SPTK/da/dawrite.c \
+#    utills/SPTK/da/winplay.c \
+#    utills/SPTK/dct/dct.c \
+#    utills/SPTK/dct/_dct.c \
+#    utills/SPTK/decimate/decimate.c \
+#    utills/SPTK/delay/delay.c \
+#    utills/SPTK/delta/delta.c \
+#    utills/SPTK/df2/df2.c \
+#    utills/SPTK/df2/_df2.c \
+#    utills/SPTK/dfs/dfs.c \
+#    utills/SPTK/dfs/_dfs.c \
+#    utills/SPTK/dmp/dmp.c \
+#    utills/SPTK/ds/ds.c \
+#    utills/SPTK/dtw/dtw.c \
+#    utills/SPTK/echo2/echo2.c \
+#    utills/SPTK/excite/excite.c \
+#    utills/SPTK/extract/extract.c \
+#    utills/SPTK/fd/fd.c \
+#    utills/SPTK/fft2/fft2.c \
+#    utills/SPTK/fft2/_fft2.c \
+#    utills/SPTK/fft/fft.c \
+    utills/SPTK/fft/_fft.c \
+#    utills/SPTK/fftcep/fftcep.c \
+#    utills/SPTK/fftcep/_fftcep.c \
+#    utills/SPTK/fftr2/fftr2.c \
+#    utills/SPTK/fftr2/_fftr2.c \
+#    utills/SPTK/fftr/fftr.c \
+    utills/SPTK/fftr/_fftr.c \
+#    utills/SPTK/fig+fdrw/fdrw.c \
+#    utills/SPTK/fig+fdrw/fig.c \
+#    utills/SPTK/fig+fdrw/fig0.c \
+#    utills/SPTK/fig+fdrw/fig1.c \
+#    utills/SPTK/fig+fdrw/plot.c \
+#    utills/SPTK/fig+fdrw/plsub.c \
+    utills/SPTK/frame/frame.c \
+#    utills/SPTK/freqt/freqt.c \
+#    utills/SPTK/freqt/_freqt.c \
+#    utills/SPTK/gc2gc/gc2gc.c \
+#    utills/SPTK/gc2gc/_gc2gc.c \
+#    utills/SPTK/gcep/gcep.c \
+#    utills/SPTK/gcep/_gcep.c \
+#    utills/SPTK/glsadf/glsadf.c \
+#    utills/SPTK/glsadf/_glsadf.c \
+#    utills/SPTK/gmm/gmm.c \
+#    utills/SPTK/gmm/_gmm.c \
+#    utills/SPTK/gmm/gmmp.c \
+#    utills/SPTK/gnorm/gnorm.c \
+#    utills/SPTK/gnorm/_gnorm.c \
+#    utills/SPTK/grpdelay/grpdelay.c \
+#    utills/SPTK/grpdelay/_grpdelay.c \
+#    utills/SPTK/histogram/histogram.c \
+#    utills/SPTK/histogram/_histogram.c \
+#    utills/SPTK/idct/idct.c \
+#    utills/SPTK/ifft2/ifft2.c \
+#    utills/SPTK/ifft2/_ifft2.c \
+#    utills/SPTK/ifft/ifft.c \
+#    utills/SPTK/ifft/_ifft.c \
+#    utills/SPTK/ifftr/ifftr.c \
+#    utills/SPTK/ifftr/_ifftr.c \
+#    utills/SPTK/ignorm/ignorm.c \
+#    utills/SPTK/ignorm/_ignorm.c \
+#    utills/SPTK/impulse/impulse.c \
+#    utills/SPTK/imsvq/imsvq.c \
+#    utills/SPTK/imsvq/_imsvq.c \
+#    utills/SPTK/interpolate/interpolate.c \
+#    utills/SPTK/ivq/ivq.c \
+#    utills/SPTK/ivq/_ivq.c \
+#    utills/SPTK/lbg/lbg.c \
+#    utills/SPTK/lbg/_lbg.c \
+#    utills/SPTK/levdur/levdur.c \
+    utills/SPTK/levdur/_levdur.c \
+#    utills/SPTK/linear_intpl/linear_intpl.c \
+#    utills/SPTK/lmadf/lmadf.c \
+#    utills/SPTK/lmadf/_lmadf.c \
+#    utills/SPTK/lpc2c/lpc2c.c \
+#    utills/SPTK/lpc2c/_lpc2c.c \
+#    utills/SPTK/lpc2lsp/lpc2lsp.c \
+#    utills/SPTK/lpc2lsp/_lpc2lsp.c \
+#    utills/SPTK/lpc2par/lpc2par.c \
+#    utills/SPTK/lpc2par/_lpc2par.c \
+    utills/SPTK/lpc/lpc.c \
+    utills/SPTK/lpc/_lpc.c \
+#    utills/SPTK/lsp2lpc/lsp2lpc.c \
+#    utills/SPTK/lsp2lpc/_lsp2lpc.c \
+#    utills/SPTK/lsp2sp/lsp2sp.c \
+#    utills/SPTK/lsp2sp/_lsp2sp.c \
+#    utills/SPTK/lspcheck/lspcheck.c \
+#    utills/SPTK/lspcheck/_lspcheck.c \
+#    utills/SPTK/lspdf/lspdf.c \
+#    utills/SPTK/lspdf/_lspdf.c \
+#    utills/SPTK/ltcdf/ltcdf.c \
+#    utills/SPTK/ltcdf/_ltcdf.c \
+#    utills/SPTK/mc2b/mc2b.c \
+#    utills/SPTK/mc2b/_mc2b.c \
+#    utills/SPTK/mcep/mcep.c \
+#    utills/SPTK/mcep/_mcep.c \
+#    utills/SPTK/merge/merge.c \
+#    utills/SPTK/mfcc/mfcc.c \
+#    utills/SPTK/mfcc/_mfcc.c \
+#    utills/SPTK/mgc2mgc/mgc2mgc.c \
+#    utills/SPTK/mgc2mgc/_mgc2mgc.c \
+#    utills/SPTK/mgc2sp/mgc2sp.c \
+#    utills/SPTK/mgc2sp/_mgc2sp.c \
+#    utills/SPTK/mgcep/mgcep.c \
+#    utills/SPTK/mgcep/_mgcep.c \
+#    utills/SPTK/mglsadf/mglsadf.c \
+#    utills/SPTK/mglsadf/_mglsadf.c \
+#    utills/SPTK/minmax/minmax.c \
+#    utills/SPTK/mlpg/mlpg.c \
+#    utills/SPTK/mlpg/_mlpg.c \
+#    utills/SPTK/mlsacheck/mlsacheck.c \
+#    utills/SPTK/mlsadf/mlsadf.c \
+#    utills/SPTK/mlsadf/_mlsadf.c \
+#    utills/SPTK/msvq/msvq.c \
+#    utills/SPTK/msvq/_msvq.c \
+#    utills/SPTK/nan/nan.c \
+#    utills/SPTK/norm0/norm0.c \
+#    utills/SPTK/norm0/_norm0.c \
+#    utills/SPTK/nrand/nrand.c \
+    utills/SPTK/nrand/_nrand.c \
+#    utills/SPTK/par2lpc/par2lpc.c \
+#    utills/SPTK/par2lpc/_par2lpc.c \
+#    utills/SPTK/pca/pca.c \
+#    utills/SPTK/pca/pcas.c \
+#    utills/SPTK/phase/phase.c \
+#    utills/SPTK/phase/_phase.c \
+    utills/SPTK/pitch/pitch.c \
+    utills/SPTK/pitch/snack/jkGetF0.c \
+    utills/SPTK/pitch/snack/sigproc.c \
+    utills/SPTK/pitch/swipe/swipe.c \
+#    utills/SPTK/poledf/poledf.c \
+#    utills/SPTK/poledf/_poledf.c \
+#    utills/SPTK/psgr/dict.c \
+#    utills/SPTK/psgr/eps.c \
+#    utills/SPTK/psgr/plot.c \
+#    utills/SPTK/psgr/psgr.c \
+#    utills/SPTK/ramp/ramp.c \
+#    utills/SPTK/rawtowav/rawtowav.c \
+#    utills/SPTK/reverse/reverse.c \
+#    utills/SPTK/reverse/_reverse.c \
+#    utills/SPTK/rmse/rmse.c \
+#    utills/SPTK/rmse/_rmse.c \
+#    utills/SPTK/root_pol/root_pol.c \
+#    utills/SPTK/root_pol/_root_pol.c \
+#    utills/SPTK/sin/sin.c \
+#    utills/SPTK/smcep/smcep.c \
+#    utills/SPTK/smcep/_smcep.c \
+#    utills/SPTK/snr/snr.c \
+#    utills/SPTK/sopr/sopr.c \
+    utills/SPTK/spec/spec.c \
+#    utills/SPTK/step/step.c \
+#    utills/SPTK/swab/swab.c \
+#    utills/SPTK/symmetrize/symmetrize.c \
+#    utills/SPTK/train/train.c \
+#    utills/SPTK/transpose/transpose.c \
+#    utills/SPTK/transpose/_transpose.c \
+#    utills/SPTK/uels/uels.c \
+#    utills/SPTK/uels/_uels.c \
+#    utills/SPTK/ulaw/ulaw.c \
+#    utills/SPTK/ulaw/_ulaw.c \
+#    utills/SPTK/us/us.c \
+#    utills/SPTK/vc/vc.c \
+#    utills/SPTK/vc/_vc.c \
+#    utills/SPTK/vc/hts_engine_API/HTS_misc.c \
+#    utills/SPTK/vc/hts_engine_API/HTS_pstream.c \
+#    utills/SPTK/vc/hts_engine_API/HTS_sstream.c \
+#    utills/SPTK/vopr/vopr.c \
+#    utills/SPTK/vq/vq.c \
+#    utills/SPTK/vq/_vq.c \
+#    utills/SPTK/vstat/vstat.c \
+#    utills/SPTK/vsum/vsum.c \
+    utills/SPTK/window/window.c \
+    utills/SPTK/window/_window.c \
+    utills/SPTK/x2x/x2x.c \
+#    utills/SPTK/xgr/plot.c \
+#    utills/SPTK/xgr/window.c \
+#    utills/SPTK/xgr/xgr.c \
+#    utills/SPTK/zcross/zcross.c \
+#    utills/SPTK/zcross/_zcross.c \
+#    utills/SPTK/zerodf/zerodf.c \
+#    utills/SPTK/zerodf/_zerodf.c \
 
 HEADERS  += \
-    SPTK/SPTK.h \
-    SPTK/vector.h \
-#    SPTK/da/da.h \
-#    SPTK/da/winplay.h \
-#    SPTK/fig+fdrw/fig.h \
-#    SPTK/fig+fdrw/plot.h \
-    SPTK/lpc/lpc.h \
-    SPTK/pitch/pitch.h \
-    SPTK/pitch/snack/jkGetF0.h \
-    SPTK/frame/frame.h \
-#    SPTK/psgr/psgr.h \
-#    SPTK/vc/hts_engine_API/HTS_engine.h \
-#    SPTK/vc/hts_engine_API/HTS_hidden.h \
-    SPTK/spec/spec.h \
-    SPTK/window/window.h \
-    SPTK/x2x/x2x.h \
-#    SPTK/xgr/config.h \
-#    SPTK/xgr/gcdata.h \
-#    SPTK/xgr/xgr.h
+    utills/SPTK/SPTK.h \
+    utills/SPTK/vector.h \
+#    utills/SPTK/da/da.h \
+#    utills/SPTK/da/winplay.h \
+#    utills/SPTK/fig+fdrw/fig.h \
+#    utills/SPTK/fig+fdrw/plot.h \
+    utills/SPTK/lpc/lpc.h \
+    utills/SPTK/pitch/pitch.h \
+    utills/SPTK/pitch/snack/jkGetF0.h \
+    utills/SPTK/frame/frame.h \
+#    utills/SPTK/psgr/psgr.h \
+#    utills/SPTK/vc/hts_engine_API/HTS_engine.h \
+#    utills/SPTK/vc/hts_engine_API/HTS_hidden.h \
+    utills/SPTK/spec/spec.h \
+    utills/SPTK/window/window.h \
+    utills/SPTK/x2x/x2x.h \
+#    utills/SPTK/xgr/config.h \
+#    utills/SPTK/xgr/gcdata.h \
+#    utills/SPTK/xgr/xgr.h
 
 OTHER_FILES += \
     images/* \

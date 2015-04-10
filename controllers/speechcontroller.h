@@ -4,8 +4,8 @@
 #include <QObject>
 
 extern "C" {
-    #include "./OpenAL/openal_wrapper.h"
-    #include "./OpenAL/wavFile.h"
+    #include "utills/OpenAL/openal_wrapper.h"
+    #include "utills/OpenAL/wavFile.h"
 }
 
 #define DATA_PATH "/data"
@@ -23,6 +23,9 @@ public:
 
     Q_INVOKABLE void startRecording();
     Q_INVOKABLE void stopRecording();
+
+    Q_INVOKABLE void playLast();
+    Q_INVOKABLE void recognizeLast();
 signals:
 
 public slots:
@@ -32,6 +35,8 @@ private slots:
 
 private:
     SoundRecorder *recorder;
+
+    QList<QString> wavFileList;
 };
 
 #endif // SPEECHCONTROLLER_H

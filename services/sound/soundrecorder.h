@@ -4,7 +4,7 @@
 #include <QThread>
 
 extern "C" {
-    #include "OpenAL/openal_wrapper.h"
+    #include "utills/OpenAL/openal_wrapper.h"
 }
 
 const int INIT_BUFFER_SIZE = 4096;// 4096//8192//16384

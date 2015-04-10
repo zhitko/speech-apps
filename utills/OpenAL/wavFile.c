@@ -309,25 +309,17 @@ void waveCloseFile(WaveFile *waveFile)
 {
     // TODO: free allocated memory in stucts
     if(waveFile == NULL) return;
-//    if(waveFile->file != NULL) fclose(waveFile->file);
-    fprintf(stderr, "fclose(waveFile->file)");
+    if(waveFile->file != NULL) fclose(waveFile->file);
     if(waveFile->formatChunk != NULL) free(waveFile->formatChunk);
-    fprintf(stderr, "free(waveFile->formatChunk)");
     if(waveFile->waveHeader != NULL) free(waveFile->waveHeader);
-    fprintf(stderr, "free(waveFile->waveHeader)");
     if(waveFile->dataChunk != NULL)
     {
         free(waveFile->dataChunk->waveformData);
-        fprintf(stderr, "free(waveFile->dataChunk->waveformData)");
         free(waveFile->dataChunk);
-        fprintf(stderr, "free(waveFile->dataChunk)");
     }
     if(waveFile->cueChunk != NULL) free(waveFile->cueChunk);
-    fprintf(stderr, "free(waveFile->cueChunk)");
     if(waveFile->filePath != NULL) free(waveFile->filePath);
-    fprintf(stderr, "free(waveFile->filePath)");
     free(waveFile);
-    fprintf(stderr, "free(waveFile)");
 }
 
 WaveHeader * makeWaveHeader()
@@ -458,6 +450,7 @@ void saveWaveFile(WaveFile *waveFile, const char *filePath)
         }
     }
     fclose(waveFile->file);
+    waveFile->file = NULL;
 }
 
 WaveFile * makeWaveFileFromData(char *waveformData, uint32_t chunkDataSize, uint16_t numberOfChannels, uint32_t sampleRate, uint16_t significantBitsPerSample)
