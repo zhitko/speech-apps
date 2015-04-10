@@ -21,6 +21,12 @@ Item {
             gotoState: "white-bull"
         }
         ListElement {
+            image_src: "qrc:/images/images/List-64.png"
+            title_text: qsTr("Records")
+            description_text: qsTr("View all user records")
+            gotoState: "records"
+        }
+        ListElement {
             image_src: "qrc:/images/images/Settings-64.png"
             title_text: qsTr("Settings")
             description_text: qsTr("Setup all applications settings")
@@ -49,8 +55,6 @@ Item {
             PropertyChanges { target: imageListView; visible: false }
             PropertyChanges { target: backMenu; visible: true; title_text: menuModel.get(0).title_text; }
             PropertyChanges { target: screenParrot; visible: true }
-            PropertyChanges { target: screenWhiteBull; visible: false }
-            PropertyChanges { target: screenSettings; visible: false }
             PropertyChanges { target: rootMenu; lastScreen: screenParrot }
             StateChangeScript {
                 name: "onShowParrotScreen"
@@ -62,8 +66,6 @@ Item {
             PropertyChanges { target: imageListView; visible: false }
             PropertyChanges { target: backMenu; visible: true; title_text: menuModel.get(1).title_text; }
             PropertyChanges { target: screenWhiteBull; visible: true }
-            PropertyChanges { target: screenParrot; visible: false }
-            PropertyChanges { target: screenSettings; visible: false }
             PropertyChanges { target: rootMenu; lastScreen: screenWhiteBull }
             StateChangeScript {
                 name: "onShowWhiteBullScreen"
@@ -71,12 +73,21 @@ Item {
             }
         }
         , State {
-            name: "settings"
+            name: "records"
             PropertyChanges { target: imageListView; visible: false }
             PropertyChanges { target: backMenu; visible: true; title_text: menuModel.get(2).title_text; }
+            PropertyChanges { target: screenRecords; visible: true }
+            PropertyChanges { target: rootMenu; lastScreen: screenRecords }
+            StateChangeScript {
+                name: "onShowRecordsScreen"
+                script: screenRecords.show()
+            }
+        }
+        , State {
+            name: "settings"
+            PropertyChanges { target: imageListView; visible: false }
+            PropertyChanges { target: backMenu; visible: true; title_text: menuModel.get(3).title_text; }
             PropertyChanges { target: screenSettings; visible: true }
-            PropertyChanges { target: screenParrot; visible: false }
-            PropertyChanges { target: screenWhiteBull; visible: false }
             PropertyChanges { target: rootMenu; lastScreen: screenSettings }
             StateChangeScript {
                 name: "onShowSettingsScreen"
@@ -128,6 +139,10 @@ Item {
             }
             ScreenWhiteBull {
                 id: screenWhiteBull
+                anchors.fill: parent
+            }
+            ScreenRecords {
+                id: screenRecords
                 anchors.fill: parent
             }
             ScreenSettings {

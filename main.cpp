@@ -6,6 +6,8 @@
 #include <QTranslator>
 
 #include "controllers/speechcontroller.h"
+#include "controllers/filecontroller.h"
+#include "controllers/soundcontroller.h"
 
 int main(int argc, char *argv[])
 {
@@ -18,6 +20,8 @@ int main(int argc, char *argv[])
     app.installTranslator(&translator);
 
     qmlRegisterType<SpeechController>("SpeechApplication", 1,0, "SpeechController");
+    qmlRegisterType<FileController>("SpeechApplication", 1,0, "FileController");
+    qmlRegisterType<SoundController>("SpeechApplication", 1,0, "SoundController");
 
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/qml/qml/main.qml")));

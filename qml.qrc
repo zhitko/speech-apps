@@ -11,6 +11,8 @@
         <file>qml/i18n/speech-apps_ru.qm</file>
         <file>qml/i18n/speech-apps_ru.ts</file>
         <file>qml/SpeechScreen.qml</file>
+        <file>qml/ScreenRecords.qml</file>
+        <file>qml/ScreenRecords/FileListDelegate.qml</file>
     </qresource>
     <qresource prefix="/images">
         <file>images/delegate.png</file>
@@ -25,5 +27,10 @@
         <file>images/Microphone-32 (1).png</file>
         <file>images/Speaker-32.png</file>
         <file>images/Speaker-32 (1).png</file>
+        <file>images/List-64.png</file>
+        <file>images/Audio Wave-32.png</file>
+        <file>images/Delete-32.png</file>
+        <file>images/google-32.png</file>
+        <file>images/Play-32.png</file>
     </qresource>
 </RCC>

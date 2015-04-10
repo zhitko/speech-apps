@@ -14,6 +14,14 @@ ApplicationWindow {
         id: speechController
     }
 
+    FileController {
+        id: fileController
+    }
+
+    SoundController {
+        id: soundController
+    }
+
     MainMenu {
         anchors.margins: 5
     }

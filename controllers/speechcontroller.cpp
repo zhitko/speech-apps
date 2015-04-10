@@ -3,6 +3,8 @@
 #include <QDateTime>
 #include <QApplication>
 
+#include "defines.h"
+
 #include "services/sound/soundrecorder.h"
 #include "services/sound/soundplayer.h"
 #include "services/Google/googlespeech.h"

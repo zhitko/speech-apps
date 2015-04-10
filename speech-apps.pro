@@ -15,7 +15,10 @@ unix {
     LIBS += -lopenal
 }
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    controllers/filecontroller.cpp \
+    utills/files.cpp \
+    controllers/soundcontroller.cpp
 
 # -----------------------------
 # Controllers
@@ -27,7 +30,11 @@ SOURCES += \
 
 HEADERS += \
     controllers/applicationcontroller.h \
-    controllers/speechcontroller.h
+    controllers/speechcontroller.h \
+    controllers/filecontroller.h \
+    defines.h \
+    utills/files.h \
+    controllers/soundcontroller.h
 
 # -----------------------------
 # Services
@@ -345,3 +352,7 @@ QML_IMPORT_PATH =
 
 # Default rules for deployment.
 include(deployment.pri)
+
+DISTFILES += \
+    qml/ScreenRecords.qml \
+    qml/ScreenRecords/FileListDelegate.qml

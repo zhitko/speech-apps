@@ -5,27 +5,35 @@
     <name>MainMenu</name>
     <message>
         <source>Parrot</source>
-        <translation type="vanished">Parrot</translation>
+        <translation>Parrot</translation>
     </message>
     <message>
         <source>It will be repeat all your words</source>
-        <translation type="vanished">It will be repeat all your words</translation>
+        <translation>It will be repeat all your words</translation>
     </message>
     <message>
         <source>White Bull</source>
-        <translation type="vanished">White Bull</translation>
+        <translation>White Bull</translation>
     </message>
     <message>
         <source>It will be tell White Bull storry tell</source>
-        <translation type="vanished">It will be tell White Bull storry tell</translation>
+        <translation>It will be tell White Bull storry tell</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="vanished">Settings</translation>
+        <translation>Settings</translation>
     </message>
     <message>
         <source>Setup all applications settings</source>
-        <translation type="vanished">Setup all applications settings</translation>
+        <translation>Setup all applications settings</translation>
+    </message>
+    <message>
+        <source>Records</source>
+        <translation>Records</translation>
+    </message>
+    <message>
+        <source>View all user records</source>
+        <translation>View all user records</translation>
     </message>
 </context>
 <context>
@@ -34,12 +42,16 @@
         <source>Parrot</source>
         <translation type="vanished">Parrot</translation>
     </message>
+    <message>
+        <source>Voice recognition test</source>
+        <translation>Voice recognition test</translation>
+    </message>
 </context>
 <context>
     <name>ScreenSettings</name>
     <message>
         <source>Settings</source>
-        <translation type="vanished">Settings</translation>
+        <translation>Settings</translation>
     </message>
 </context>
 <context>
@@ -48,12 +60,16 @@
         <source>White bull</source>
         <translation type="vanished">White Bull</translation>
     </message>
+    <message>
+        <source>User</source>
+        <translation>User</translation>
+    </message>
 </context>
 <context>
     <name>main</name>
     <message>
         <source>Speech Apps</source>
-        <translation type="vanished">Speech Apps</translation>
+        <translation>Speech Apps</translation>
     </message>
 </context>
 </TS>

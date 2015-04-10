@@ -3,6 +3,8 @@ import QtQuick.Layouts 1.0
 
 Item {
 
+    visible: false
+
     function show () {
         console.log("ScreenWhiteBull::show()")
         speechController.startRecording()

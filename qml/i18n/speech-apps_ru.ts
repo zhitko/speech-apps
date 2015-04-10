@@ -5,27 +5,35 @@
     <name>MainMenu</name>
     <message>
         <source>Parrot</source>
-        <translation type="vanished">Попугай</translation>
+        <translation>Попугай</translation>
     </message>
     <message>
         <source>It will be repeat all your words</source>
-        <translation type="vanished">Приложение будет повторять все фразы пользователя</translation>
+        <translation>Приложение будет повторять все фразы пользователя</translation>
     </message>
     <message>
         <source>White Bull</source>
-        <translation type="vanished">Сказка про белого бычка</translation>
+        <translation>Сказка про белого бычка</translation>
     </message>
     <message>
         <source>It will be tell White Bull storry tell</source>
-        <translation type="vanished">Сказать ли тебе сказку про белого бычка</translation>
+        <translation>Сказать ли тебе сказку про белого бычка</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="vanished">Настройки</translation>
+        <translation>Настройки</translation>
     </message>
     <message>
         <source>Setup all applications settings</source>
-        <translation type="vanished">Настройки приложения</translation>
+        <translation>Настройки приложения</translation>
+    </message>
+    <message>
+        <source>Records</source>
+        <translation>Записи</translation>
+    </message>
+    <message>
+        <source>View all user records</source>
+        <translation>Просмотр пользовательских записей</translation>
     </message>
 </context>
 <context>
@@ -34,12 +42,16 @@
         <source>Parrot</source>
         <translation type="vanished">Попугай</translation>
     </message>
+    <message>
+        <source>Voice recognition test</source>
+        <translation>Тест распознавания речи</translation>
+    </message>
 </context>
 <context>
     <name>ScreenSettings</name>
     <message>
         <source>Settings</source>
-        <translation type="vanished">Настройки</translation>
+        <translation>Настройки</translation>
     </message>
 </context>
 <context>
@@ -48,12 +60,16 @@
         <source>White bull</source>
         <translation type="vanished">Сказка про белого бычка</translation>
     </message>
+    <message>
+        <source>User</source>
+        <translation>Пользователь</translation>
+    </message>
 </context>
 <context>
     <name>main</name>
     <message>
         <source>Speech Apps</source>
-        <translation type="vanished">Speech Apps</translation>
+        <translation>Speech Apps</translation>
     </message>
 </context>
 </TS>

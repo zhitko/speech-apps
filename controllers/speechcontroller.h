@@ -8,10 +8,6 @@ extern "C" {
     #include "utills/OpenAL/wavFile.h"
 }
 
-#define DATA_PATH "/data"
-#define USER_DATA_PATH "/RECORDS/"
-#define WAVE_TYPE ".wav"
-
 class SoundRecorder;
 
 class SpeechController : public QObject

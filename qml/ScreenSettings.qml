@@ -2,6 +2,8 @@ import QtQuick 2.4
 
 Item {
 
+    visible: false
+
     function show () {
         console.log("ScreenSettings::show()")
     }
