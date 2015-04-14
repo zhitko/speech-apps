@@ -7,12 +7,12 @@ Item {
 
     function show () {
         console.log("ScreenWhiteBull::show()")
-        speechController.startRecording()
+        speechScreen.startStopManualRecording()
     }
 
     function free () {
         console.log("ScreenWhiteBull::destroy()")
-        speechController.stopRecording()
+        soundController.stopRecording()
     }
 
     ColumnLayout {

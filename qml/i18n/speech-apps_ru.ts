@@ -46,12 +46,28 @@
         <source>Voice recognition test</source>
         <translation>Тест распознавания речи</translation>
     </message>
+    <message>
+        <source>Computer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not recognized, repeat please</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ScreenSettings</name>
     <message>
         <source>Settings</source>
-        <translation>Настройки</translation>
+        <translation type="vanished">Настройки</translation>
+    </message>
+    <message>
+        <source>Input audio device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Output audio device</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -14,12 +14,12 @@ class SoundPlayer : public QThread
 protected:
     void run();
 public:
-    explicit SoundPlayer(QString path, QObject *parent = 0);
+    explicit SoundPlayer(QString path, oal_device * device, QObject *parent = 0);
     ~SoundPlayer();
 private:
-    QString path;
-    oal_device * device;
-    WaveFile * waveFile;
+    QString mPath;
+    oal_device * mDevice;
+    WaveFile * mWaveFile;
 signals:
 
 public slots:

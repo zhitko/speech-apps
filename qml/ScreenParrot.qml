@@ -6,12 +6,23 @@ Item {
 
     visible: false
 
+    function recognitionFinsh(records) {
+        console.log("ScreenParrot::recognitionFinsh " + records);
+        console.log("ScreenParrot::recognitionFinsh " + records.length);
+        if(records.length > 0 && records[0] != "")
+            speechScreen.appendText(qsTr("Computer"), records[0])
+        else
+            speechScreen.appendText(qsTr("Computer"), qsTr("Not recognized, repeat please"))
+    }
+
     function show () {
-        console.log("ScreenParrot::show()")
+        console.log("ScreenParrot::show")
+        speechController.recognized.connect(recognitionFinsh)
     }
 
     function free () {
-        console.log("ScreenParrot::destroy()")
+        console.log("ScreenParrot::destroy")
+        speechController.recognized.disconnect(recognitionFinsh)
     }
 
     ColumnLayout {
@@ -35,6 +46,7 @@ Item {
                 iconSource: speechScreen.isRecording ? "qrc:/images/images/Microphone-32 (1).png"
                                                      : "qrc:/images/images/Microphone-32.png"
                 onClicked: {
+                    console.log("ScreenParrot::recording")
                     speechScreen.startStopManualRecording()
                 }
             }
@@ -42,14 +54,24 @@ Item {
             Button {
                 iconSource: "qrc:/images/images/Speaker-32.png"
                 onClicked: {
-                    speechScreen.playLast()
+                    var files = fileController.getFileList()
+                    if (files.length > 0)
+                    {
+                        console.log("ScreenParrot::play >> " + files[0].name)
+                        soundController.playFile(files[0].name)
+                    }
                 }
             }
 
             Button {
                 iconSource: "qrc:/images/images/Talk-64.png"
                 onClicked: {
-                    speechScreen.recognizeLast()
+                    var files = fileController.getFileList()
+                    if (files.length > 0)
+                    {
+                        console.log("ScreenParrot::recognize >> " + files[0].name)
+                        speechController.recognizeFile(files[0].name)
+                    }
                 }
             }
 

@@ -29,7 +29,7 @@ void GoogleSpeech::sent(QString file_name, QString lang, QString key)
     QUrl url(url_s);
 
     QNetworkRequest request(url);
-    request.setHeader(QNetworkRequest::ContentTypeHeader, "audio/l16; rate=16000");
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "audio/l16; rate=8000");
     m_file = new QFile(file_name);
     m_file->open(QFile::ReadOnly);
 
@@ -61,8 +61,8 @@ void GoogleSpeech::finishedSlot(QNetworkReply * reply)
             pos += ans.matchedLength();
         }
 
-        emit getText(answer);
-        qDebug() << "GoogleSpeech::finishedSlot >> " << answer;
+        emit getText(answer.trimmed());
+        qDebug() << "GoogleSpeech::finishedSlot >> " << answer.trimmed();
     }
     else
     {

@@ -20,23 +20,13 @@ Item {
     function startStopManualRecording () {
         if (isRecording) {
             console.log("SpeechScreen::stopManualRecording")
-            speechController.stopRecording()
+            soundController.stopRecording()
         } else {
             console.log("SpeechScreen::startManualRecording")
-            speechController.startRecording()
+            soundController.startRecording()
         }
 
         isRecording = !isRecording
-    }
-
-    function playLast () {
-        console.log("SpeechScreen::playLast")
-        speechController.playLast()
-    }
-
-    function recognizeLast () {
-        console.log("SpeechScreen::recognizeLast")
-        speechController.recognizeLast()
     }
 
     RowLayout {

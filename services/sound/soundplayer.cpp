@@ -4,43 +4,38 @@
 #include <QTextCodec>
 #include <QFile>
 
-SoundPlayer::SoundPlayer(QString path, QObject *parent) :
-    QThread(parent),
-    path(path)
+SoundPlayer::SoundPlayer(QString path, oal_device * device, QObject *parent) :
+    QThread(parent), mPath(path), mDevice(device), mWaveFile(0)
 {
     qDebug() << "SoundPlayer: init";
-//    this->device = SettingsDialog::getInstance()->getOutputDevice();
-    oal_devices_list *outputDevices = getOutputDevices();
-    if(outputDevices) this->device = outputDevices->device;
-    qDebug() << "SoundPlayer: init output device " << QString::fromLocal8Bit(this->device->name);
-    initAudioOutputDevice(this->device);
+    initAudioOutputDevice(this->mDevice);
     if(!isAudioOk){
-        qDebug() << "SoundPlayer: FAIL init output device " << QString::fromLocal8Bit(this->device->name);
+        qDebug() << "SoundPlayer: FAIL init output device " << QString::fromLocal8Bit(this->mDevice->name);
         return;
     }
-    qDebug() << "SoundPlayer: open wav file " << path;
+    qDebug() << "SoundPlayer: open wav file " << mPath;
 
-    QFile file(path);
+    QFile file(mPath);
     file.open(QIODevice::ReadOnly);
-    this->waveFile = waveOpenHFile(file.handle());
+    this->mWaveFile = waveOpenHFile(file.handle());
 }
 
 SoundPlayer::~SoundPlayer()
 {
     qDebug() << "~SoundPlayer";
-    freeAudioOutputDevice(this->device);
-    waveCloseFile(waveFile);
+    freeAudioOutputDevice(this->mDevice);
+    waveCloseFile(mWaveFile);
 }
 
 void SoundPlayer::run()
 {
     qDebug() << "SoundPlayer: run";
     playSound(
-                this->device,
-                this->waveFile->dataChunk->waveformData,
-                littleEndianBytesToUInt32(this->waveFile->dataChunk->chunkDataSize),
-                littleEndianBytesToUInt16(this->waveFile->formatChunk->numberOfChannels),
-                littleEndianBytesToUInt16(this->waveFile->formatChunk->significantBitsPerSample),
-                littleEndianBytesToUInt32(this->waveFile->formatChunk->sampleRate));
+                this->mDevice,
+                this->mWaveFile->dataChunk->waveformData,
+                littleEndianBytesToUInt32(this->mWaveFile->dataChunk->chunkDataSize),
+                littleEndianBytesToUInt16(this->mWaveFile->formatChunk->numberOfChannels),
+                littleEndianBytesToUInt16(this->mWaveFile->formatChunk->significantBitsPerSample),
+                littleEndianBytesToUInt32(this->mWaveFile->formatChunk->sampleRate));
     this->deleteLater();
 }

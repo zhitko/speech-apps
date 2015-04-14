@@ -2,7 +2,9 @@
 #define FILECONTROLLER_H
 
 #include <QObject>
-#include <QStringList>
+#include <QVariant>
+
+#include "models/fileobject.h"
 
 class FileController : public QObject
 {
@@ -11,7 +13,7 @@ public:
     explicit FileController(QObject *parent = 0);
     ~FileController();
 
-    Q_INVOKABLE QStringList getFileList();
+    Q_INVOKABLE QList<QObject *> getFileList();
     Q_INVOKABLE bool deleteFile(QString);
 
 signals:

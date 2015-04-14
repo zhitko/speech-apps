@@ -8,23 +8,31 @@ Item {
 
     visible: false
 
-    function show () {
-        console.log("ScreenRecords::show()")
+    function recognitionFinsh(records) {
+        console.log("ScreenRecords::recognitionFinsh" + records);
         updateFileList()
     }
 
+    function show () {
+        console.log("ScreenRecords::show")
+        updateFileList()
+        speechController.recognized.connect(recognitionFinsh)
+    }
+
     function free () {
-        console.log("ScreenRecords::destroy()")
+        console.log("ScreenRecords::destroy")
+        speechController.recognized.disconnect(recognitionFinsh)
     }
 
     function updateFileList () {
-        imageListView.model = fileController.getFileList()
+        console.log("ScreenRecords::updateFileList")
+        var files = fileController.getFileList()
+        imageListView.model = files
     }
 
     ListView {
         id: imageListView
         anchors.fill: parent
-        model: fileController.getFileList()
         delegate: fileListDelegate.delegate
         clip: true
     }
@@ -46,6 +54,11 @@ Item {
             console.log("ScreenRecords::deleteFile >> " + file)
             fileController.deleteFile(file)
             updateFileList()
+        }
+
+        function recognizeFile(file) {
+            console.log("ScreenRecords::recognizeFile >> " + file)
+            speechController.recognizeFile(file);
         }
     }
 }

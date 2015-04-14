@@ -2,29 +2,49 @@
 #include <QQmlApplicationEngine>
 #include <QQmlEngine>
 #include <QQmlComponent>
+#include <QQmlContext>
 #include <QDebug>
 #include <QTranslator>
 
 #include "controllers/speechcontroller.h"
 #include "controllers/filecontroller.h"
 #include "controllers/soundcontroller.h"
+#include "controllers/settingscontroller.h"
+
+#include "system/settingsvalult.h"
+
+#include "models/localeobject.h"
+
+#include "utills/singleton.h"
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
-    QLocale::setDefault(QLocale::Russian);
+    SettingsController settingsController;
+    FileController fileController;
+    SoundController soundController;
+    SpeechController speechController;
+
+    SettingsValult * settings = &Singleton<SettingsValult>::Instance();
+
+    LocaleObject * uiLocale = settings->getUiLocale();
+    if (uiLocale != NULL)
+    {
+        QLocale::setDefault(*uiLocale->locale());
+    }
 
     QTranslator translator;
     translator.load(QLocale(), "speech-apps", "_", ":/qml/qml/i18n/", ".qm");
     app.installTranslator(&translator);
 
-    qmlRegisterType<SpeechController>("SpeechApplication", 1,0, "SpeechController");
-    qmlRegisterType<FileController>("SpeechApplication", 1,0, "FileController");
-    qmlRegisterType<SoundController>("SpeechApplication", 1,0, "SoundController");
-
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/qml/qml/main.qml")));
+
+    engine.rootContext()->setContextProperty("settingsController", &settingsController);
+    engine.rootContext()->setContextProperty("fileController", &fileController);
+    engine.rootContext()->setContextProperty("soundController", &soundController);
+    engine.rootContext()->setContextProperty("speechController", &speechController);
 
     return app.exec();
 }

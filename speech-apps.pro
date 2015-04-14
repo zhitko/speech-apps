@@ -18,7 +18,12 @@ unix {
 SOURCES += main.cpp \
     controllers/filecontroller.cpp \
     utills/files.cpp \
-    controllers/soundcontroller.cpp
+    controllers/soundcontroller.cpp \
+    models/fileobject.cpp \
+    controllers/settingscontroller.cpp \
+    models/deviceobject.cpp \
+    system/settingsvalult.cpp \
+    models/localeobject.cpp
 
 # -----------------------------
 # Controllers
@@ -34,7 +39,13 @@ HEADERS += \
     controllers/filecontroller.h \
     defines.h \
     utills/files.h \
-    controllers/soundcontroller.h
+    controllers/soundcontroller.h \
+    models/fileobject.h \
+    controllers/settingscontroller.h \
+    models/deviceobject.h \
+    system/settingsvalult.h \
+    utills/singleton.h \
+    models/localeobject.h
 
 # -----------------------------
 # Services

@@ -3,13 +3,6 @@
 
 #include <QObject>
 
-extern "C" {
-    #include "utills/OpenAL/openal_wrapper.h"
-    #include "utills/OpenAL/wavFile.h"
-}
-
-class SoundRecorder;
-
 class SpeechController : public QObject
 {
     Q_OBJECT
@@ -17,22 +10,13 @@ public:
     explicit SpeechController(QObject *parent = 0);
     ~SpeechController();
 
-    Q_INVOKABLE void startRecording();
-    Q_INVOKABLE void stopRecording();
+    Q_INVOKABLE void recognizeFile(QString);
 
-    Q_INVOKABLE void playLast();
-    Q_INVOKABLE void recognizeLast();
 signals:
 
+    void recognized(QList<QString>);
+
 public slots:
-
-private slots:
-    void recordFinished(SoundRecorder*);
-
-private:
-    SoundRecorder *recorder;
-
-    QList<QString> wavFileList;
 };
 
 #endif // SPEECHCONTROLLER_H
