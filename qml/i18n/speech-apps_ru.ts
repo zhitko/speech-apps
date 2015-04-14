@@ -48,11 +48,11 @@
     </message>
     <message>
         <source>Computer</source>
-        <translation type="unfinished"></translation>
+        <translation>Компьютер</translation>
     </message>
     <message>
         <source>Not recognized, repeat please</source>
-        <translation type="unfinished"></translation>
+        <translation>Фраза не распознана, пожалуйсто повторите</translation>
     </message>
 </context>
 <context>
@@ -63,11 +63,27 @@
     </message>
     <message>
         <source>Input audio device</source>
-        <translation type="unfinished"></translation>
+        <translation>Устройство аудио входа</translation>
     </message>
     <message>
         <source>Output audio device</source>
-        <translation type="unfinished"></translation>
+        <translation>Устройство аудио выхода</translation>
+    </message>
+    <message>
+        <source>Language</source>
+        <translation>Языки</translation>
+    </message>
+    <message>
+        <source>User interface</source>
+        <translation>Интерфейс</translation>
+    </message>
+    <message>
+        <source>Text to speech</source>
+        <translation>Распознавание речи</translation>
+    </message>
+    <message>
+        <source>Speech to text</source>
+        <translation>Синтез речи</translation>
     </message>
 </context>
 <context>

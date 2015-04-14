@@ -352,7 +352,8 @@ OTHER_FILES += \
 RESOURCES += qml.qrc
 
 TRANSLATIONS = qml/i18n/speech-apps_ru.ts \
-               qml/i18n/speech-apps_en.ts
+               qml/i18n/speech-apps_en.ts \
+               qml/i18n/speech-apps_be.ts
 
 lupdate_only {
     SOURCES = qml/*.qml

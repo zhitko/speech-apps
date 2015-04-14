@@ -48,11 +48,11 @@
     </message>
     <message>
         <source>Computer</source>
-        <translation type="unfinished"></translation>
+        <translation>Computer</translation>
     </message>
     <message>
         <source>Not recognized, repeat please</source>
-        <translation type="unfinished"></translation>
+        <translation>Not recognized, repeat please</translation>
     </message>
 </context>
 <context>
@@ -63,11 +63,27 @@
     </message>
     <message>
         <source>Input audio device</source>
-        <translation type="unfinished"></translation>
+        <translation>Input audio device</translation>
     </message>
     <message>
         <source>Output audio device</source>
-        <translation type="unfinished"></translation>
+        <translation>Qutput audio device</translation>
+    </message>
+    <message>
+        <source>Language</source>
+        <translation>Languages</translation>
+    </message>
+    <message>
+        <source>User interface</source>
+        <translation>User interface</translation>
+    </message>
+    <message>
+        <source>Text to speech</source>
+        <translation>Text te speech</translation>
+    </message>
+    <message>
+        <source>Speech to text</source>
+        <translation>Speech to text</translation>
     </message>
 </context>
 <context>
