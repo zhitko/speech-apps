@@ -32,6 +32,12 @@ Item {
             description_text: qsTr("Setup all applications settings")
             gotoState: "settings"
         }
+        ListElement {
+            image_src: "qrc:/images/images/Support-64.png"
+            title_text: qsTr("Tests")
+            description_text: qsTr("For application tests")
+            gotoState: "tests"
+        }
     }
 
     property Item lastScreen
@@ -94,6 +100,17 @@ Item {
                 script: screenSettings.show()
             }
         }
+        , State {
+            name: "tests"
+            PropertyChanges { target: imageListView; visible: false }
+            PropertyChanges { target: backMenu; visible: true; title_text: menuModel.get(4).title_text; }
+            PropertyChanges { target: screenTests; visible: true }
+            PropertyChanges { target: rootMenu; lastScreen: screenTests }
+            StateChangeScript {
+                name: "onShowTestsScreen"
+                script: screenTests.show()
+            }
+        }
     ]
 
     ColumnLayout {
@@ -147,6 +164,10 @@ Item {
             }
             ScreenSettings {
                 id: screenSettings
+                anchors.fill: parent
+            }
+            ScreenTests {
+                id: screenTests
                 anchors.fill: parent
             }
 

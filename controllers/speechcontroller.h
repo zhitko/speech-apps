@@ -14,7 +14,7 @@ public:
 
 signals:
 
-    void recognized(QList<QString>);
+    void recognized(QString, QList<QString>);
 
 public slots:
 };

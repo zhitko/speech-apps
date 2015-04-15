@@ -13,6 +13,7 @@
         <file>qml/SpeechScreen.qml</file>
         <file>qml/ScreenRecords.qml</file>
         <file>qml/ScreenRecords/FileListDelegate.qml</file>
+        <file>qml/ScreenTests.qml</file>
     </qresource>
     <qresource prefix="/images">
         <file>images/delegate.png</file>
@@ -32,5 +33,6 @@
         <file>images/Delete-32.png</file>
         <file>images/google-32.png</file>
         <file>images/Play-32.png</file>
+        <file>images/Support-64.png</file>
     </qresource>
 </RCC>

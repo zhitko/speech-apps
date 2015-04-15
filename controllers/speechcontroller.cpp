@@ -23,7 +23,7 @@ void SpeechController::recognizeFile(QString file)
     QString filePath = FileController::getUserFilesDir() + file;
     GoogleSpeech * googleSpeech = new GoogleSpeech();
     connect(googleSpeech, &GoogleSpeech::getText, [=](QString text){
-        emit this->recognized(text.split("\n"));
+        emit this->recognized(file, text.split("\n"));
     });
     googleSpeech->sent(filePath);
 }

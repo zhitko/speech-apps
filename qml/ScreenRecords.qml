@@ -8,8 +8,11 @@ Item {
 
     visible: false
 
-    function recognitionFinsh(records) {
-        console.log("ScreenRecords::recognitionFinsh" + records);
+    function recognitionFinsh(file, records) {
+        console.log("ScreenRecords::recognitionFinsh" + records)
+        if(records.length > 0 && records[0] != "") {
+            fileController.setFileTranslation(file, records[0])
+        }
         updateFileList()
     }
 

@@ -2,6 +2,13 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="en_US">
 <context>
+    <name>FileListDelegate</name>
+    <message>
+        <source>Translation: </source>
+        <translation>Transcription: </translation>
+    </message>
+</context>
+<context>
     <name>MainMenu</name>
     <message>
         <source>Parrot</source>

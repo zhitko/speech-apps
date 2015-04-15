@@ -2,6 +2,14 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="be_BY">
 <context>
+    <name>FileListDelegate</name>
+    <message>
+        <location filename="../ScreenRecords/FileListDelegate.qml" line="45"/>
+        <source>Translation: </source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MainMenu</name>
     <message>
         <location filename="../MainMenu.qml" line="13"/>

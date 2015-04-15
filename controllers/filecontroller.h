@@ -14,7 +14,9 @@ public:
     ~FileController();
 
     Q_INVOKABLE QList<QObject *> getFileList();
-    Q_INVOKABLE bool deleteFile(QString);
+    Q_INVOKABLE bool deleteFile(const QString);
+
+    Q_INVOKABLE void setFileTranslation(const QString, const QString);
 
 signals:
 

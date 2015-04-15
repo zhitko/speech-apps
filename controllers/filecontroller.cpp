@@ -8,6 +8,7 @@
 #include <QFile>
 #include <QStringList>
 #include <QApplication>
+#include <QTextStream>
 
 #include "utills/files.h"
 
@@ -53,9 +54,22 @@ QList<QObject *> FileController::getFileList()
     return fileModelsList;
 }
 
-bool FileController::deleteFile(QString fileName)
+bool FileController::deleteFile(const QString fileName)
 {
     qDebug() << "FileController::deleteFile >> " << fileName;
     QString path = getUserFilesDir() + fileName;
     return QFile(path).remove();
+}
+
+void FileController::setFileTranslation(const QString fileName, const QString translation)
+{
+    qDebug() << "FileController::setFileTranslation >> " << fileName << " : " << translation;
+    QString path = getUserFilesDir() + fileName + TRANSL_TYPE;
+    QFile descriptionFile(path);
+    if (descriptionFile.open(QIODevice::WriteOnly | QIODevice::Text))
+    {
+        QTextStream out(&descriptionFile);
+        out << translation;
+        descriptionFile.close();
+    }
 }

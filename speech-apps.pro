@@ -16,14 +16,11 @@ unix {
 }
 
 SOURCES += main.cpp \
-    controllers/filecontroller.cpp \
-    utills/files.cpp \
-    controllers/soundcontroller.cpp \
-    models/fileobject.cpp \
-    controllers/settingscontroller.cpp \
-    models/deviceobject.cpp \
-    system/settingsvalult.cpp \
-    models/localeobject.cpp
+    system/settingsvalult.cpp
+
+HEADERS += \
+    defines.h \
+    system/settingsvalult.h
 
 # -----------------------------
 # Controllers
@@ -31,20 +28,30 @@ SOURCES += main.cpp \
 
 SOURCES += \
     controllers/applicationcontroller.cpp \
+    controllers/filecontroller.cpp \
+    controllers/soundcontroller.cpp \
+    controllers/settingscontroller.cpp \
     controllers/speechcontroller.cpp
 
 HEADERS += \
     controllers/applicationcontroller.h \
     controllers/speechcontroller.h \
     controllers/filecontroller.h \
-    defines.h \
-    utills/files.h \
     controllers/soundcontroller.h \
+    controllers/settingscontroller.h
+
+# -----------------------------
+# Models
+# -----------------------------
+
+SOURCES += \
+    models/fileobject.cpp \
+    models/deviceobject.cpp \
+    models/localeobject.cpp
+
+HEADERS += \
     models/fileobject.h \
-    controllers/settingscontroller.h \
     models/deviceobject.h \
-    system/settingsvalult.h \
-    utills/singleton.h \
     models/localeobject.h
 
 # -----------------------------
@@ -97,6 +104,15 @@ SOURCES += \
 HEADERS  += \
     utills/OpenAL/openal_wrapper.h \
     OpenAL/wavFile.h
+
+# Other
+
+SOURCES += \
+    utills/files.cpp
+
+HEADERS  += \
+    utills/files.h \
+    utills/singleton.h
 
 # SPTK
 
@@ -356,7 +372,9 @@ TRANSLATIONS = qml/i18n/speech-apps_ru.ts \
                qml/i18n/speech-apps_be.ts
 
 lupdate_only {
-    SOURCES = qml/*.qml
+    SOURCES = \
+        qml/*.qml \
+        qml/ScreenRecords/FileListDelegate.qml
 }
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
@@ -366,5 +384,13 @@ QML_IMPORT_PATH =
 include(deployment.pri)
 
 DISTFILES += \
+    qml/main.qml \
+    qml/MainMenu.qml \
+    qml/MenuItemDelegate.qml \
+    qml/ScreenParrot.qml \
     qml/ScreenRecords.qml \
-    qml/ScreenRecords/FileListDelegate.qml
+    qml/ScreenRecords/FileListDelegate.qml \
+    qml/ScreenSettings.qml \
+    qml/ScreenWhiteBull.qml \
+    qml/SpeechScreen.qml \
+    qml/ScreenTests.qml
