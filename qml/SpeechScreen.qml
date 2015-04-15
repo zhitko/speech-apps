@@ -9,6 +9,8 @@ Item {
 
     property string text: ""
 
+    property bool isAuto: false
+
     function appendText(actor, text) {
         mainText.append("\n<b>" + actor + "</b>: " + text)
     }
@@ -17,16 +19,66 @@ Item {
         volumeBar.setValue(value)
     }
 
+    function recordFinished(file) {
+        isRecording = false
+        console.log("SpeechScreen::recordFinished >> " + file )
+        speechController.recognizeFile(file)
+    }
+
+    function recognitionFinsh(file, records) {
+        console.log("SpeechScreen::recognitionFinsh " + records);
+        if(records.length > 0 && records[0] != "")
+            appendText(qsTr("Computer"), records[0])
+        else
+            appendText(qsTr("Computer"), qsTr("Not recognized, repeat please"))
+        if (isAuto) startStopAutoRecording()
+    }
+
+    function stopRecording () {
+        if (isRecording) {
+            console.log("SpeechScreen::stopRecording")
+            soundController.stopRecording()
+            speechController.recognized.disconnect(recognitionFinsh)
+            soundController.recordingFinish.disconnect(recordFinished)
+        }
+    }
+
     function startStopManualRecording () {
+        isAuto = false
         if (isRecording) {
             console.log("SpeechScreen::stopManualRecording")
             soundController.stopRecording()
         } else {
             console.log("SpeechScreen::startManualRecording")
-            soundController.startRecording()
+            soundController.startManualRecording()
         }
 
         isRecording = !isRecording
+    }
+
+    function startStopAutoRecording () {
+        isAuto = true
+        if (isRecording) {
+            console.log("SpeechScreen::stopManualRecording")
+            soundController.stopRecording()
+        } else {
+            console.log("SpeechScreen::startManualRecording")
+            soundController.startAutoRecording()
+        }
+
+        isRecording = !isRecording
+    }
+
+    function init () {
+        console.log("SpeechScreen::init()")
+        speechController.recognized.connect(recognitionFinsh)
+        soundController.recordingFinish.connect(recordFinished)
+    }
+
+    function free () {
+        console.log("SpeechScreen::free()")
+        speechController.recognized.disconnect(recognitionFinsh)
+        soundController.recordingFinish.disconnect(recordFinished)
     }
 
     RowLayout {

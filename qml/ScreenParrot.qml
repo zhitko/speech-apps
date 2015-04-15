@@ -6,23 +6,16 @@ Item {
 
     visible: false
 
-    function recognitionFinsh(file, records) {
-        console.log("ScreenParrot::recognitionFinsh " + records);
-        console.log("ScreenParrot::recognitionFinsh " + records.length);
-        if(records.length > 0 && records[0] != "")
-            speechScreen.appendText(qsTr("Computer"), records[0])
-        else
-            speechScreen.appendText(qsTr("Computer"), qsTr("Not recognized, repeat please"))
-    }
-
     function show () {
-        console.log("ScreenParrot::show")
-        speechController.recognized.connect(recognitionFinsh)
+        console.log("ScreenParrot::show()")
+        speechScreen.init()
+        speechScreen.startStopAutoRecording()
     }
 
     function free () {
-        console.log("ScreenParrot::destroy")
-        speechController.recognized.disconnect(recognitionFinsh)
+        console.log("ScreenParrot::free()")
+        speechScreen.stopRecording()
+        speechScreen.free()
     }
 
     SpeechScreen {

@@ -3,6 +3,7 @@
 #include "defines.h"
 
 #include "services/sound/soundrecorder.h"
+#include "services/sound/autosoundrecorder.h"
 #include "services/sound/soundplayer.h"
 
 #include "system/settingsvalult.h"
@@ -10,8 +11,6 @@
 #include "utills/singleton.h"
 
 #include "filecontroller.h"
-
-#include "services/sound/soundplayer.h"
 
 #include "models/deviceobject.h"
 
@@ -39,9 +38,9 @@ void SoundController::playFile(const QString fileName)
     player->start();
 }
 
-void SoundController::startRecording()
+void SoundController::startManualRecording()
 {
-    qDebug() << "SoundController::startRecording";
+    qDebug() << "SoundController::startManualRecording";
 
     if(this->recorder == NULL)
     {
@@ -50,6 +49,22 @@ void SoundController::startRecording()
         qDebug() << "new SoundRecorder: " << currentDevice->name;
         this->recorder = new SoundRecorder(currentDevice, sizeof(short int), this);
         qDebug() << "is recording: " << this->recorder->isRecording();
+        connect(this->recorder, SIGNAL(resultReady(SoundRecorder *)), this, SLOT(recordFinished(SoundRecorder *)));
+    }
+    this->stopRecording();
+    recorder->startRecording();
+}
+
+void SoundController::startAutoRecording()
+{
+    qDebug() << "SoundController::startAutoRecording";
+
+    if(this->recorder == NULL)
+    {
+        SettingsValult * settings = &Singleton<SettingsValult>::Instance();
+        oal_device * currentDevice = settings->getCurrentInputDevice()->device();
+        qDebug() << "new SoundRecorder: " << currentDevice->name;
+        this->recorder = new AutoSoundRecorder(currentDevice, sizeof(short int), this);
         connect(this->recorder, SIGNAL(resultReady(SoundRecorder *)), this, SLOT(recordFinished(SoundRecorder *)));
     }
     this->stopRecording();
@@ -76,7 +91,8 @@ void SoundController::recordFinished(SoundRecorder * recorder)
 
     QDateTime dateTime = QDateTime::currentDateTime();
 
-    QString path = FileController::getUserFilesDir() + dateTime.toString("dd.MM.yyyy hh.mm.ss.zzz") + WAVE_TYPE;
+    QString fileName = dateTime.toString("dd.MM.yyyy hh.mm.ss.zzz") + WAVE_TYPE;
+    QString path = FileController::getUserFilesDir() + fileName;
     qDebug() << "SoundController::recordFinished >> write wave to: " << path;
 
     WaveFile *waveFile = makeWaveFileFromData((char *)data, size, 1, 8000, 16);
@@ -86,6 +102,8 @@ void SoundController::recordFinished(SoundRecorder * recorder)
     waveCloseFile(waveFile);
     qDebug() << "SoundController::recordFinished >> close wav file";
     this->wavFileList.append(path);
+
+    emit recordingFinish(fileName);
 
     recorder->deleteLater();
     qDebug() << "SoundController::recordFinished >> free recorder";
