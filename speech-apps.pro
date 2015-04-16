@@ -80,6 +80,45 @@ HEADERS += \
     services/sound/soundplayer.h \
     services/sound/soundrecorder.h
 
+# TTS
+
+SOURCES += \
+    services/tts/tts.cpp
+
+HEADERS +=  \
+    services/tts/tts.h \
+    services/tts/core/QtSpeech.h
+
+macx {
+    SOURCES += services/tts/core/QtSpeech_mac.cpp
+    LIBS *= -framework AppKit
+}
+
+win32 {
+    SOURCES += services/tts/core/QtSpeech_win.cpp
+
+    INCLUDEPATH += "C:/Program Files/PSDK/Include"
+    INCLUDEPATH += "C:/Program Files/PSDK/Include/atl"
+    INCLUDEPATH += "C:/Program Files/Microsoft Speech SDK 5.1/Include"
+
+    LIBS += -L"C:/Program Files/Microsoft Speech SDK 5.1/Lib/i386"
+}
+
+unix:!mac {
+    HEADERS += services/tts/core/QtSpeech_unx.h
+    SOURCES += services/tts/core/QtSpeech_unx.cpp
+
+    INCLUDEPATH += /usr/include/speech_tools
+    INCLUDEPATH += /usr/include/festival
+
+    LIBS += -lncurses
+    LIBS += -L$$PWD/festival/festival/src/lib -lFestival
+    LIBS += -L$$PWD/festival/speech_tools/lib -lestools -lestbase -leststring
+
+    # Linux: use asound
+    LIBS += -lasound
+}
+
 # -----------------------------
 # Utills
 # -----------------------------

@@ -41,6 +41,7 @@ Item {
             speechController.recognized.disconnect(recognitionFinsh)
             soundController.recordingFinish.disconnect(recordFinished)
         }
+        isRecording = false
     }
 
     function startStopManualRecording () {
