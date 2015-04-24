@@ -2,6 +2,8 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+#include <malloc.h>
 
 oal_device * mkAolDevice()
 {
@@ -122,7 +124,8 @@ int playSound(oal_device * device, void * data, int size, short channels, short 
 
     alDeleteSources(1, &source);
     alDeleteBuffers(1, &buffer);
-    device = alcGetContextsDevice(context);
+//    device->device = alcGetContextsDevice(context);
+    alcGetContextsDevice(context);
     alcMakeContextCurrent(NULL);
     alcDestroyContext(context);
 

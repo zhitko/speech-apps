@@ -3,10 +3,8 @@
 
 #include <QObject>
 
-extern "C" {
-    #include "utills/OpenAL/openal_wrapper.h"
-    #include "utills/OpenAL/wavFile.h"
-}
+#include "utills/OpenAL/openal_wrapper.h"
+#include "utills/OpenAL/wavFile.h"
 
 class SoundRecorder;
 

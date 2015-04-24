@@ -37,8 +37,9 @@ QList<QObject *> FileController::getFileList()
     fileList.sort();
 
     QList<QObject *> fileModelsList;
-    for(QString fileName: fileList)
+    for(int i=0; i<fileList.length(); i++)
     {
+        QString fileName = fileList.at(i);
         QString translation;
         QString translateFileName = directory + fileName.remove(0,1) + TRANSL_TYPE;
         QFile translateFile(translateFileName);
@@ -69,7 +70,9 @@ void FileController::setFileTranslation(const QString fileName, const QString tr
     if (descriptionFile.open(QIODevice::WriteOnly | QIODevice::Text))
     {
         QTextStream out(&descriptionFile);
-        out << translation;
+        out.setCodec("UTF-8");
+        out.setGenerateByteOrderMark(true);
+        out << translation.toUtf8();
         descriptionFile.close();
     }
 }

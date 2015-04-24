@@ -84,7 +84,7 @@
 #ifdef HAVE_STRING_H
 #  include <string.h>
 #else
-#  include <strings.h>
+#  include <string.h>
 #  ifndef HAVE_STRRCHR
 #     define strrchr rindex
 #  endif
@@ -105,6 +105,7 @@
 
 vector sptk_spec(vector data, SPEC_SETTINGS * settings)
 {
+   int lenR;
    int leng = settings->leng,
        otype = OTYPE,
        etype = ETYPE,
@@ -139,7 +140,7 @@ vector sptk_spec(vector data, SPEC_SETTINGS * settings)
 
    if (orderma <= 0) orderma = leng - 1;
 
-   int lenR = no*(data.x/(dataAR != NULL ? (orderar + 1) : orderma + 1)+1);
+   lenR = no*(data.x/(dataAR != NULL ? (orderar + 1) : orderma + 1)+1);
    res = makev(lenR);
 
    for (;;){

@@ -17,19 +17,22 @@
     Boston, MA 02110-1301 USA */
 
 #include <QtCore>
-#include <QtSpeech>
+#include "services/tts/core/QtSpeech.h"
+
+#include <mmintrin.h>
+#include <wtypes.h>
 
 #undef UNICODE
+//extern "C"{
 #include <sapi.h>
 #include <sphelper.h>
 #include <comdef.h>
+//}
 #define UNICODE
 
 #include <windows.h>
 #include <windowsx.h>
 #include <commctrl.h>
-
-namespace QtSpeech_v1 { // API v1.0
 
 // some defines for throwing exceptions
 #define Where QString("%1:%2:").arg(__FILE__).arg(__LINE__)
@@ -223,5 +226,3 @@ void QtSpeech::timerEvent(QTimerEvent * te)
         }
     }
 }
-
-} // namespace QtSpeech_v1

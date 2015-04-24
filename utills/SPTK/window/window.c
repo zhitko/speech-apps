@@ -78,7 +78,7 @@
 #ifdef HAVE_STRING_H
 #  include <string.h>
 #else
-#  include <strings.h>
+#  include <string.h>
 #  ifndef HAVE_STRRCHR
 #     define strrchr rindex
 #  endif
@@ -98,11 +98,12 @@ vector sptk_window(vector data, WINDOW_SETTINGS * settings)
        i,j;
    Window wintype = settings->window_type;
    double *x;
+   vector res;
 
    if (outl < 0)
       outl = fleng;
 
-   vector res = makev(data.x);
+   res = makev(data.x);
    x = dgetmem(fleng > outl ? fleng : outl);
 
    for(i=0;i<data.x;i+=fleng){

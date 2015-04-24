@@ -3,9 +3,7 @@
 
 #include <QObject>
 
-extern "C" {
-    #include "utills/OpenAL/openal_wrapper.h"
-}
+#include "utills/OpenAL/openal_wrapper.h"
 
 class DeviceObject : public QObject
 {

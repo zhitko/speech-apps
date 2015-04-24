@@ -95,7 +95,7 @@ void SoundRecorder::run()
             allocateNewBuffer();
             currentPos = 0;
         }
-        void * pointToWrite = this->currentBuffer->buffer + currentPos;
+        void * pointToWrite = (char*)this->currentBuffer->buffer_data + currentPos;
         int maxToWrite = INIT_BUFFER_SIZE - currentPos;
         int size = getSample(this->device, pointToWrite, this->sampleByteSize, maxToWrite);
         currentPos += size;

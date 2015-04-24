@@ -30,7 +30,7 @@ void SpectrSignal::freeSignal()
 
 int SpectrDP::calculateError(double* value1, double* value2)
 {
-    int error = 0;
+    double error = 0;
     for(int i=0; i<this->spectrSize; i++)
         error += (value1[i] - value2[i])*(value1[i] - value2[i]);
     return sqrt(error);

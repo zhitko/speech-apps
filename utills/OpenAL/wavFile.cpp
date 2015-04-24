@@ -1,10 +1,12 @@
 #include "wavFile.h"
 
+#include <string.h>
+
 WaveFile * initWaveFile()
 {
     WaveFile * waveFile = (WaveFile *) malloc(sizeof(WaveFile));
-
     waveFile->file = NULL;
+    waveFile->fileOpenViaHandler = false;
     waveFile->formatChunk = NULL;
     waveFile->waveHeader = NULL;
     waveFile->dataChunk = NULL;
@@ -28,6 +30,7 @@ WaveFile * waveOpenHFile(int handle)
     waveFile->filePath = NULL;
 
     waveFile->file = fdopen(handle, "rb");
+    waveFile->fileOpenViaHandler = true;
     if(waveFile->file == NULL)
     {
         fprintf(stderr, "Could not open input file %s\n", waveFile->filePath);
@@ -309,7 +312,7 @@ void waveCloseFile(WaveFile *waveFile)
 {
     // TODO: free allocated memory in stucts
     if(waveFile == NULL) return;
-    if(waveFile->file != NULL) fclose(waveFile->file);
+    if(waveFile->file != NULL && !waveFile->fileOpenViaHandler) fclose(waveFile->file);
     if(waveFile->formatChunk != NULL) free(waveFile->formatChunk);
     if(waveFile->waveHeader != NULL) free(waveFile->waveHeader);
     if(waveFile->dataChunk != NULL)
@@ -400,7 +403,7 @@ WaveFile * makeWaveFile(WaveHeader *waveHeader, FormatChunk *formatChunk, DataCh
 
 void saveWaveFile(WaveFile *waveFile, const char *filePath)
 {
-    waveFile->filePath = malloc(1 + strlen(filePath));
+    waveFile->filePath = (char*) malloc(1 + strlen(filePath));
     if(waveFile->filePath) strcpy(waveFile->filePath, filePath);
     if (waveFile->file == NULL) waveFile->file = fopen(filePath, "wb");
     if (waveFile->file == NULL)

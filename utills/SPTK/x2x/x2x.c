@@ -83,7 +83,7 @@
 #ifdef HAVE_STRING_H
 #  include <string.h>
 #else
-#  include <strings.h>
+#  include <string.h>
 #  ifndef HAVE_STRRCHR
 #     define strrchr rindex
 #  endif
@@ -129,14 +129,17 @@ vector sptk_x2x(const char *fname)
     size_t size1 = sizeof(short),
            size2 = sizeof(double);
     struct stat sb;
-    stat(fname, &sb);
-    int len = sb.st_size / size1;
-    FILE *fp = getfp(fname, "rb");
-    Boolean clip = TR; //CLIP;
-
+    int len;
+    FILE *fp;
+    Boolean clip;
     vector res;
 
     void x2x(void *x1, void *x2, char c1, char c2, int clip);
+
+    stat(fname, &sb);
+    len = sb.st_size / size1;
+    fp = getfp(fname, "rb");
+    clip = TR; //CLIP;
 
     res = makev(len);
 
