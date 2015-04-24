@@ -3,6 +3,8 @@
 
 #include <QObject>
 
+class TTS;
+
 class SpeechController : public QObject
 {
     Q_OBJECT
@@ -12,11 +14,16 @@ public:
 
     Q_INVOKABLE void recognizeFile(QString);
 
-signals:
+    Q_INVOKABLE void synthesize(QString);
 
+signals:
+    void finishSpeaking();
     void recognized(QString, QList<QString>);
 
 public slots:
+
+private:
+    TTS * tts;
 };
 
 #endif // SPEECHCONTROLLER_H

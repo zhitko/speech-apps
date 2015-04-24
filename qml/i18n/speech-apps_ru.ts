@@ -42,6 +42,14 @@
         <source>View all user records</source>
         <translation>Просмотр пользовательских записей</translation>
     </message>
+    <message>
+        <source>Tests</source>
+        <translation>Тестирование</translation>
+    </message>
+    <message>
+        <source>For application tests</source>
+        <translation>Тестирование базовых функций программы</translation>
+    </message>
 </context>
 <context>
     <name>ScreenParrot</name>
@@ -55,11 +63,11 @@
     </message>
     <message>
         <source>Computer</source>
-        <translation>Компьютер</translation>
+        <translation type="vanished">Компьютер</translation>
     </message>
     <message>
         <source>Not recognized, repeat please</source>
-        <translation>Фраза не распознана, пожалуйсто повторите</translation>
+        <translation type="vanished">Фраза не распознана, пожалуйсто повторите</translation>
     </message>
 </context>
 <context>
@@ -86,11 +94,26 @@
     </message>
     <message>
         <source>Text to speech</source>
-        <translation>Распознавание речи</translation>
+        <translation>Синтез речи</translation>
     </message>
     <message>
         <source>Speech to text</source>
-        <translation>Синтез речи</translation>
+        <translation>Распознавание речи</translation>
+    </message>
+</context>
+<context>
+    <name>ScreenTests</name>
+    <message>
+        <source>Computer</source>
+        <translation>Компьютер</translation>
+    </message>
+    <message>
+        <source>Not recognized, repeat please</source>
+        <translation>Фраза не распознана, пожалуйсто повторите</translation>
+    </message>
+    <message>
+        <source>Voice recognition test</source>
+        <translation>Тест распознавания речи</translation>
     </message>
 </context>
 <context>
@@ -102,6 +125,17 @@
     <message>
         <source>User</source>
         <translation>Пользователь</translation>
+    </message>
+</context>
+<context>
+    <name>SpeechScreen</name>
+    <message>
+        <source>Computer</source>
+        <translation>Компьютер</translation>
+    </message>
+    <message>
+        <source>Not recognized, repeat please</source>
+        <translation>Фраза не распознана, пожалуйсто повторите</translation>
     </message>
 </context>
 <context>

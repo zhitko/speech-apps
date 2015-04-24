@@ -20,16 +20,19 @@
 #define QtSpeech_unx_H
 
 #include <QObject>
+#include <QStringList>
 #include "QtSpeech.h"
 
 class QtSpeech_th : public QObject {
 Q_OBJECT
 public:
-    QtSpeech_th(QObject * p =0L):QObject(p),has_error(false),err("") {}
+    QtSpeech_th(QObject * p =0L);
+    QtSpeech_th(const QString language, QObject * p =0L);
     virtual ~QtSpeech_th() {}
 
 public slots:
-    void say(QString text);
+    void say(const QString text);
+    QStringList getLanguages();
 
 signals:
     void logicError(QtSpeech::LogicError);
@@ -40,6 +43,10 @@ private:
     QtSpeech::LogicError err;
     bool has_error;
     static bool init;
+    QStringList languages;
+    QString language;
+
+    void initFestival();
 };
 
 #endif // QtSpeech_unx_H

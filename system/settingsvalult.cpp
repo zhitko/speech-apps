@@ -6,7 +6,7 @@ SettingsValult::SettingsValult(QObject *parent)
     : QObject(parent)
     , mUiLocale(0)
     , mSttLocale(0)
-    , mTtsLocale(0)
+    , mTtsVoice("")
     , mCurrentOutputDevice(0)
     , mCurrentInputDevice(0)
 {
@@ -56,16 +56,16 @@ void SettingsValult::setSttLocale(LocaleObject * locale)
     }
 }
 
-LocaleObject * SettingsValult::getTtsLocale() const
+QString SettingsValult::getTtsVoice() const
 {
-    return this->mTtsLocale;
+    return this->mTtsVoice;
 }
 
-void SettingsValult::setTtsLocale(LocaleObject * locale)
+void SettingsValult::setTtsVoice(QString voice)
 {
-    if (locale != this->mTtsLocale)
+    if (voice != this->mTtsVoice)
     {
-        this->mTtsLocale = locale;
-        emit ttsLocaleChanged();
+        this->mTtsVoice = voice;
+        emit ttsVoiceChanged();
     }
 }

@@ -17,6 +17,8 @@
 
 #include "utills/singleton.h"
 
+#include "services/tts/tts.h"
+
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);

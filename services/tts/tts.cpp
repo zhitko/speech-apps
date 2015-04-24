@@ -1,37 +1,69 @@
 #include "tts.h"
 #include <QtCore/QDebug>
 
-#include "./core/QtSpeech.h"
+#include "utills/singleton.h"
 
 TTS::TTS(QObject *parent) :
-    QObject(parent)
+    QObject(parent), voice("")
 {
-    QtSpeech::VoiceName voice = QtSpeech::voices().first();
-    foreach(QtSpeech::VoiceName v, QtSpeech::voices()){
-        qDebug() << "id:" << v.id << "name:" << v.name;
-        if(v.name=="Boris Lobanov") voice = v;
+    qDebug() << "TTS::TTS";
+
+    QtSpeech speech;
+
+    QtSpeech::VoiceNames voices = speech.voices();
+//    qDebug() << "TTS::TTS >> " << voices.length();
+    foreach(QtSpeech::VoiceName v, voices){
+//        qDebug() << "TTS::TTS >> id:" << v.id << "name:" << v.name;
+        this->voices[v.name] = v;
+        this->voice = v.name;
     }
-    qDebug() << "create tts:" << voice.name;
-    this->speech = new QtSpeech(voice);
-    connect(this->speech, SIGNAL(finished()), this, SLOT(_finished()));
 }
 
-TTS::~TTS(){
-    delete this->speech;
+TTS::~TTS()
+{
 }
 
-void TTS::tell(QString data){
+QStringList TTS::getVoiceList()
+{
+    return this->voices.keys();
+}
+
+void TTS::setVoice(QString voice)
+{
+    if (this->voices.contains(voice))
+    {
+        this->voice = voice;
+    }
+}
+
+QtSpeech * TTS::getSpeech()
+{
+    QtSpeech * speech;
+    if(this->voice.length() == 0)
+        speech = new QtSpeech(this);
+    else
+        speech = new QtSpeech(this->voices[this->voice], this);
+    return speech;
+}
+
+void TTS::tell(QString data)
+{
+    QtSpeech * speech = this->getSpeech();
     qDebug() << "TTS::tell >> " << data << "using voice:" << speech->name().name;
+
+    connect(speech, &QtSpeech::finished, [=](){
+        speech->deleteLater();
+//        emit this->finished();
+    });
+
     speech->tell(data);
-    qDebug() << "TTS::say Finish";
 }
 
-void TTS::say(QString data){
+void TTS::say(QString data)
+{
+    QtSpeech * speech = this->getSpeech();
     qDebug() << "TTS::say >> " << data << "using voice:" << speech->name().name;
     speech->say(data);
-}
-
-void TTS::_finished()
-{
-    emit finished();
+//    speech->deleteLater();
+    qDebug() << "TTS::say Finish";
 }

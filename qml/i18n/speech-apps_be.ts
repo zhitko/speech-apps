@@ -51,22 +51,21 @@
         <source>Setup all applications settings</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../MainMenu.qml" line="37"/>
+        <source>Tests</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MainMenu.qml" line="38"/>
+        <source>For application tests</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ScreenParrot</name>
     <message>
-        <location filename="../ScreenParrot.qml" line="13"/>
-        <location filename="../ScreenParrot.qml" line="15"/>
-        <source>Computer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ScreenParrot.qml" line="15"/>
-        <source>Not recognized, repeat please</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ScreenParrot.qml" line="36"/>
+        <location filename="../ScreenParrot.qml" line="25"/>
         <source>Voice recognition test</source>
         <translation type="unfinished"></translation>
     </message>
@@ -74,41 +73,74 @@
 <context>
     <name>ScreenSettings</name>
     <message>
-        <location filename="../ScreenSettings.qml" line="35"/>
+        <location filename="../ScreenSettings.qml" line="37"/>
         <source>Input audio device</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ScreenSettings.qml" line="52"/>
+        <location filename="../ScreenSettings.qml" line="54"/>
         <source>Output audio device</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ScreenSettings.qml" line="69"/>
+        <location filename="../ScreenSettings.qml" line="71"/>
         <source>Language</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ScreenSettings.qml" line="75"/>
+        <location filename="../ScreenSettings.qml" line="77"/>
         <source>User interface</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ScreenSettings.qml" line="91"/>
+        <location filename="../ScreenSettings.qml" line="93"/>
         <source>Text to speech</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ScreenSettings.qml" line="107"/>
+        <location filename="../ScreenSettings.qml" line="108"/>
         <source>Speech to text</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ScreenTests</name>
+    <message>
+        <location filename="../ScreenTests.qml" line="13"/>
+        <location filename="../ScreenTests.qml" line="15"/>
+        <source>Computer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ScreenTests.qml" line="15"/>
+        <source>Not recognized, repeat please</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ScreenTests.qml" line="36"/>
+        <source>Voice recognition test</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>ScreenWhiteBull</name>
     <message>
-        <location filename="../ScreenWhiteBull.qml" line="51"/>
+        <location filename="../ScreenWhiteBull.qml" line="53"/>
         <source>User</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SpeechScreen</name>
+    <message>
+        <location filename="../SpeechScreen.qml" line="31"/>
+        <location filename="../SpeechScreen.qml" line="33"/>
+        <source>Computer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../SpeechScreen.qml" line="33"/>
+        <source>Not recognized, repeat please</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -48,7 +48,7 @@ public:
     virtual ~QtSpeech();
 
     const VoiceName & name() const; //!< Name of current voice
-    static VoiceNames voices();     //!< List of available voices in system
+    const VoiceNames voices();     //!< List of available voices in system
 
     void say(QString) const;                                    //!< Say something, synchronous
     void tell(QString) const;                                   //!< Tell something, asynchronous

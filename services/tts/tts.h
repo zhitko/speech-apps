@@ -2,8 +2,9 @@
 #define TTS_H
 
 #include <QObject>
+#include <QMap>
 
-class QtSpeech;
+#include "core/QtSpeech.h"
 
 class TTS : public QObject
 {
@@ -15,14 +16,16 @@ public:
     void say(QString);
     void tell(QString);
 
+    QStringList getVoiceList();
+    void setVoice(QString);
+
 private:
-    QtSpeech * speech;
+    QString voice;
+    QMap<QString, QtSpeech::VoiceName> voices;
+    QtSpeech * getSpeech();
     
 signals:
     void finished();
-    
-public slots:
-    void _finished();
     
 };
 

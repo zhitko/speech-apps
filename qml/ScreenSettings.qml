@@ -19,8 +19,10 @@ Item {
         uiLanguages.currentIndex = settingsController.getUiLanguage()
         sttLangages.model = settingsController.getSttLanguageList()
         sttLangages.currentIndex = settingsController.getSttLanguage()
-        ttsLanguages.model = settingsController.getTtsLanguageList()
-        ttsLanguages.currentIndex = settingsController.getTtsLanguage()
+        ttsLanguages.model = settingsController.getTtsVoiceList()
+        ttsLanguages.currentIndex = settingsController.getTtsVoice()
+        console.log("ttsLanguages.model " + ttsLanguages.model)
+        console.log("ttsLanguages.currentIndex" + ttsLanguages.currentIndex)
     }
 
     function free () {
@@ -94,11 +96,10 @@ Item {
                         id: ttsLanguages
                         anchors.left: parent.left
                         anchors.right: parent.right
-                        textRole: "name"
                         onActivated: {
                             if(ttsLanguages.model[index]){
-                                console.log("Select language: ", ttsLanguages.model[index].name)
-                                settingsController.setTtsLanguage(ttsLanguages.model[index].code)
+                                console.log("Select language: ", ttsLanguages.model[index])
+                                settingsController.setTtsVoice(ttsLanguages.model[index])
                             }
                         }
                     }

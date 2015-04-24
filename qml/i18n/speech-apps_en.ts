@@ -42,6 +42,14 @@
         <source>View all user records</source>
         <translation>View all user records</translation>
     </message>
+    <message>
+        <source>Tests</source>
+        <translation>Test</translation>
+    </message>
+    <message>
+        <source>For application tests</source>
+        <translation>For application tests</translation>
+    </message>
 </context>
 <context>
     <name>ScreenParrot</name>
@@ -55,11 +63,11 @@
     </message>
     <message>
         <source>Computer</source>
-        <translation>Computer</translation>
+        <translation type="vanished">Computer</translation>
     </message>
     <message>
         <source>Not recognized, repeat please</source>
-        <translation>Not recognized, repeat please</translation>
+        <translation type="vanished">Not recognized, repeat please</translation>
     </message>
 </context>
 <context>
@@ -94,6 +102,21 @@
     </message>
 </context>
 <context>
+    <name>ScreenTests</name>
+    <message>
+        <source>Computer</source>
+        <translation>Computer</translation>
+    </message>
+    <message>
+        <source>Not recognized, repeat please</source>
+        <translation>Not recognized, repeat please</translation>
+    </message>
+    <message>
+        <source>Voice recognition test</source>
+        <translation>Voice recognition test</translation>
+    </message>
+</context>
+<context>
     <name>ScreenWhiteBull</name>
     <message>
         <source>White bull</source>
@@ -102,6 +125,17 @@
     <message>
         <source>User</source>
         <translation>User</translation>
+    </message>
+</context>
+<context>
+    <name>SpeechScreen</name>
+    <message>
+        <source>Computer</source>
+        <translation>Computer</translation>
+    </message>
+    <message>
+        <source>Not recognized, repeat please</source>
+        <translation>Not recognized, repeat please</translation>
     </message>
 </context>
 <context>

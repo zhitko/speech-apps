@@ -23,13 +23,13 @@ public:
     LocaleObject * getSttLocale() const;
     void setSttLocale(LocaleObject *);
 
-    LocaleObject * getTtsLocale() const;
-    void setTtsLocale(LocaleObject *);
+    QString getTtsVoice() const;
+    void setTtsVoice(QString);
 
 signals:
     void uiLocaleChanged();
     void sttLocaleChanged();
-    void ttsLocaleChanged();
+    void ttsVoiceChanged();
 
 public slots:
 
@@ -42,7 +42,7 @@ public:
 private:
     LocaleObject * mUiLocale;
     LocaleObject * mSttLocale;
-    LocaleObject * mTtsLocale;
+    QString mTtsVoice;
 };
 
 #endif // SETTINGSVALULT_H

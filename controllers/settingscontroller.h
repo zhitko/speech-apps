@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QHash>
+#include <QStringList>
 
 #include "defines.h"
 
@@ -32,9 +33,9 @@ public:
     Q_INVOKABLE void setSttLanguage(const QString);
     Q_INVOKABLE int getSttLanguage() const;
 
-    Q_INVOKABLE QList<QObject *> getTtsLanguageList();
-    Q_INVOKABLE void setTtsLanguage(const QString);
-    Q_INVOKABLE int getTtsLanguage() const;
+    Q_INVOKABLE QStringList getTtsVoiceList();
+    Q_INVOKABLE void setTtsVoice(const QString);
+    Q_INVOKABLE int getTtsVoice() const;
 
     Q_INVOKABLE void loadSettings();
     Q_INVOKABLE void saveSettings();
@@ -50,7 +51,7 @@ private:
 
     QList<LocaleObject *> availableUiLanguages;
     QList<LocaleObject *> availableSttLanguages;
-    QList<LocaleObject *> availableTtsLanguages;
+    QList<QString> availableTtsVoice;
     QHash<QString, LocaleObject *> availableLanguages;
 };
 

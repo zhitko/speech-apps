@@ -37,7 +37,7 @@ Item {
         }
 
         RowLayout {
-            id: inputRow
+            id: commandRow
             height: 32
             spacing: 5
             Layout.minimumWidth: parent.width
@@ -64,7 +64,7 @@ Item {
             }
 
             Button {
-                iconSource: "qrc:/images/images/Talk-64.png"
+                iconSource: "qrc:/images/images/Voice Recognition Scan-64.png"
                 onClicked: {
                     var files = fileController.getFileList()
                     if (files.length > 0)
@@ -75,8 +75,47 @@ Item {
                 }
             }
 
+            Button {
+                iconSource: "qrc:/images/images/Talk-64.png"
+                onClicked: {
+                    var text = userInput.text;
+                    if (text.length > 0)
+                    {
+                        console.log("ScreenParrot::talk >> " + text)
+                        userInput.text = "";
+                        speechScreen.appendText(qsTr("User"), text)
+                        speechController.synthesize(text)
+                    }
+                }
+            }
+
             Item {
                 Layout.fillWidth: true
+            }
+        }
+
+        RowLayout {
+            id: inputRow
+            height: 32
+            spacing: 5
+            Layout.minimumWidth: parent.width
+
+            Image {
+                id: inputImage
+                Layout.maximumHeight: 32
+                Layout.maximumWidth: 32
+                fillMode: Image.PreserveAspectFit
+                source: "qrc:/images/images/Talk-64.png"
+            }
+
+            TextInput {
+                id: userInput
+                text: qsTr("Тест синтеза речи")
+                Layout.fillWidth: true
+                Layout.maximumHeight: 32
+                clip: true
+                font.pixelSize: 20
+                verticalAlignment: Text.AlignVCenter
             }
         }
     }

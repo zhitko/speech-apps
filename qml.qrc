@@ -34,5 +34,6 @@
         <file>images/google-32.png</file>
         <file>images/Play-32.png</file>
         <file>images/Support-64.png</file>
+        <file>images/Voice Recognition Scan-64.png</file>
     </qresource>
 </RCC>
