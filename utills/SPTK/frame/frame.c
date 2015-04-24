@@ -77,7 +77,7 @@
 #ifdef HAVE_STRING_H
 #  include <string.h>
 #else
-#  include <strings.h>
+#  include <string.h>
 #  ifndef HAVE_STRRCHR
 #     define strrchr rindex
 #  endif

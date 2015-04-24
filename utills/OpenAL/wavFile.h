@@ -59,6 +59,7 @@ typedef struct {
 typedef struct {
     char *filePath;
     FILE *file;
+    bool fileOpenViaHandler;
     WaveHeader *waveHeader;
     FormatChunk *formatChunk;
     DataChunk *dataChunk;

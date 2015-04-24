@@ -4,9 +4,6 @@
 #include "models/localeobject.h"
 
 #include "system/settingsvalult.h"
-
-#include "services/tts/tts.h"
-
 #include "utills/singleton.h"
 
 #include <QDebug>
@@ -17,8 +14,7 @@
 #include "utills/OpenAL/openal_wrapper.h"
 
 SettingsController::SettingsController(QObject *parent) : QObject(parent)
-{
-    qDebug() << "SettingsController::SettingsController";
+{    
     this->settingsValult = &Singleton<SettingsValult>::Instance();
 
     LocaleObject * byLang = new LocaleObject(new QLocale(QLocale::Belarusian, QLocale::Belarus));
@@ -32,19 +28,15 @@ SettingsController::SettingsController(QObject *parent) : QObject(parent)
     availableUiLanguages.append(byLang);
     availableUiLanguages.append(ruLang);
     availableUiLanguages.append(enLang);
-    this->settingsValult->setUiLocale(ruLang);
 
     availableSttLanguages.append(ruLang);
     availableSttLanguages.append(enLang);
-    this->settingsValult->setSttLocale(ruLang);
 
-    TTS * tts = &Singleton<TTS>::Instance();
-    qDebug() << "SettingsController::SettingsController > " << tts->getVoiceList();
-    foreach(QString voice, tts->getVoiceList())
-    {
-        availableTtsVoice.append(voice);
-        this->settingsValult->setTtsVoice(voice);
-    }
+    availableTtsLanguages.append(ruLang);
+
+    this->settingsValult->setUiLocale(ruLang);
+    this->settingsValult->setTtsLocale(ruLang);
+    this->settingsValult->setSttLocale(ruLang);
 
     initAudio();
     loadSettings();
@@ -158,8 +150,8 @@ void SettingsController::loadSettings()
 
     if(settings.contains("language/tts"))
     {
-        QString voice = settings.value("language/tts").toString();
-        this->settingsValult->setTtsVoice(voice);
+        QString locale = settings.value("language/tts").toString();
+        this->settingsValult->setTtsLocale(this->availableLanguages[locale]);
     }
 
     if(settings.contains("language/stt"))
@@ -179,7 +171,7 @@ void SettingsController::saveSettings()
     settings.setValue("devices/input", this->settingsValult->mCurrentInputDevice->name());
     settings.setValue("devices/output", this->settingsValult->mCurrentOutputDevice->name());
     settings.setValue("language/ui", this->settingsValult->getUiLocale()->locale()->name());
-    settings.setValue("language/tts", this->settingsValult->getTtsVoice());
+    settings.setValue("language/tts", this->settingsValult->getTtsLocale()->locale()->name());
     settings.setValue("language/stt", this->settingsValult->getSttLocale()->locale()->name());
 }
 
@@ -221,19 +213,21 @@ int SettingsController::getSttLanguage() const
     return this->availableSttLanguages.indexOf(this->settingsValult->getSttLocale());
 }
 
-QStringList SettingsController::getTtsVoiceList()
+QList<QObject *> SettingsController::getTtsLanguageList()
 {
-    return this->availableTtsVoice;
+    QList<LocaleObject *> * list = &(this->availableTtsLanguages);
+    QList<QObject *> * objects = reinterpret_cast<QList<QObject *> * >(list);
+    return *objects;
 }
 
-void SettingsController::setTtsVoice(const QString voice)
+void SettingsController::setTtsLanguage(const QString code)
 {
-    if (this->availableTtsVoice.contains(voice))
-        this->settingsValult->setTtsVoice(voice);
+    if (this->availableLanguages.contains(code))
+        this->settingsValult->setTtsLocale(this->availableLanguages[code]);
 }
 
-int SettingsController::getTtsVoice() const
+int SettingsController::getTtsLanguage() const
 {
-    qDebug() << "getTtsVoice >> " << this->settingsValult->getTtsVoice();
-    return this->availableTtsVoice.indexOf(this->settingsValult->getTtsVoice());
+    qDebug() << "getTtsLanguage >> " << this->settingsValult->getTtsLocale()->name();
+    return this->availableTtsLanguages.indexOf(this->settingsValult->getTtsLocale());
 }

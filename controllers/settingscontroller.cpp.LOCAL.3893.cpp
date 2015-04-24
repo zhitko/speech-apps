@@ -14,7 +14,9 @@
 #include <QApplication>
 #include <QLocale>
 
-#include "utills/OpenAL/openal_wrapper.h"
+extern "C" {
+    #include "utills/OpenAL/openal_wrapper.h"
+}
 
 SettingsController::SettingsController(QObject *parent) : QObject(parent)
 {
@@ -135,20 +137,14 @@ void SettingsController::loadSettings()
     settings.setPath(QSettings::IniFormat, QSettings::UserScope, QApplication::applicationDirPath());
 
     if(settings.contains("devices/input"))
-        for(int i=0; i<this->settingsValult->mInputDevices.length(); i++)
-        {
-            DeviceObject * device = this->settingsValult->mInputDevices.at(i);
+        foreach(DeviceObject * device, this->settingsValult->mInputDevices)
             if(settings.value("devices/input").toString() == device->name())
                 this->settingsValult->mCurrentInputDevice = device;
-        }
 
     if(settings.contains("devices/output"))
-        for(int i=0; i<this->settingsValult->mOutputDevices.length(); i++)
-        {
-            DeviceObject * device = this->settingsValult->mOutputDevices.at(i);
+        foreach(DeviceObject * device, this->settingsValult->mOutputDevices)
             if(settings.value("devices/output").toString() == device->name())
                 this->settingsValult->mCurrentOutputDevice = device;
-        }
 
     if(settings.contains("language/ui"))
     {

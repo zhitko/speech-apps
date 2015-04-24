@@ -1,22 +1,18 @@
 TEMPLATE = app
 
-QMAKE_CFLAGS += -std=gnu99
-
 QT += qml quick widgets
+
+win32 {
+    DEFINES -= UNICODE
+    DEFINES += _MBCS
+}
 
 CONFIG  += c++11
 
-win32{
-    INCLUDEPATH += "c:/Dev/openal-soft-1.15.1-bin/include"
-    LIBS += -L"c:/Dev/openal-soft-1.15.1-bin/lib/Win32" -llibOpenAL32
-}
-
-unix {
-    LIBS += -lopenal
-}
-
 SOURCES += main.cpp \
-    system/settingsvalult.cpp
+    system/settingsvalult.cpp \
+    utills/OpenAL/wavFile.cpp \
+    utills/OpenAL/openal_wrapper.cpp
 
 HEADERS += \
     defines.h \
@@ -97,11 +93,18 @@ macx {
 win32 {
     SOURCES += services/tts/core/QtSpeech_win.cpp
 
-    INCLUDEPATH += "C:/Program Files/PSDK/Include"
-    INCLUDEPATH += "C:/Program Files/PSDK/Include/atl"
-    INCLUDEPATH += "C:/Program Files/Microsoft Speech SDK 5.1/Include"
+#    INCLUDEPATH += "C:/Program Files/PSDK/Include"
+#    INCLUDEPATH += "C:/Program Files/PSDK/Include/atl"
+#    INCLUDEPATH += "C:/Program Files/Microsoft Speech SDK 5.1/Include"
 
-    LIBS += -L"C:/Program Files/Microsoft Speech SDK 5.1/Lib/i386"
+#    LIBS += -L"C:/Program Files/Microsoft Speech SDK 5.1/Lib/i386"
+
+#    INCLUDEPATH += "C:/Program Files (x86)/Microsoft Visual Studio 10.0/VC/atlmfc"
+    INCLUDEPATH += "C:/Program Files/Microsoft Visual Studio 10.0/VC/atlmfc"
+#    INCLUDEPATH += "C:/Programs/Authoring/Microsoft_SDKs/Windows/v7.1/Include"
+    INCLUDEPATH += "C:/Program Files/Microsoft SDKs/Windows/v7.0A/Include"
+
+    LIBS += -L"C:/Program Files/Microsoft SDKs/Windows/v7.0A/Lib"
 }
 
 unix:!mac {
@@ -136,13 +139,20 @@ HEADERS += \
 
 # OpenAL
 
-SOURCES += \
-    utills/OpenAL/openal_wrapper.c\
-    utills/OpenAL/wavFile.c
+SOURCES +=
 
 HEADERS  += \
     utills/OpenAL/openal_wrapper.h \
-    OpenAL/wavFile.h
+    utills/OpenAL/wavFile.h
+
+win32{
+    INCLUDEPATH += "c:/Dev/openal-soft-1.15.1-bin/include"
+    LIBS += "c:/Dev/openal-soft-1.15.1-msvc/Debug/OpenAL32.lib"
+}
+
+unix:!mac {
+    LIBS += -lopenal
+}
 
 # Other
 

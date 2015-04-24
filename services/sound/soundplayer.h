@@ -3,10 +3,10 @@
 
 #include <QThread>
 
-extern "C" {
-    #include "utills/OpenAL/wavFile.h"
-    #include "utills/OpenAL/openal_wrapper.h"
-}
+#include "utills/OpenAL/wavFile.h"
+#include "utills/OpenAL/openal_wrapper.h"
+
+class QFile;
 
 class SoundPlayer : public QThread
 {
@@ -18,6 +18,7 @@ public:
     ~SoundPlayer();
 private:
     QString mPath;
+    QFile *file;
     oal_device * mDevice;
     WaveFile * mWaveFile;
 signals:

@@ -88,7 +88,7 @@
 #ifdef HAVE_STRING_H
 #  include <string.h>
 #else
-#  include <strings.h>
+#  include <string.h>
 #  ifndef HAVE_STRRCHR
 #     define strrchr rindex
 #  endif
@@ -126,7 +126,6 @@ vector sptk_pitch(vector data, PITCH_SETTINGS * settings)
 
 vector sptk_pitch_spec(vector data, PITCH_SETTINGS * settings, int count)
 {
-   if(!settings) settings = initPitchSettings();
    int length, i,
        frame_shift = FRAME_SHIFT,
        atype = ATYPE,
@@ -135,8 +134,7 @@ vector sptk_pitch_spec(vector data, PITCH_SETTINGS * settings, int count)
        thresh_rapt = THRESH_RAPT,
        thresh_swipe = THRESH_SWIPE,
        sample_freq = SAMPLE_FREQ * 1000.0,
-       L = settings->min_freq,
-       H = settings->max_freq;
+       L, H;
    float_list *top, *cur, *prev;
 
    vector rapt(float_list * flist, int length, double sample_freq,
@@ -145,6 +143,10 @@ vector sptk_pitch_spec(vector data, PITCH_SETTINGS * settings, int count)
    vector swipe(float_list * input, int length, double sample_freq,
               int frame_shift, double min, double max, double threshold,
               int otype);
+
+   if(!settings) settings = initPitchSettings();
+   L = settings->min_freq;
+   H = settings->max_freq;
 
    x = dgetmem(1);
    top = prev = (float_list *) malloc(sizeof(float_list));

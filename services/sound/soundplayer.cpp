@@ -9,21 +9,23 @@ SoundPlayer::SoundPlayer(QString path, oal_device * device, QObject *parent) :
 {
     qDebug() << "SoundPlayer: init";
     initAudioOutputDevice(this->mDevice);
-    if(!isAudioOk){
-        qDebug() << "SoundPlayer: FAIL init output device " << QString::fromLocal8Bit(this->mDevice->name);
+    if(!this->mDevice->device){
+        qDebug() << "SoundPlayer: FAIL init output device "
+                 << QString::fromLocal8Bit(this->mDevice->name);
         return;
     }
     qDebug() << "SoundPlayer: open wav file " << mPath;
 
-    QFile file(mPath);
-    file.open(QIODevice::ReadOnly);
-    this->mWaveFile = waveOpenHFile(file.handle());
+    this->file = new QFile(mPath);
+    file->open(QIODevice::ReadOnly);
+    this->mWaveFile = waveOpenHFile(file->handle());
 }
 
 SoundPlayer::~SoundPlayer()
 {
     qDebug() << "~SoundPlayer";
     freeAudioOutputDevice(this->mDevice);
+    if(this->file->isOpen()) this->file->close();
     waveCloseFile(mWaveFile);
 }
 

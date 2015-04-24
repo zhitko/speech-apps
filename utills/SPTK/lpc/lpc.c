@@ -73,7 +73,7 @@
 #ifdef HAVE_STRING_H
 #  include <string.h>
 #else
-#  include <strings.h>
+#  include <string.h>
 #  ifndef HAVE_STRRCHR
 #     define strrchr rindex
 #  endif
@@ -94,12 +94,14 @@ vector sptk_lpc(vector data, LPC_SETTINGS * settings)
        i, dPos, rPos;
    double *x, *a,
        f = MINDET;
+   int rLen;
+   vector res;
 
    x = dgetmem(len + m + 1);
    a = x + len;
-   int rLen = data.x/len*(m + 1);
+   rLen = data.x/len*(m + 1);
    dPos = rPos = 0;
-   vector res = zerov(rLen);
+   res = zerov(rLen);
 
    while(1){
       for(i=0;i<len&&(i+dPos)<data.x;i++) x[i] = data.v[i+dPos];

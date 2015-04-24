@@ -21,15 +21,7 @@
 
 #include <QObject>
 
-#if defined(QTSPEECH_STATIC)
-#   define QTSPEECH_API
-#elif defined(QTSPEECH_LIBRARY)
-#   define QTSPEECH_API Q_DECL_EXPORT
-#else
-#   define QTSPEECH_API Q_DECL_IMPORT
-#endif
-
-class QTSPEECH_API QtSpeech : public QObject {
+class QtSpeech : public QObject {
 Q_OBJECT
 public:
     // exceptions
