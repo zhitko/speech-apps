@@ -64,7 +64,7 @@ Item {
             }
 
             Button {
-                iconSource: "qrc:/images/images/Voice Recognition Scan-64.png"
+                iconSource: "qrc:/images/images/Talk-64.png"
                 onClicked: {
                     var files = fileController.getFileList()
                     if (files.length > 0)
@@ -76,7 +76,7 @@ Item {
             }
 
             Button {
-                iconSource: "qrc:/images/images/Talk-64.png"
+                iconSource: "qrc:/images/images/Voice Recognition Scan-64.png"
                 onClicked: {
                     var text = userInput.text;
                     if (text.length > 0)
