@@ -8,14 +8,17 @@ TTS::TTS(QObject *parent) :
 {
     qDebug() << "TTS::TTS";
 
-    QtSpeech speech;
+    QtSpeech * speech = &Singleton<QtSpeech>::Instance();
 
-    QtSpeech::VoiceNames voices = speech.voices();
-//    qDebug() << "TTS::TTS >> " << voices.length();
+    connect(speech, &QtSpeech::finished, [=](){
+        qDebug() << "TTS::tell|say Finish";
+        emit this->finished();
+    });
+
+    QtSpeech::VoiceNames voices = speech->voices();
     foreach(QtSpeech::VoiceName v, voices){
-//        qDebug() << "TTS::TTS >> id:" << v.id << "name:" << v.name;
+        qDebug() << "TTS::TTS >> id:" << v.id << "name:" << v.name;
         this->voices[v.name] = v;
-        this->voice = v.name;
     }
 }
 
@@ -30,40 +33,25 @@ QStringList TTS::getVoiceList()
 
 void TTS::setVoice(QString voice)
 {
-    if (this->voices.contains(voice))
+    qDebug() << "TTS::setVoice >> " << voice;
+    if (this->voices.contains(voice) && voice != this->voice)
     {
+        QtSpeech * speech = &Singleton<QtSpeech>::Instance();
+        speech->setVoice(this->voices[voice]);
         this->voice = voice;
     }
 }
 
-QtSpeech * TTS::getSpeech()
-{
-    QtSpeech * speech;
-    if(this->voice.length() == 0)
-        speech = new QtSpeech(this);
-    else
-        speech = new QtSpeech(this->voices[this->voice], this);
-    return speech;
-}
-
 void TTS::tell(QString data)
 {
-    QtSpeech * speech = this->getSpeech();
+    QtSpeech * speech = &Singleton<QtSpeech>::Instance();
     qDebug() << "TTS::tell >> " << data << "using voice:" << speech->name().name;
-
-    connect(speech, &QtSpeech::finished, [=](){
-        speech->deleteLater();
-//        emit this->finished();
-    });
-
     speech->tell(data);
 }
 
 void TTS::say(QString data)
 {
-    QtSpeech * speech = this->getSpeech();
+    QtSpeech * speech = &Singleton<QtSpeech>::Instance();
     qDebug() << "TTS::say >> " << data << "using voice:" << speech->name().name;
     speech->say(data);
-//    speech->deleteLater();
-    qDebug() << "TTS::say Finish";
 }

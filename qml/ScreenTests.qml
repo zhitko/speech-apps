@@ -10,9 +10,9 @@ Item {
         console.log("ScreenParrot::recognitionFinsh " + records);
         console.log("ScreenParrot::recognitionFinsh " + records.length);
         if(records.length > 0 && records[0] != "")
-            speechScreen.appendText(qsTr("Computer"), records[0])
+            speechScreen.appendText(qsTr("User"), records[0])
         else
-            speechScreen.appendText(qsTr("Computer"), qsTr("Not recognized, repeat please"))
+            speechScreen.appendText(qsTr("User"), qsTr("Not recognized, repeat please"))
     }
 
     function show () {
@@ -82,8 +82,7 @@ Item {
                     if (text.length > 0)
                     {
                         console.log("ScreenParrot::talk >> " + text)
-                        userInput.text = "";
-                        speechScreen.appendText(qsTr("User"), text)
+                        speechScreen.appendText(qsTr("PC"), text)
                         speechController.synthesize(text)
                     }
                 }

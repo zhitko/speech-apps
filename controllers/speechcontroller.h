@@ -3,8 +3,6 @@
 
 #include <QObject>
 
-class TTS;
-
 class SpeechController : public QObject
 {
     Q_OBJECT
@@ -22,8 +20,6 @@ signals:
 
 public slots:
 
-private:
-    TTS * tts;
 };
 
 #endif // SPEECHCONTROLLER_H

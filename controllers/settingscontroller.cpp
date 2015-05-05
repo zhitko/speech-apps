@@ -135,35 +135,49 @@ void SettingsController::loadSettings()
     settings.setPath(QSettings::IniFormat, QSettings::UserScope, QApplication::applicationDirPath());
 
     if(settings.contains("devices/input"))
+    {
+        qDebug() << "SettingsController::loadSettings() >> devices/input \t"
+                 << settings.value("devices/input").toString();
         for(int i=0; i<this->settingsValult->mInputDevices.length(); i++)
         {
             DeviceObject * device = this->settingsValult->mInputDevices.at(i);
             if(settings.value("devices/input").toString() == device->name())
                 this->settingsValult->mCurrentInputDevice = device;
         }
+    }
 
     if(settings.contains("devices/output"))
+    {
+        qDebug() << "SettingsController::loadSettings() >> devices/output \t"
+                 << settings.value("devices/output").toString();
         for(int i=0; i<this->settingsValult->mOutputDevices.length(); i++)
         {
             DeviceObject * device = this->settingsValult->mOutputDevices.at(i);
             if(settings.value("devices/output").toString() == device->name())
                 this->settingsValult->mCurrentOutputDevice = device;
         }
+    }
 
     if(settings.contains("language/ui"))
     {
+        qDebug() << "SettingsController::loadSettings() >> language/ui \t"
+                 << settings.value("language/ui").toString();
         QString locale = settings.value("language/ui").toString();
         this->settingsValult->setUiLocale(this->availableLanguages[locale]);
     }
 
     if(settings.contains("language/tts"))
     {
+        qDebug() << "SettingsController::loadSettings() >> language/tts \t"
+                 << settings.value("language/tts").toString();
         QString voice = settings.value("language/tts").toString();
         this->settingsValult->setTtsVoice(voice);
     }
 
     if(settings.contains("language/stt"))
     {
+        qDebug() << "SettingsController::loadSettings() >> language/stt \t"
+                 << settings.value("language/stt").toString();
         QString locale = settings.value("language/stt").toString();
         this->settingsValult->setSttLocale(this->availableLanguages[locale]);
     }

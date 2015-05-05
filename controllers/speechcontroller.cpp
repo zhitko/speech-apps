@@ -16,8 +16,8 @@ SpeechController::SpeechController(QObject *parent) : QObject(parent)
 {
     qDebug() << "SpeechController::SpeechController";
 
-    this->tts = &Singleton<TTS>::Instance();
-    connect(this->tts, &TTS::finished, [=](){
+    TTS * tts = &Singleton<TTS>::Instance();
+    connect(tts, &TTS::finished, [=](){
         emit this->finishSpeaking();
     });
 }
@@ -41,8 +41,9 @@ void SpeechController::recognizeFile(QString file)
 void SpeechController::synthesize(QString text)
 {
     qDebug() << "SpeechController::synthesize >> " << text;
+    TTS * tts = &Singleton<TTS>::Instance();
     SettingsValult * settingsValult = &Singleton<SettingsValult>::Instance();
-    this->tts->setVoice(settingsValult->getTtsVoice());
-//    this->tts->tell(text);
-    this->tts->say(text);
+    tts->setVoice(settingsValult->getTtsVoice());
+    tts->tell(text);
+//    tts->say(text);
 }

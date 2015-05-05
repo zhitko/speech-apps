@@ -22,17 +22,15 @@
 #include <mmintrin.h>
 #include <wtypes.h>
 
-#undef UNICODE
-//extern "C"{
 #include <sapi.h>
 #include <sphelper.h>
 #include <comdef.h>
-//}
-#define UNICODE
 
 #include <windows.h>
 #include <windowsx.h>
 #include <commctrl.h>
+
+#include <QDebug>
 
 // some defines for throwing exceptions
 #define Where QString("%1:%2:").arg(__FILE__).arg(__LINE__)
@@ -85,79 +83,32 @@ QList<QtSpeech::Private::Ptr> QtSpeech::Private::ptrs = QList<QtSpeech::Private:
 QtSpeech::QtSpeech(QObject * parent)
     :QObject(parent), d(new Private)
 {
-    CoInitialize(NULL);
-    SysCall( d->voice.CoCreateInstance( CLSID_SpVoice ), InitError);
-
-    VoiceName n;
-    WCHAR * w_id = 0L;
-    WCHAR * w_name = 0L;
-    CComPtr<ISpObjectToken> voice;
-    SysCall( d->voice->GetVoice(&voice), InitError);
-    SysCall( SpGetDescription(voice, &w_name), InitError);
-    SysCall( voice->GetId(&w_id), InitError);
-    n.name = QString::fromWCharArray(w_name);
-    n.id = QString::fromWCharArray(w_id);
-    voice.Release();
-
-    if (n.id.isEmpty())
-        throw InitError(Where+"No default voice in system");
-
-    d->name = n;
+    this->setVoice();
     d->ptrs << this;
 }
 
-QtSpeech::QtSpeech(VoiceName n, QObject * parent)
+QtSpeech::QtSpeech(VoiceName voice, QObject * parent)
     :QObject(parent), d(new Private)
 {
-    ULONG count = 0;
-    CComPtr<IEnumSpObjectTokens> voices;
-
-    CoInitialize(NULL);
-    SysCall( d->voice.CoCreateInstance( CLSID_SpVoice ), InitError);
-
-    if (n.id.isEmpty()) {
-        WCHAR * w_id = 0L;
-        WCHAR * w_name = 0L;
-        CComPtr<ISpObjectToken> voice;
-        SysCall( d->voice->GetVoice(&voice), InitError);
-        SysCall( SpGetDescription(voice, &w_name), InitError);
-        SysCall( voice->GetId(&w_id), InitError);
-        n.name = QString::fromWCharArray(w_name);
-        n.id = QString::fromWCharArray(w_id);
-        voice.Release();
-    }
-    else {
-        SysCall( SpEnumTokens(SPCAT_VOICES, NULL, NULL, &voices), InitError);
-        SysCall( voices->GetCount(&count), InitError);
-        for (int i =0; i< count; i++) {
-            WCHAR * w_id = 0L;
-            CComPtr<ISpObjectToken> voice;
-            SysCall( voices->Next( 1, &voice, NULL ), InitError);
-            SysCall( voice->GetId(&w_id), InitError);
-            QString id = QString::fromWCharArray(w_id);
-            if (id == n.id) d->voice->SetVoice(voice);
-            voice.Release();
-        }
-    }
-
-    if (n.id.isEmpty())
-        throw InitError(Where+"No default voice in system");
-
-    d->name = n;
+    this->setVoice(voice);
     d->ptrs << this;
 }
 
 QtSpeech::~QtSpeech()
 {
     d->ptrs.removeAll(this);
-    delete d;
+//    d->voice.Release();
+//    d->voice = NULL;
+    CoUninitialize();
+//    d->voice = NULL;
+//    delete d;
 }
 
 const QtSpeech::VoiceName & QtSpeech::name() const {
     return d->name;
 }
 
-QtSpeech::VoiceNames QtSpeech::voices()
+const QtSpeech::VoiceNames QtSpeech::voices()
 {
     VoiceNames vs;       
     ULONG count = 0;
@@ -210,6 +161,46 @@ void QtSpeech::say(QString text) const
 {
     Private::WCHAR_Holder w_text(text);
     SysCall( d->voice->Speak( w_text.w, SPF_IS_NOT_XML, 0), LogicError);
+}
+
+void QtSpeech::setVoice(VoiceName voice)
+{
+    qDebug() << "QtSpeech::setVoice >> " << voice.name << " " << voice.id;
+    ULONG count = 0;
+    CComPtr<IEnumSpObjectTokens> voices;
+
+    CoInitialize(NULL);
+    SysCall( d->voice.CoCreateInstance( CLSID_SpVoice ), InitError);
+
+    if (voice.id.isEmpty()) {
+        WCHAR * w_id = 0L;
+        WCHAR * w_name = 0L;
+        CComPtr<ISpObjectToken> systemVoice;
+        SysCall( d->voice->GetVoice(&systemVoice), InitError);
+        SysCall( SpGetDescription(systemVoice, &w_name), InitError);
+        SysCall( systemVoice->GetId(&w_id), InitError);
+        voice.name = QString::fromWCharArray(w_name);
+        voice.id = QString::fromWCharArray(w_id);
+        systemVoice.Release();
+    }
+    else {
+        SysCall( SpEnumTokens(SPCAT_VOICES, NULL, NULL, &voices), InitError);
+        SysCall( voices->GetCount(&count), InitError);
+        for (int i =0; i< count; i++) {
+            WCHAR * w_id = 0L;
+            CComPtr<ISpObjectToken> systemVoice;
+            SysCall( voices->Next( 1, &systemVoice, NULL ), InitError);
+            SysCall( systemVoice->GetId(&w_id), InitError);
+            QString id = QString::fromWCharArray(w_id);
+            if (id == voice.id) d->voice->SetVoice(systemVoice);
+            systemVoice.Release();
+        }
+    }
+
+    if (voice.id.isEmpty())
+        throw InitError(Where+"No default voice in system");
+
+    d->name = voice;
 }
 
 void QtSpeech::timerEvent(QTimerEvent * te)

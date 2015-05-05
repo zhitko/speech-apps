@@ -23,12 +23,12 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
+    SettingsValult * settings = &Singleton<SettingsValult>::Instance();
+
     SettingsController settingsController;
     FileController fileController;
     SoundController soundController;
     SpeechController speechController;
-
-    SettingsValult * settings = &Singleton<SettingsValult>::Instance();
 
     LocaleObject * uiLocale = settings->getUiLocale();
     if (uiLocale != NULL)

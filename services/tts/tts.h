@@ -22,7 +22,7 @@ public:
 private:
     QString voice;
     QMap<QString, QtSpeech::VoiceName> voices;
-    QtSpeech * getSpeech();
+    // TODO: message to say thead
     
 signals:
     void finished();
