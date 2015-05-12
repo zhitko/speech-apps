@@ -188,6 +188,11 @@ const QtSpeech::VoiceNames QtSpeech::voices()
     return vs;
 }
 
+void QtSpeech::setVoice(VoiceName name)
+{
+    // TODO: implement set voice to Festival engine
+}
+
 void QtSpeech::tell(QString text) const
 {
     tell(text, 0L,0L);
