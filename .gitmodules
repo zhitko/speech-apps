@@ -1,0 +1,3 @@
+[submodule "services/tts/qtspeech"]
+	path = services/tts/qtspeech
+	url = git@github.com:zhitko/qtspeech.git
