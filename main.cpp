@@ -41,6 +41,7 @@ int main(int argc, char *argv[])
     app.installTranslator(&translator);
 
     QQmlApplicationEngine engine;
+    engine.addImportPath(QApplication::applicationDirPath());
     engine.load(QUrl(QStringLiteral("qrc:/qml/qml/main.qml")));
 
     engine.rootContext()->setContextProperty("settingsController", &settingsController);

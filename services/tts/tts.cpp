@@ -8,7 +8,7 @@ TTS::TTS(QObject *parent) :
 {
     qDebug() << "TTS::TTS";
 
-    QtSpeech * speech = &Singleton<QtSpeech>::Instance();
+    speech = &Singleton<QtSpeech>::Instance();
 
     connect(speech, &QtSpeech::finished, [=](){
         qDebug() << "TTS::tell|say Finish";
@@ -36,7 +36,6 @@ void TTS::setVoice(QString voice)
     qDebug() << "TTS::setVoice >> " << voice;
     if (this->voices.contains(voice) && voice != this->voice)
     {
-        QtSpeech * speech = &Singleton<QtSpeech>::Instance();
         speech->setVoice(this->voices[voice]);
         this->voice = voice;
     }
@@ -44,14 +43,12 @@ void TTS::setVoice(QString voice)
 
 void TTS::tell(QString data)
 {
-    QtSpeech * speech = &Singleton<QtSpeech>::Instance();
     qDebug() << "TTS::tell >> " << data << "using voice:" << speech->name().name;
     speech->tell(data);
 }
 
 void TTS::say(QString data)
 {
-    QtSpeech * speech = &Singleton<QtSpeech>::Instance();
     qDebug() << "TTS::say >> " << data << "using voice:" << speech->name().name;
     speech->say(data);
 }

@@ -4,7 +4,7 @@
 #include <QObject>
 #include <QMap>
 
-#include "core/QtSpeech.h"
+#include <QtSpeech>
 
 class TTS : public QObject
 {
@@ -20,6 +20,7 @@ public:
     void setVoice(QString);
 
 private:
+    QtSpeech * speech;
     QString voice;
     QMap<QString, QtSpeech::VoiceName> voices;
     // TODO: message to say thead

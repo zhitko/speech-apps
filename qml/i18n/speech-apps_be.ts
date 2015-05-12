@@ -69,6 +69,26 @@
         <source>Voice recognition test</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../ScreenParrot.qml" line="32"/>
+        <source>Computer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ScreenParrot.qml" line="33"/>
+        <source>User</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ScreenParrot.qml" line="36"/>
+        <source>Hello, let&apos;s start work</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ScreenParrot.qml" line="58"/>
+        <source>Not recognized, repeat please</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ScreenSettings</name>
@@ -108,7 +128,7 @@
     <message>
         <location filename="../ScreenTests.qml" line="13"/>
         <location filename="../ScreenTests.qml" line="15"/>
-        <source>Computer</source>
+        <source>User</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -121,25 +141,57 @@
         <source>Voice recognition test</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../ScreenTests.qml" line="85"/>
+        <source>PC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ScreenTests.qml" line="112"/>
+        <source>Тест синтеза речи</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ScreenWhiteBull</name>
     <message>
-        <location filename="../ScreenWhiteBull.qml" line="53"/>
+        <location filename="../ScreenWhiteBull.qml" line="28"/>
+        <source>Hello White Bull</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ScreenWhiteBull.qml" line="54"/>
+        <location filename="../ScreenWhiteBull.qml" line="65"/>
         <source>User</source>
         <translation type="unfinished"></translation>
     </message>
-</context>
-<context>
-    <name>SpeechScreen</name>
     <message>
-        <location filename="../SpeechScreen.qml" line="31"/>
-        <location filename="../SpeechScreen.qml" line="33"/>
+        <location filename="../ScreenWhiteBull.qml" line="64"/>
         <source>Computer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SpeechScreen.qml" line="33"/>
+        <location filename="../ScreenWhiteBull.qml" line="68"/>
+        <source>Hello, do you want to listen the story?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ScreenWhiteBull.qml" line="86"/>
+        <source>Yes, yes, yes. Do you want to listen the story tell?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ScreenWhiteBull.qml" line="87"/>
+        <source>Yes of corse. Do you want to listen the story tell?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ScreenWhiteBull.qml" line="88"/>
+        <source>You say: %1. I say: %1. Do you want to listen the story tell?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ScreenWhiteBull.qml" line="103"/>
         <source>Not recognized, repeat please</source>
         <translation type="unfinished"></translation>
     </message>

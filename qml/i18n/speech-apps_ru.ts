@@ -63,11 +63,19 @@
     </message>
     <message>
         <source>Computer</source>
-        <translation type="vanished">Компьютер</translation>
+        <translation>Компьютер</translation>
     </message>
     <message>
         <source>Not recognized, repeat please</source>
-        <translation type="vanished">Фраза не распознана, пожалуйсто повторите</translation>
+        <translation>Фраза не распознана, пожалуйсто повторите</translation>
+    </message>
+    <message>
+        <source>User</source>
+        <translation>Пользователь</translation>
+    </message>
+    <message>
+        <source>Hello, let&apos;s start work</source>
+        <translation>Добрый день, начнем работу</translation>
     </message>
 </context>
 <context>
@@ -105,7 +113,7 @@
     <name>ScreenTests</name>
     <message>
         <source>Computer</source>
-        <translation>Компьютер</translation>
+        <translation type="vanished">Компьютер</translation>
     </message>
     <message>
         <source>Not recognized, repeat please</source>
@@ -114,6 +122,18 @@
     <message>
         <source>Voice recognition test</source>
         <translation>Тест распознавания речи</translation>
+    </message>
+    <message>
+        <source>User</source>
+        <translation>Пользователь</translation>
+    </message>
+    <message>
+        <source>PC</source>
+        <translation>Компьютер</translation>
+    </message>
+    <message>
+        <source>Тест синтеза речи</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -126,16 +146,44 @@
         <source>User</source>
         <translation>Пользователь</translation>
     </message>
-</context>
-<context>
-    <name>SpeechScreen</name>
+    <message>
+        <source>Hello White Bull</source>
+        <translation>Сказка о белом бычке</translation>
+    </message>
     <message>
         <source>Computer</source>
         <translation>Компьютер</translation>
     </message>
     <message>
+        <source>Hello, do you want to listen the story?</source>
+        <translation>Сказать ли тебе сказку про белого бычка?</translation>
+    </message>
+    <message>
+        <source>Yes, yes, yes. Do you want to listen the story tell?</source>
+        <translation>Ты скажи, да я скажи, да сказать ли тебе сказку про белого бычка?</translation>
+    </message>
+    <message>
+        <source>Yes of corse. Do you want to listen the story tell?</source>
+        <translation>Ты скажи, да я скажи, да чего у вас будет, да докуль это будет! Сказать ли тебе сказку про белого бычка?</translation>
+    </message>
+    <message>
         <source>Not recognized, repeat please</source>
         <translation>Фраза не распознана, пожалуйсто повторите</translation>
+    </message>
+    <message>
+        <source>You say: %1. I say: %1. Do you want to listen the story tell?</source>
+        <translation>Ты говоришь: %1, я говорю: %1.  Сказать ли тебе сказку про белого бычка?</translation>
+    </message>
+</context>
+<context>
+    <name>SpeechScreen</name>
+    <message>
+        <source>Computer</source>
+        <translation type="vanished">Компьютер</translation>
+    </message>
+    <message>
+        <source>Not recognized, repeat please</source>
+        <translation type="vanished">Фраза не распознана, пожалуйсто повторите</translation>
     </message>
 </context>
 <context>

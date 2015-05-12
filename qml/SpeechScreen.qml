@@ -5,6 +5,8 @@ import QtQuick.Layouts 1.0
 Item {
     id: speechScreenId
 
+    property Item delegate;
+
     property bool isRecording: false
 
     property string text: ""
@@ -20,6 +22,7 @@ Item {
     }
 
     function recordFinished(file) {
+        delegate.recordFinish(file)
         isRecording = false
         console.log("SpeechScreen::recordFinished >> " + file )
         speechController.recognizeFile(file)
@@ -27,11 +30,11 @@ Item {
 
     function recognitionFinsh(file, records) {
         console.log("SpeechScreen::recognitionFinsh " + records);
-        if(records.length > 0 && records[0] != "")
-            appendText(qsTr("Computer"), records[0])
-        else
-            appendText(qsTr("Computer"), qsTr("Not recognized, repeat please"))
-        if (isAuto) startStopAutoRecording()
+        if(records.length > 0 && records[0] !== "") {
+            delegate.recognitionFinsh(records)
+        } else {
+            delegate.recognitionFail(file)
+        }
     }
 
     function stopRecording () {
@@ -70,15 +73,27 @@ Item {
         isRecording = !isRecording
     }
 
+    function synthesize (text) {
+        console.log("SpeechScreen::synthesize() >> " + text)
+        speechController.synthesize(text)
+    }
+
+    function synthesizeFinish () {
+        console.log("SpeechScreen::synthesizeFinish()")
+        delegate.synthesizeFinish()
+    }
+
     function init () {
         console.log("SpeechScreen::init()")
         speechController.recognized.connect(recognitionFinsh)
+        speechController.finishSpeaking.connect(synthesizeFinish)
         soundController.recordingFinish.connect(recordFinished)
     }
 
     function free () {
         console.log("SpeechScreen::free()")
         speechController.recognized.disconnect(recognitionFinsh)
+        speechController.finishSpeaking.disconnect(synthesizeFinish)
         soundController.recordingFinish.disconnect(recordFinished)
     }
 

@@ -5,7 +5,7 @@
     <name>FileListDelegate</name>
     <message>
         <source>Translation: </source>
-        <translation>Transcription: </translation>
+        <translation type="unfinished">Transcription: </translation>
     </message>
 </context>
 <context>
@@ -63,11 +63,19 @@
     </message>
     <message>
         <source>Computer</source>
-        <translation type="vanished">Computer</translation>
+        <translation>Computer</translation>
     </message>
     <message>
         <source>Not recognized, repeat please</source>
-        <translation type="vanished">Not recognized, repeat please</translation>
+        <translation>Not recognized, repeat please</translation>
+    </message>
+    <message>
+        <source>User</source>
+        <translation>User</translation>
+    </message>
+    <message>
+        <source>Hello, let&apos;s start work</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -105,7 +113,7 @@
     <name>ScreenTests</name>
     <message>
         <source>Computer</source>
-        <translation>Computer</translation>
+        <translation type="vanished">Computer</translation>
     </message>
     <message>
         <source>Not recognized, repeat please</source>
@@ -114,6 +122,18 @@
     <message>
         <source>Voice recognition test</source>
         <translation>Voice recognition test</translation>
+    </message>
+    <message>
+        <source>User</source>
+        <translation>User</translation>
+    </message>
+    <message>
+        <source>PC</source>
+        <translation>Computer</translation>
+    </message>
+    <message>
+        <source>Тест синтеза речи</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -126,16 +146,44 @@
         <source>User</source>
         <translation>User</translation>
     </message>
-</context>
-<context>
-    <name>SpeechScreen</name>
+    <message>
+        <source>Hello White Bull</source>
+        <translation>Hello White Bull</translation>
+    </message>
     <message>
         <source>Computer</source>
         <translation>Computer</translation>
     </message>
     <message>
+        <source>Hello, do you want to listen the story?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yes, yes, yes. Do you want to listen the story tell?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yes of corse. Do you want to listen the story tell?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Not recognized, repeat please</source>
-        <translation>Not recognized, repeat please</translation>
+        <translation type="unfinished">Not recognized, repeat please</translation>
+    </message>
+    <message>
+        <source>You say: %1. I say: %1. Do you want to listen the story tell?</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SpeechScreen</name>
+    <message>
+        <source>Computer</source>
+        <translation type="vanished">Computer</translation>
+    </message>
+    <message>
+        <source>Not recognized, repeat please</source>
+        <translation type="vanished">Not recognized, repeat please</translation>
     </message>
 </context>
 <context>

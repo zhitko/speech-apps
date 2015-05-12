@@ -8,7 +8,7 @@ Item {
     function show () {
         console.log("ScreenWhiteBull::show()")
         speechScreen.init()
-        speechScreen.startStopAutoRecording()
+        whiteBullLogic.start()
     }
 
     function free () {
@@ -25,7 +25,8 @@ Item {
             Layout.minimumWidth: parent.width
             Layout.fillHeight: true
 
-            text: "Hello White Bull"
+            text: qsTr("Hello White Bull")
+            delegate: whiteBullLogic
         }
 
         RowLayout {
@@ -54,6 +55,54 @@ Item {
                     text = "";
                 }
             }
+        }
+    }
+
+    Item {
+        id: whiteBullLogic
+
+        property string computerName: qsTr("Computer")
+        property string userName: qsTr("User")
+
+        function start() {
+            var text = qsTr("Hello, do you want to listen the story?")
+            speechScreen.synthesize(text)
+            speechScreen.appendText(computerName, text)
+        }
+
+        function synthesizeFinish() {
+            console.log("ScreenWhiteBullDelegate::synthesizeFinish()")
+            speechScreen.startStopAutoRecording()
+        }
+
+        function recordFinish(file) {
+            console.log("ScreenWhiteBullDelegate::recordFinish()")
+        }
+
+        function recognitionFinsh(records) {
+            console.log("ScreenWhiteBullDelegate::recognitionFinsh()")
+            speechScreen.appendText(userName, records[0])
+            var variants = [
+                        qsTr("Yes, yes, yes. Do you want to listen the story tell?")
+                        , qsTr("Yes of corse. Do you want to listen the story tell?")
+                        , qsTr("You say: %1. I say: %1. Do you want to listen the story tell?").arg(records[0])
+                    ]
+            console.log(variants)
+            var min = 0
+            var max = variants.length - 1
+            var index = Math.floor(Math.random() * (max - min + 1)) + min
+            console.log(index)
+            var text = variants[index]
+            console.log(text)
+            speechScreen.appendText(computerName, text)
+            speechScreen.synthesize(text)
+        }
+
+        function recognitionFail(file) {
+            console.log("ScreenWhiteBullDelegate::recognitionFail()")
+            var text = qsTr("Not recognized, repeat please")
+            speechScreen.appendText(computerName, text)
+            speechScreen.synthesize(text)
         }
     }
 }
