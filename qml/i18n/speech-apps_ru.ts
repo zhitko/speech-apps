@@ -156,7 +156,7 @@
     </message>
     <message>
         <source>Hello, do you want to listen the story?</source>
-        <translation>Сказать ли тебе сказку про белого бычка?</translation>
+        <translation>Хочешь? Я Расскажу тебе сказку про белого бычка.</translation>
     </message>
     <message>
         <source>Yes, yes, yes. Do you want to listen the story tell?</source>

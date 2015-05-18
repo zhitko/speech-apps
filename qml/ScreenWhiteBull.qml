@@ -65,7 +65,7 @@ Item {
         property string userName: qsTr("User")
 
         function start() {
-            var text = qsTr("Hello, do you want to listen the story?")
+            var text = qsTr("Хочешь? Я Расскажу тебе сказку про белого бычка.")
             speechScreen.synthesize(text)
             speechScreen.appendText(computerName, text)
         }
@@ -83,9 +83,8 @@ Item {
             console.log("ScreenWhiteBullDelegate::recognitionFinsh()")
             speechScreen.appendText(userName, records[0])
             var variants = [
-                        qsTr("Yes, yes, yes. Do you want to listen the story tell?")
-                        , qsTr("Yes of corse. Do you want to listen the story tell?")
-                        , qsTr("You say: %1. I say: %1. Do you want to listen the story tell?").arg(records[0])
+                        qsTr("Ты %1, я %1. Хочешь? Я Расскажу тебе сказку про белого бычка.").arg(records[0])
+                        , qsTr("Ты говоришь: %1, я говорю: %1. Сказать ли тебе сказку про белого бычка?").arg(records[0])
                     ]
             console.log(variants)
             var min = 0
