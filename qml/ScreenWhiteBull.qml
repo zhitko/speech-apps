@@ -84,7 +84,7 @@ Item {
             speechScreen.appendText(userName, records[0])
             var variants = [
                         qsTr("Ты %1, я %1. Хочешь? Я Расскажу тебе сказку про белого бычка.").arg(records[0])
-                        , qsTr("Ты говоришь: %1, я говорю: %1. Сказать ли тебе сказку про белого бычка?").arg(records[0])
+                        , qsTr("Ты говоришь: %1, я говорю: %1. Рассказать ли тебе сказку про белого бычка?").arg(records[0])
                     ]
             console.log(variants)
             var min = 0
@@ -99,7 +99,7 @@ Item {
 
         function recognitionFail(file) {
             console.log("ScreenWhiteBullDelegate::recognitionFail()")
-            var text = qsTr("Not recognized, repeat please")
+            var text = qsTr("Фраза не распознана, пожалуйста повторите.")
             speechScreen.appendText(computerName, text)
             speechScreen.synthesize(text)
         }
