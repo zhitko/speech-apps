@@ -52,6 +52,14 @@ Item {
             }
 
             Button {
+                iconSource: "qrc:/images/images/test.png"
+                onClicked: {
+                    console.log("try external test")
+                    parotLogic.external_test()
+                }
+            }
+
+            Button {
                 iconSource: "qrc:/images/images/Speaker-32.png"
                 onClicked: {
                     var files = fileController.getFileList()

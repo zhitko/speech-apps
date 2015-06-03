@@ -13,5 +13,4 @@ ApplicationWindow {
     MainMenu {
         anchors.margins: 5
     }
-
 }

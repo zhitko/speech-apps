@@ -406,4 +406,14 @@ DISTFILES += \
     qml/ScreenSettings.qml \
     qml/ScreenWhiteBull.qml \
     qml/SpeechScreen.qml \
-    qml/ScreenTests.qml
+    qml/ScreenTests.qml \
+    logic/white-bull-logic.qml \
+    logic/parot-logic.qml
+
+
+# Copy external qml files post build
+external-logic.commands = $(COPY_DIR) $$PWD/logic $$OUT_PWD
+first.depends = $(first) external-logic
+export(first.depends)
+export(external-logic.commands)
+QMAKE_EXTRA_TARGETS += first external-logic
