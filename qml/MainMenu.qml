@@ -144,11 +144,24 @@ Item {
                 text: backMenu.title_text
                 elide: Text.ElideRight
             }
+
+            Rectangle {
+                width: 32
+                height: 32
+                color: screenHolder.isRecording ? "#5eff73" : "#00000000"
+                anchors.right: parent.right
+                radius: height/2
+                border.color: "#1d9904"
+                border.width: height/10
+            }
         }
 
         Item {
+            id: screenHolder
             Layout.fillHeight: true
             Layout.fillWidth: true
+
+            property var isRecording: screenParrot.isRecording || screenWhiteBull.isRecording || screenTests.isRecording
 
             ScreenParrot {
                 id: screenParrot

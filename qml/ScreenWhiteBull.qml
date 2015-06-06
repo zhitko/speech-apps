@@ -3,6 +3,8 @@ import QtQuick.Layouts 1.0
 
 Item {
 
+    property alias isRecording: speechScreen.isRecording
+
     visible: false
 
     function show () {

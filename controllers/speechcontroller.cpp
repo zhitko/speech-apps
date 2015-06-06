@@ -10,6 +10,8 @@
 
 #include "utills/singleton.h"
 
+#include "models/localeobject.h"
+
 #include "system/settingsvalult.h"
 
 SpeechController::SpeechController(QObject *parent) : QObject(parent)
@@ -35,7 +37,12 @@ void SpeechController::recognizeFile(QString file)
     connect(googleSpeech, &GoogleSpeech::getText, [=](QString text){
         emit this->recognized(file, text.split("\n"));
     });
-    googleSpeech->sent(filePath);
+    SettingsValult * settingsValult = &Singleton<SettingsValult>::Instance();
+    googleSpeech->sent(
+                filePath
+                , settingsValult->getSttLocale()->locale()->name()
+                , "AIzaSyBOti4mM-6x9WDnZIjIeyEU21OpBXqWBgw"
+                );
 }
 
 void SpeechController::synthesize(QString text)
