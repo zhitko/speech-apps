@@ -21,11 +21,15 @@ Item {
         volumeBar.setValue(value)
     }
 
-    function recordFinished(file) {
-        delegate.recordFinish(file)
-        isRecording = false
-        console.log("SpeechScreen::recordFinished >> " + file )
+    function recognizeFile(file) {
+        console.log("SpeechScreen::recognizeFile >> " + file )
         speechController.recognizeFile(file)
+    }
+
+    function recordFinished(file) {
+        console.log("SpeechScreen::recordFinished >> " + file )
+        isRecording = false
+        delegate.recordFinish(file)
     }
 
     function recognitionFinsh(file, records) {

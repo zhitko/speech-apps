@@ -408,7 +408,8 @@ DISTFILES += \
     qml/SpeechScreen.qml \
     qml/ScreenTests.qml \
     logic/white-bull-logic.qml \
-    logic/parot-logic.qml
+    logic/parot-logic.qml \
+    logic/Utils/Messages.qml
 
 
 # Copy external qml files post build

@@ -42,12 +42,12 @@ int main(int argc, char *argv[])
     }
 
     QTranslator translator;
-    translator.load(QLocale(), "speech-apps", "_", ":/qml/qml/i18n/", ".qm");
+    translator.load(QLocale(), "speech-apps", "_", ":/qml/i18n/", ".qm");
     app.installTranslator(&translator);
 
     QQmlApplicationEngine engine;
     loadExternalJs(&engine);
-    engine.load(QUrl(QStringLiteral("qrc:/qml/qml/main.qml")));
+    engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
     engine.rootContext()->setContextProperty("settingsController", &settingsController);
     engine.rootContext()->setContextProperty("fileController", &fileController);
     engine.rootContext()->setContextProperty("soundController", &soundController);
