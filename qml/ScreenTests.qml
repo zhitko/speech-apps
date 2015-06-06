@@ -11,10 +11,13 @@ Item {
     function recognitionFinsh(file, records) {
         console.log("ScreenParrot::recognitionFinsh " + records);
         console.log("ScreenParrot::recognitionFinsh " + records.length);
-        if(records.length > 0 && records[0] != "")
-            speechScreen.appendText(qsTr("User"), records[0])
-        else
+        if (records.length > 0 && records[0] != "") {
+            speechScreen.appendText(qsTr("User"), "")
+            for (var i=0; i<records.length; i++)
+                speechScreen.appendText(i, records[i])
+        } else {
             speechScreen.appendText(qsTr("User"), qsTr("Not recognized, repeat please"))
+        }
     }
 
     function show () {
