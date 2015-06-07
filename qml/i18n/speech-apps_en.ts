@@ -5,7 +5,7 @@
     <name>FileListDelegate</name>
     <message>
         <source>Translation: </source>
-        <translation type="unfinished">Transcription: </translation>
+        <translation>Transcription: </translation>
     </message>
 </context>
 <context>
@@ -28,34 +28,38 @@
     </message>
     <message>
         <source>Settings</source>
-        <translation>Settings</translation>
+        <translation type="vanished">Settings</translation>
     </message>
     <message>
         <source>Setup all applications settings</source>
-        <translation>Setup all applications settings</translation>
+        <translation type="vanished">Setup all applications settings</translation>
     </message>
     <message>
         <source>Records</source>
-        <translation>Records</translation>
+        <translation type="vanished">Records</translation>
     </message>
     <message>
         <source>View all user records</source>
-        <translation>View all user records</translation>
+        <translation type="vanished">View all user records</translation>
     </message>
     <message>
         <source>Tests</source>
-        <translation>Test</translation>
+        <translation type="vanished">Test</translation>
     </message>
     <message>
         <source>For application tests</source>
-        <translation>For application tests</translation>
+        <translation type="vanished">For application tests</translation>
+    </message>
+    <message>
+        <source>Main menu</source>
+        <translation>Main menu</translation>
     </message>
 </context>
 <context>
     <name>ScreenParrot</name>
     <message>
         <source>Parrot</source>
-        <translation type="vanished">Parrot</translation>
+        <translation>Parrot</translation>
     </message>
     <message>
         <source>Voice recognition test</source>
@@ -63,26 +67,29 @@
     </message>
     <message>
         <source>Computer</source>
-        <translation>Computer</translation>
+        <translation type="vanished">Computer</translation>
     </message>
     <message>
         <source>Not recognized, repeat please</source>
-        <translation>Not recognized, repeat please</translation>
+        <translation type="vanished">Not recognized, repeat please</translation>
     </message>
     <message>
         <source>User</source>
-        <translation>User</translation>
+        <translation type="vanished">User</translation>
     </message>
+</context>
+<context>
+    <name>ScreenRecords</name>
     <message>
-        <source>Hello, let&apos;s start work</source>
-        <translation type="unfinished"></translation>
+        <source>Records</source>
+        <translation>Records</translation>
     </message>
 </context>
 <context>
     <name>ScreenSettings</name>
     <message>
         <source>Settings</source>
-        <translation type="vanished">Settings</translation>
+        <translation>Settings</translation>
     </message>
     <message>
         <source>Input audio device</source>
@@ -133,14 +140,18 @@
     </message>
     <message>
         <source>Тест синтеза речи</source>
-        <translation type="unfinished"></translation>
+        <translation>Voice test</translation>
+    </message>
+    <message>
+        <source>Tests</source>
+        <translation>Test</translation>
     </message>
 </context>
 <context>
     <name>ScreenWhiteBull</name>
     <message>
         <source>White bull</source>
-        <translation type="vanished">White Bull</translation>
+        <translation>White Bull</translation>
     </message>
     <message>
         <source>User</source>
@@ -152,27 +163,38 @@
     </message>
     <message>
         <source>Computer</source>
-        <translation>Computer</translation>
-    </message>
-    <message>
-        <source>Hello, do you want to listen the story?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Yes, yes, yes. Do you want to listen the story tell?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Yes of corse. Do you want to listen the story tell?</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">Computer</translation>
     </message>
     <message>
         <source>Not recognized, repeat please</source>
-        <translation type="unfinished">Not recognized, repeat please</translation>
+        <translation type="obsolete">Not recognized, repeat please</translation>
+    </message>
+</context>
+<context>
+    <name>SideMenu</name>
+    <message>
+        <source>Records</source>
+        <translation>Records</translation>
     </message>
     <message>
-        <source>You say: %1. I say: %1. Do you want to listen the story tell?</source>
-        <translation type="unfinished"></translation>
+        <source>View all user records</source>
+        <translation>View all user records</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>Settings</translation>
+    </message>
+    <message>
+        <source>Setup all applications settings</source>
+        <translation>Setup all applications settings</translation>
+    </message>
+    <message>
+        <source>Tests</source>
+        <translation>Test</translation>
+    </message>
+    <message>
+        <source>For application tests</source>
+        <translation>For application tests</translation>
     </message>
 </context>
 <context>

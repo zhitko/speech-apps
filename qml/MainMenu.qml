@@ -42,23 +42,5 @@ Item {
             description_text: qsTr("It will be tell White Bull storry tell")
             goto_state: "white-bull"
         }
-        ListElement {
-            image_src: "qrc:/images/images/List-64.png"
-            title_text: qsTr("Records")
-            description_text: qsTr("View all user records")
-            goto_state: "records"
-        }
-        ListElement {
-            image_src: "qrc:/images/images/Settings-64.png"
-            title_text: qsTr("Settings")
-            description_text: qsTr("Setup all applications settings")
-            goto_state: "settings"
-        }
-        ListElement {
-            image_src: "qrc:/images/images/Support-64.png"
-            title_text: qsTr("Tests")
-            description_text: qsTr("For application tests")
-            goto_state: "tests"
-        }
     }
 }

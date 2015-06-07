@@ -28,34 +28,38 @@
     </message>
     <message>
         <source>Settings</source>
-        <translation>Настройки</translation>
+        <translation type="vanished">Настройки</translation>
     </message>
     <message>
         <source>Setup all applications settings</source>
-        <translation>Настройки приложения</translation>
+        <translation type="vanished">Настройки приложения</translation>
     </message>
     <message>
         <source>Records</source>
-        <translation>Записи</translation>
+        <translation type="vanished">Записи</translation>
     </message>
     <message>
         <source>View all user records</source>
-        <translation>Просмотр пользовательских записей</translation>
+        <translation type="vanished">Просмотр пользовательских записей</translation>
     </message>
     <message>
         <source>Tests</source>
-        <translation>Тестирование</translation>
+        <translation type="vanished">Тестирование</translation>
     </message>
     <message>
         <source>For application tests</source>
-        <translation>Тестирование базовых функций программы</translation>
+        <translation type="vanished">Тестирование базовых функций программы</translation>
+    </message>
+    <message>
+        <source>Main menu</source>
+        <translation>Главное меню</translation>
     </message>
 </context>
 <context>
     <name>ScreenParrot</name>
     <message>
         <source>Parrot</source>
-        <translation type="vanished">Попугай</translation>
+        <translation>Попугай</translation>
     </message>
     <message>
         <source>Voice recognition test</source>
@@ -63,26 +67,33 @@
     </message>
     <message>
         <source>Computer</source>
-        <translation>Компьютер</translation>
+        <translation type="vanished">Компьютер</translation>
     </message>
     <message>
         <source>Not recognized, repeat please</source>
-        <translation>Фраза не распознана, пожалуйсто повторите</translation>
+        <translation type="vanished">Фраза не распознана, пожалуйсто повторите</translation>
     </message>
     <message>
         <source>User</source>
-        <translation>Пользователь</translation>
+        <translation type="vanished">Пользователь</translation>
     </message>
     <message>
         <source>Hello, let&apos;s start work</source>
-        <translation>Добрый день, начнем работу</translation>
+        <translation type="vanished">Добрый день, начнем работу</translation>
+    </message>
+</context>
+<context>
+    <name>ScreenRecords</name>
+    <message>
+        <source>Records</source>
+        <translation>Записи</translation>
     </message>
 </context>
 <context>
     <name>ScreenSettings</name>
     <message>
         <source>Settings</source>
-        <translation type="vanished">Настройки</translation>
+        <translation>Настройки</translation>
     </message>
     <message>
         <source>Input audio device</source>
@@ -133,14 +144,18 @@
     </message>
     <message>
         <source>Тест синтеза речи</source>
-        <translation type="unfinished"></translation>
+        <translation>Тест синтеза речи</translation>
+    </message>
+    <message>
+        <source>Tests</source>
+        <translation>Тестирование</translation>
     </message>
 </context>
 <context>
     <name>ScreenWhiteBull</name>
     <message>
         <source>White bull</source>
-        <translation type="vanished">Сказка про белого бычка</translation>
+        <translation>Сказка про белого бычка</translation>
     </message>
     <message>
         <source>User</source>
@@ -152,27 +167,54 @@
     </message>
     <message>
         <source>Computer</source>
-        <translation>Компьютер</translation>
+        <translation type="vanished">Компьютер</translation>
     </message>
     <message>
         <source>Hello, do you want to listen the story?</source>
-        <translation>Хочешь? Я Расскажу тебе сказку про белого бычка.</translation>
+        <translation type="vanished">Хочешь? Я Расскажу тебе сказку про белого бычка.</translation>
     </message>
     <message>
         <source>Yes, yes, yes. Do you want to listen the story tell?</source>
-        <translation>Ты скажи, да я скажи, да сказать ли тебе сказку про белого бычка?</translation>
+        <translation type="vanished">Ты скажи, да я скажи, да сказать ли тебе сказку про белого бычка?</translation>
     </message>
     <message>
         <source>Yes of corse. Do you want to listen the story tell?</source>
-        <translation>Ты скажи, да я скажи, да чего у вас будет, да докуль это будет! Сказать ли тебе сказку про белого бычка?</translation>
+        <translation type="vanished">Ты скажи, да я скажи, да чего у вас будет, да докуль это будет! Сказать ли тебе сказку про белого бычка?</translation>
     </message>
     <message>
         <source>Not recognized, repeat please</source>
-        <translation>Фраза не распознана, пожалуйсто повторите</translation>
+        <translation type="vanished">Фраза не распознана, пожалуйсто повторите</translation>
     </message>
     <message>
         <source>You say: %1. I say: %1. Do you want to listen the story tell?</source>
-        <translation>Ты говоришь: %1, я говорю: %1.  Сказать ли тебе сказку про белого бычка?</translation>
+        <translation type="vanished">Ты говоришь: %1, я говорю: %1.  Сказать ли тебе сказку про белого бычка?</translation>
+    </message>
+</context>
+<context>
+    <name>SideMenu</name>
+    <message>
+        <source>Records</source>
+        <translation>Записи</translation>
+    </message>
+    <message>
+        <source>View all user records</source>
+        <translation>Просмотр пользовательских записей</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>Настройки</translation>
+    </message>
+    <message>
+        <source>Setup all applications settings</source>
+        <translation>Настройки приложения</translation>
+    </message>
+    <message>
+        <source>Tests</source>
+        <translation>Тестирование</translation>
+    </message>
+    <message>
+        <source>For application tests</source>
+        <translation>Тестирование базовых функций программы</translation>
     </message>
 </context>
 <context>

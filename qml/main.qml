@@ -23,6 +23,9 @@ ApplicationWindow {
             onBackButtonClicked: {
                 root.state = "menu"
             }
+            onMenuButtonClicked: {
+                sideMenu.show()
+            }
         }
 
         Loader {
@@ -33,6 +36,14 @@ ApplicationWindow {
             anchors.left: parent.left
             anchors.bottom: parent.bottom
             onLoaded: {
+            }
+        }
+
+        SideMenu {
+            id: sideMenu
+            anchors.fill: parent
+            onMenuSelected: {
+                root.state = name
             }
         }
 

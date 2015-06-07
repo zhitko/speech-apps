@@ -10,6 +10,7 @@ Item {
     property bool isRecording: false
 
     signal backButtonClicked()
+    signal menuButtonClicked()
 
     RowLayout {
         id: backMenu
@@ -21,14 +22,29 @@ Item {
         height: header.height
 
         Image {
+            id: menuButtonImage
+            enabled: visible
+            visible: !backButtonImage.visible
+            width: header.height
+            height: header.height
+            source: "qrc:/images/images/Menu-32.png"
+            MouseArea {
+                id: menuButton
+                anchors.fill: parent
+                onClicked: menuButtonClicked()
+            }
+        }
+
+        Image {
             id: backButtonImage
+            enabled: visible
             visible: false
             width: header.height
             height: header.height
             source: "qrc:/images/images/Return-32.png"
             MouseArea {
                 id: backButton
-                anchors.fill: backButtonImage
+                anchors.fill: parent
                 onClicked: backButtonClicked()
             }
         }

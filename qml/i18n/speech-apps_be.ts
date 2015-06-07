@@ -12,113 +12,86 @@
 <context>
     <name>MainMenu</name>
     <message>
-        <location filename="../MainMenu.qml" line="13"/>
+        <location filename="../MainMenu.qml" line="10"/>
+        <source>Main menu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MainMenu.qml" line="35"/>
         <source>Parrot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainMenu.qml" line="14"/>
+        <location filename="../MainMenu.qml" line="36"/>
         <source>It will be repeat all your words</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainMenu.qml" line="19"/>
+        <location filename="../MainMenu.qml" line="41"/>
         <source>White Bull</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainMenu.qml" line="20"/>
+        <location filename="../MainMenu.qml" line="42"/>
         <source>It will be tell White Bull storry tell</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../MainMenu.qml" line="25"/>
-        <source>Records</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../MainMenu.qml" line="26"/>
-        <source>View all user records</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../MainMenu.qml" line="31"/>
-        <source>Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../MainMenu.qml" line="32"/>
-        <source>Setup all applications settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../MainMenu.qml" line="37"/>
-        <source>Tests</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../MainMenu.qml" line="38"/>
-        <source>For application tests</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>ScreenParrot</name>
     <message>
-        <location filename="../ScreenParrot.qml" line="25"/>
+        <location filename="../ScreenParrot.qml" line="8"/>
+        <source>Parrot</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ScreenParrot.qml" line="27"/>
         <source>Voice recognition test</source>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>ScreenRecords</name>
     <message>
-        <location filename="../ScreenParrot.qml" line="32"/>
-        <source>Computer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ScreenParrot.qml" line="33"/>
-        <source>User</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ScreenParrot.qml" line="36"/>
-        <source>Hello, let&apos;s start work</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ScreenParrot.qml" line="58"/>
-        <source>Not recognized, repeat please</source>
+        <location filename="../ScreenRecords.qml" line="8"/>
+        <source>Records</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>ScreenSettings</name>
     <message>
-        <location filename="../ScreenSettings.qml" line="37"/>
+        <location filename="../ScreenSettings.qml" line="6"/>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ScreenSettings.qml" line="36"/>
         <source>Input audio device</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ScreenSettings.qml" line="54"/>
+        <location filename="../ScreenSettings.qml" line="53"/>
         <source>Output audio device</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ScreenSettings.qml" line="71"/>
+        <location filename="../ScreenSettings.qml" line="70"/>
         <source>Language</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ScreenSettings.qml" line="77"/>
+        <location filename="../ScreenSettings.qml" line="76"/>
         <source>User interface</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ScreenSettings.qml" line="93"/>
+        <location filename="../ScreenSettings.qml" line="92"/>
         <source>Text to speech</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ScreenSettings.qml" line="108"/>
+        <location filename="../ScreenSettings.qml" line="107"/>
         <source>Speech to text</source>
         <translation type="unfinished"></translation>
     </message>
@@ -126,28 +99,33 @@
 <context>
     <name>ScreenTests</name>
     <message>
-        <location filename="../ScreenTests.qml" line="13"/>
-        <location filename="../ScreenTests.qml" line="15"/>
+        <location filename="../ScreenTests.qml" line="6"/>
+        <source>Tests</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ScreenTests.qml" line="24"/>
+        <location filename="../ScreenTests.qml" line="28"/>
         <source>User</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ScreenTests.qml" line="15"/>
+        <location filename="../ScreenTests.qml" line="28"/>
         <source>Not recognized, repeat please</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ScreenTests.qml" line="36"/>
+        <location filename="../ScreenTests.qml" line="40"/>
         <source>Voice recognition test</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ScreenTests.qml" line="85"/>
+        <location filename="../ScreenTests.qml" line="97"/>
         <source>PC</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ScreenTests.qml" line="112"/>
+        <location filename="../ScreenTests.qml" line="124"/>
         <source>Тест синтеза речи</source>
         <translation type="unfinished"></translation>
     </message>
@@ -155,51 +133,58 @@
 <context>
     <name>ScreenWhiteBull</name>
     <message>
-        <location filename="../ScreenWhiteBull.qml" line="28"/>
+        <location filename="../ScreenWhiteBull.qml" line="5"/>
+        <source>White bull</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ScreenWhiteBull.qml" line="30"/>
         <source>Hello White Bull</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ScreenWhiteBull.qml" line="54"/>
-        <location filename="../ScreenWhiteBull.qml" line="65"/>
+        <location filename="../ScreenWhiteBull.qml" line="56"/>
         <source>User</source>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>SideMenu</name>
     <message>
-        <location filename="../ScreenWhiteBull.qml" line="64"/>
-        <source>Computer</source>
+        <location filename="../SideMenu.qml" line="66"/>
+        <source>Records</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ScreenWhiteBull.qml" line="68"/>
-        <source>Hello, do you want to listen the story?</source>
+        <location filename="../SideMenu.qml" line="67"/>
+        <source>View all user records</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ScreenWhiteBull.qml" line="86"/>
-        <source>Yes, yes, yes. Do you want to listen the story tell?</source>
+        <location filename="../SideMenu.qml" line="72"/>
+        <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ScreenWhiteBull.qml" line="87"/>
-        <source>Yes of corse. Do you want to listen the story tell?</source>
+        <location filename="../SideMenu.qml" line="73"/>
+        <source>Setup all applications settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ScreenWhiteBull.qml" line="88"/>
-        <source>You say: %1. I say: %1. Do you want to listen the story tell?</source>
+        <location filename="../SideMenu.qml" line="78"/>
+        <source>Tests</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ScreenWhiteBull.qml" line="103"/>
-        <source>Not recognized, repeat please</source>
+        <location filename="../SideMenu.qml" line="79"/>
+        <source>For application tests</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>main</name>
     <message>
-        <location filename="../main.qml" line="8"/>
+        <location filename="../main.qml" line="7"/>
         <source>Speech Apps</source>
         <translation type="unfinished"></translation>
     </message>

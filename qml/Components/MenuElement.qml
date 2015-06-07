@@ -31,6 +31,7 @@ Item {
 
             Image {
                 id: image
+                x: menuMargin
                 width: parent.height - 2*menuMargin
                 height: parent.height - 2*menuMargin
                 anchors.verticalCenter: parent.verticalCenter

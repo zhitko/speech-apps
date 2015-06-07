@@ -19,6 +19,7 @@
         <file>images/Play-32.png</file>
         <file>images/Support-64.png</file>
         <file>images/Voice Recognition Scan-64.png</file>
+        <file>images/Menu-32.png</file>
     </qresource>
     <qresource prefix="/">
         <file>qml/main.qml</file>
@@ -37,5 +38,6 @@
         <file>qml/Components/Menu.qml</file>
         <file>qml/Components/MenuElement.qml</file>
         <file>qml/Header.qml</file>
+        <file>qml/SideMenu.qml</file>
     </qresource>
 </RCC>
