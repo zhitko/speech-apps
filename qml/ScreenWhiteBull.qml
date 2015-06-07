@@ -2,19 +2,18 @@ import QtQuick 2.4
 import QtQuick.Layouts 1.0
 
 Item {
+    property string title: qsTr("White bull")
 
     property alias isRecording: speechScreen.isRecording
 
-    visible: false
-
-    function show () {
+    Component.onCompleted: {
         console.log("ScreenWhiteBull::show()")
         whiteBullLogic.speechScreen = speechScreen
         speechScreen.init()
         whiteBullLogic.start()
     }
 
-    function free () {
+    Component.onDestruction: {
         console.log("ScreenWhiteBull::destroy()")
         speechScreen.stopRecording()
         speechScreen.free()

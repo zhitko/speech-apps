@@ -5,17 +5,16 @@ import QtQuick.Layouts 1.0
 Item {
 
     property alias isRecording: speechScreen.isRecording
+    property string title: qsTr("Parrot")
 
-    visible: false
-
-    function show () {
+    Component.onCompleted: {
         console.log("ScreenParrot::show()")
         parotLogic.speechScreen = speechScreen
         speechScreen.init()
         parotLogic.start()
     }
 
-    function free () {
+    Component.onDestruction: {
         console.log("ScreenParrot::free()")
         speechScreen.stopRecording()
         speechScreen.free()

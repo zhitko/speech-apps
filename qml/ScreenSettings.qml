@@ -3,10 +3,9 @@ import QtQuick.Layouts 1.1
 import QtQuick.Controls 1.2
 
 Item {
+    property string title: qsTr("Settings")
 
-    visible: false
-
-    function show () {
+    Component.onCompleted: {
         console.log("ScreenSettings::show()")
 
         inputDevices.model = settingsController.getInputDeviceList()
@@ -25,7 +24,7 @@ Item {
         console.log("ttsLanguages.currentIndex" + ttsLanguages.currentIndex)
     }
 
-    function free () {
+    Component.onDestruction: {
         console.log("ScreenSettings::destroy()")
         settingsController.saveSettings()
     }

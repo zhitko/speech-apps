@@ -1,33 +1,38 @@
 import QtQuick 2.4
 
 Item {
+    id: menuElement
+
     property Component delegate: delegateId
 
     property Item menu
+
+    property int menuHeight: 40
+    property int menuMargin: 10
 
     Component {
         id: delegateId
 
         BorderImage {
             id: borderImage
-            height: 80
+            height: menuHeight
             width: parent.width
             border.top: 4
             border.bottom: 4
             source: hitbox.pressed ? "qrc:/images/images/delegate_pressed.png" : "qrc:/images/images/delegate.png"
 
-            Image {
-                id: shadow
-                anchors.top: parent.bottom
-                width: parent.width
-                visible: !hitbox.pressed
-                source: "qrc:/images/images/shadow.png"
+            MouseArea {
+                id: hitbox
+                anchors.fill: parent
+                onClicked: {
+                    menu.menuSelected(goto_state)
+                }
             }
 
             Image {
                 id: image
-                width: 64
-                height: 64
+                width: parent.height - 2*menuMargin
+                height: parent.height - 2*menuMargin
                 anchors.verticalCenter: parent.verticalCenter
                 source: image_src
             }
@@ -36,30 +41,22 @@ Item {
                 height: parent.height
                 anchors.left: image.right
                 anchors.right: parent.right
-                anchors.rightMargin: 10
-                anchors.leftMargin: 10
+                anchors.rightMargin: menuMargin
+                anchors.leftMargin: menuMargin
                 Text {
-                    height: parent.height / 2
+                    height: description_text ? parent.height / 2 : parent.height
                     verticalAlignment: Text.AlignVCenter
-                    font.pixelSize: 25
+                    font.pixelSize: 20
                     text: title_text
                     elide: Text.ElideRight
                 }
                 Text {
+                    visible: description_text
                     height: parent.height / 2
                     verticalAlignment: Text.AlignTop
                     font.pixelSize: 15
                     text: description_text
                     elide: Text.ElideRight
-                    color: "#555"
-                }
-            }
-
-            MouseArea {
-                id: hitbox
-                anchors.fill: parent
-                onClicked: {
-                    menu.state = gotoState
                 }
             }
         }

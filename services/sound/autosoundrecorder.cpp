@@ -47,7 +47,6 @@ void AutoSoundRecorder::allocateNewBuffer()
         qDebug() << "sound data";
         vector wave = sptk_v2v(this->currentBuffer->buffer_data, this->currentBuffer->size, this->sampleByteSize*CHAR_BIT);
         qDebug() << "sound pitch";
-//        vector pitch = sptk_pitch(wave, settings->pitch);
         vector pitch = sptk_pitch(wave, initPitchSettings());
 
         double val = 0.0;

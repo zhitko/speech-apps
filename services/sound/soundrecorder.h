@@ -5,7 +5,7 @@
 
 #include "utills/OpenAL/openal_wrapper.h"
 
-const int INIT_BUFFER_SIZE = 4096;// 4096//8192//16384
+const int INIT_BUFFER_SIZE = 2048;//4096;// 4096//8192//16384
 
 struct buffer;
 

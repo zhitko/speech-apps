@@ -10,9 +10,7 @@ win32 {
 CONFIG  += c++11
 
 SOURCES += main.cpp \
-    system/settingsvalult.cpp \
-    utills/OpenAL/wavFile.cpp \
-    utills/OpenAL/openal_wrapper.cpp
+    system/settingsvalult.cpp
 
 HEADERS += \
     defines.h \
@@ -103,7 +101,9 @@ HEADERS += \
 
 # OpenAL
 
-SOURCES +=
+SOURCES += \
+    utills/OpenAL/wavFile.cpp \
+    utills/OpenAL/openal_wrapper.cpp
 
 HEADERS  += \
     utills/OpenAL/openal_wrapper.h \
@@ -399,7 +399,6 @@ include(deployment.pri)
 DISTFILES += \
     qml/main.qml \
     qml/MainMenu.qml \
-    qml/MenuItemDelegate.qml \
     qml/ScreenParrot.qml \
     qml/ScreenRecords.qml \
     qml/ScreenRecords/FileListDelegate.qml \

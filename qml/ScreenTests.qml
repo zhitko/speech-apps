@@ -3,10 +3,19 @@ import QtQuick.Controls 1.3
 import QtQuick.Layouts 1.0
 
 Item {
+    property string title: qsTr("Tests")
 
     property alias isRecording: speechScreen.isRecording
 
-    visible: false
+    Component.onCompleted: {
+        console.log("ScreenParrot::show")
+        speechController.recognized.connect(recognitionFinsh)
+    }
+
+    Component.onDestruction: {
+        console.log("ScreenParrot::destroy")
+        speechController.recognized.disconnect(recognitionFinsh)
+    }
 
     function recognitionFinsh(file, records) {
         console.log("ScreenParrot::recognitionFinsh " + records);
@@ -18,16 +27,6 @@ Item {
         } else {
             speechScreen.appendText(qsTr("User"), qsTr("Not recognized, repeat please"))
         }
-    }
-
-    function show () {
-        console.log("ScreenParrot::show")
-        speechController.recognized.connect(recognitionFinsh)
-    }
-
-    function free () {
-        console.log("ScreenParrot::destroy")
-        speechController.recognized.disconnect(recognitionFinsh)
     }
 
     ColumnLayout {

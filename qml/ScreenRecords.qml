@@ -5,26 +5,25 @@ import QtQuick.Layouts 1.0
 import "ScreenRecords"
 
 Item {
+    property string title: qsTr("Records")
 
-    visible: false
-
-    function recognitionFinsh(file, records) {
-        console.log("ScreenRecords::recognitionFinsh" + records)
-        if(records.length > 0 && records[0] != "") {
-            fileController.setFileTranslation(file, records[0])
-        }
-        updateFileList()
-    }
-
-    function show () {
+    Component.onCompleted: {
         console.log("ScreenRecords::show")
         updateFileList()
         speechController.recognized.connect(recognitionFinsh)
     }
 
-    function free () {
+    Component.onDestruction: {
         console.log("ScreenRecords::destroy")
         speechController.recognized.disconnect(recognitionFinsh)
+    }
+
+    function recognitionFinsh(file, records) {
+        console.log("ScreenRecords::recognitionFinsh" + records)
+        if(records.length > 0 && records[0] !== "") {
+            fileController.setFileTranslation(file, records[0])
+        }
+        updateFileList()
     }
 
     function updateFileList () {
