@@ -10,11 +10,15 @@ win32 {
 CONFIG  += c++11
 
 SOURCES += main.cpp \
-    system/settingsvalult.cpp
+    system/settingsvalult.cpp \
+    services/GoogleTranslate/googletranslate.cpp
 
 HEADERS += \
     defines.h \
-    system/settingsvalult.h
+    system/settingsvalult.h \
+    services/GoogleTranslate/googletranslate.h \
+    utills/singletonwithconfig.h \
+    services/GoogleTranslate/googletranslateconfig.h
 
 # -----------------------------
 # Controllers
