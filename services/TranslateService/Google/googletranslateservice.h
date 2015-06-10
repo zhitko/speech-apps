@@ -1,5 +1,7 @@
-#ifndef GOOGLETRANSLATE_H
-#define GOOGLETRANSLATE_H
+#ifndef GOOGLETRANSLATESERVICE_H
+#define GOOGLETRANSLATESERVICE_H
+
+#include "../translateservice.h"
 
 #include <QObject>
 #include <QMap>
@@ -10,12 +12,12 @@ class GoogleTranslateConfig;
 class QNetworkReply;
 class QNetworkAccessManager;
 
-class GoogleTranslate : public QObject
+class GoogleTranslateService : public TranslateService
 {
     Q_OBJECT
 public:
-    explicit GoogleTranslate(GoogleTranslateConfig * conf, QObject *parent = 0);
-    ~GoogleTranslate();
+    explicit GoogleTranslateService(GoogleTranslateConfig * conf, QObject *parent = 0);
+    ~GoogleTranslateService();
 
     void translate(QString text, QString inLang, QString outLang);
     QMap<QString, QString> getAvailableLanguages();
@@ -31,6 +33,7 @@ private:
     GoogleTranslateConfig * config;
 };
 
-typedef SingletonWithConfig<GoogleTranslate, GoogleTranslateConfig> GoogleTranslateProvider;
+typedef SingletonWithConfig<GoogleTranslateService, GoogleTranslateConfig> GoogleTranslateProvider;
 
-#endif // GOOGLETRANSLATE_H
+
+#endif // GOOGLETRANSLATESERVICE_H

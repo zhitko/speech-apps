@@ -25,7 +25,7 @@ public:
     }
 
     virtual QString getApiUrl() {
-        return "http://translate.google.com.br/translate_a/t?client=t&hl=en&sl=%1&tl=%2&otf=2&multires=1&ssel=0&tsel=0&sc=1&text=%3";
+        return "http://translate.google.com.br/translate_a/t?client=t&hl=en&sl=%1&tl=%2&otf=2&multires=1&ssel=0&tsel=0&sc=1";
     }
 
     virtual QMap<QString, QString> getAvailableLanguages() {
@@ -98,6 +98,8 @@ public:
         return languages;
     }
 };
+
+typedef Singleton<GoogleTranslateConfig> GoogleTranslateConfigProvider;
 
 #endif // GOOGLETRANSLATECONFIG
 

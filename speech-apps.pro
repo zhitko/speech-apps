@@ -10,37 +10,35 @@ win32 {
 CONFIG  += c++11
 
 SOURCES += main.cpp \
-    system/settingsvalult.cpp \
-    services/GoogleTranslate/googletranslate.cpp
+    system/settingsvalult.cpp
 
 HEADERS += \
     defines.h \
-    system/settingsvalult.h \
-    services/GoogleTranslate/googletranslate.h \
-    utills/singletonwithconfig.h \
-    services/GoogleTranslate/googletranslateconfig.h
+    system/settingsvalult.h
 
-# -----------------------------
+# ===========================================================
 # Controllers
-# -----------------------------
+# ===========================================================
 
 SOURCES += \
     controllers/applicationcontroller.cpp \
     controllers/filecontroller.cpp \
     controllers/soundcontroller.cpp \
     controllers/settingscontroller.cpp \
-    controllers/speechcontroller.cpp
+    controllers/speechcontroller.cpp \
+    controllers/translatecontroller.cpp
 
 HEADERS += \
     controllers/applicationcontroller.h \
     controllers/speechcontroller.h \
     controllers/filecontroller.h \
     controllers/soundcontroller.h \
-    controllers/settingscontroller.h
+    controllers/settingscontroller.h \
+    controllers/translatecontroller.h
 
-# -----------------------------
+# ===========================================================
 # Models
-# -----------------------------
+# ===========================================================
 
 SOURCES += \
     models/fileobject.cpp \
@@ -52,11 +50,13 @@ HEADERS += \
     models/deviceobject.h \
     models/localeobject.h
 
-# -----------------------------
+# ===========================================================
 # Services
-# -----------------------------
+# ===========================================================
 
+# -----------------------------------------------------------
 # Google speech to text service
+# -----------------------------------------------------------
 
 SOURCES += \
     services/Google/googlespeech.cpp
@@ -64,7 +64,9 @@ SOURCES += \
 HEADERS += \
     services/Google/googlespeech.h
 
+# -----------------------------------------------------------
 # Sound IO service
+# -----------------------------------------------------------
 
 SOURCES += \
     services/sound/autosoundrecorder.cpp \
@@ -78,7 +80,10 @@ HEADERS += \
     services/sound/soundplayer.h \
     services/sound/soundrecorder.h
 
+# -----------------------------------------------------------
 # TTS
+# -----------------------------------------------------------
+
 DEFINES += QTSPEECH_STATIC
 include(./services/tts/qtspeech/QtSpeech.pri)
 
@@ -88,11 +93,25 @@ SOURCES += \
 HEADERS +=  \
     services/tts/tts.h
 
-# -----------------------------
-# Utills
-# -----------------------------
+# -----------------------------------------------------------
+# Translate Service
+# -----------------------------------------------------------
 
+SOURCES += \
+    services/TranslateService/Google/googletranslateservice.cpp
+
+HEADERS += \
+    services/TranslateService/translateservice.h \
+    services/TranslateService/Google/googletranslateservice.h \
+    services/TranslateService/Google/googletranslateconfig.h
+
+# ===========================================================
+# Utills
+# ===========================================================
+
+# -----------------------------------------------------------
 # DP Analyse
+# -----------------------------------------------------------
 
 SOURCES += \
     utills/dp-analyse/spectrdp.cpp \
@@ -103,7 +122,9 @@ HEADERS += \
     utills/dp-analyse/spectrdp.h \
     utills/dp-analyse/vectordp.h
 
+# -----------------------------------------------------------
 # OpenAL
+# -----------------------------------------------------------
 
 SOURCES += \
     utills/OpenAL/wavFile.cpp \
@@ -122,16 +143,21 @@ unix:!mac {
     LIBS += -lopenal
 }
 
+# -----------------------------------------------------------
 # Other
+# -----------------------------------------------------------
 
 SOURCES += \
     utills/files.cpp
 
 HEADERS  += \
     utills/files.h \
-    utills/singleton.h
+    utills/singleton.h \
+    utills/singletonwithconfig.h
 
+# -----------------------------------------------------------
 # SPTK
+# -----------------------------------------------------------
 
 INCLUDEPATH += ./utills/SPTK
 
@@ -401,15 +427,6 @@ QML_IMPORT_PATH =
 include(deployment.pri)
 
 DISTFILES += \
-    qml/main.qml \
-    qml/MainMenu.qml \
-    qml/ScreenParrot.qml \
-    qml/ScreenRecords.qml \
-    qml/ScreenRecords/FileListDelegate.qml \
-    qml/ScreenSettings.qml \
-    qml/ScreenWhiteBull.qml \
-    qml/SpeechScreen.qml \
-    qml/ScreenTests.qml \
     logic/white-bull-logic.qml \
     logic/parot-logic.qml \
     logic/Utils/Messages.qml

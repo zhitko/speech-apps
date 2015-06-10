@@ -12,6 +12,7 @@
 #include "controllers/filecontroller.h"
 #include "controllers/soundcontroller.h"
 #include "controllers/settingscontroller.h"
+#include "controllers/translatecontroller.h"
 
 #include "system/settingsvalult.h"
 
@@ -34,6 +35,7 @@ int main(int argc, char *argv[])
     FileController fileController;
     SoundController soundController;
     SpeechController speechController;
+    TranslateController translateController;
 
     LocaleObject * uiLocale = settings->getUiLocale();
     if (uiLocale != NULL)
@@ -52,7 +54,7 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("fileController", &fileController);
     engine.rootContext()->setContextProperty("soundController", &soundController);
     engine.rootContext()->setContextProperty("speechController", &speechController);
-
+    engine.rootContext()->setContextProperty("translateController", &translateController);
 
 
     return app.exec();

@@ -59,7 +59,7 @@ Item {
                 iconSource: "qrc:/images/images/test.png"
                 onClicked: {
                     console.log("try external test")
-                    parotLogic.external_test()
+                    translateController.translate("Hello, new brave world", "en", "ru")
                 }
             }
 
