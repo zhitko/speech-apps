@@ -15,7 +15,7 @@ public:
     virtual QMap<QString, QString> getAvailableLanguages() = 0;
 
 signals:
-    virtual void translated(QString text);
+    void translated(QString text);
 };
 
 #endif // TRANSLATESERVICE

@@ -53,17 +53,16 @@ void GoogleTranslateService::finishedSlot(QNetworkReply* reply)
         QString string = QString::fromUtf8(bytes);
         qDebug() << "GoogleTranslateService::finishedSlot >> " << string;
 
-//        QString answer = "";
-//        QRegExp ans("transcript\":\"(.*)\"");
-//        ans.setMinimal(true);
-//        int pos = 0;
-//        while ((pos = ans.indexIn(string, pos)) != -1) {
-//            answer = answer + "\n" + ans.cap(1);
-//            pos += ans.matchedLength();
-//        }
+        QString answer = "";
+        QRegExp ans("\\[\\[\\[\"(.*)\",\"");
+        ans.setMinimal(true);
+        if (ans.indexIn(string) != -1)
+        {
+            answer = ans.cap(1).trimmed();
+        }
 
-//        emit getText(answer.trimmed());
-//        qDebug() << "GoogleTranslate::finishedSlot >> " << answer.trimmed();
+        emit translated(answer);
+        qDebug() << "GoogleTranslateService::finishedSlot >> " << answer;
     }
     else
     {
