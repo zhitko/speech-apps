@@ -22,9 +22,6 @@ public:
     void translate(QString text, QString inLang, QString outLang);
     QMap<QString, QString> getAvailableLanguages();
 
-//signals:
-//    void translated(QString text);
-
 public slots:
     void finishedSlot(QNetworkReply*);
 

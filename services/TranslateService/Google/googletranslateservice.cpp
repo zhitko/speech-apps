@@ -61,8 +61,8 @@ void GoogleTranslateService::finishedSlot(QNetworkReply* reply)
             answer = ans.cap(1).trimmed();
         }
 
-        emit translated(answer);
         qDebug() << "GoogleTranslateService::finishedSlot >> " << answer;
+        emit TranslateService::translated(answer);
     }
     else
     {

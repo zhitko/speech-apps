@@ -15,7 +15,7 @@ public:
     Q_INVOKABLE void translate(QString text, QString from, QString to);
 
 signals:
-    void translated(QList<QString>);
+    void translated(QString);
 
 public slots:
 

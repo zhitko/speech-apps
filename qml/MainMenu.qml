@@ -42,5 +42,11 @@ Item {
             description_text: qsTr("It will be tell White Bull storry tell")
             goto_state: "white-bull"
         }
+        ListElement {
+            image_src: "qrc:/images/images/Translation-32.png"
+            title_text: qsTr("Translate")
+            description_text: qsTr("It will be repeat all your words in anouther language")
+            goto_state: "translate"
+        }
     }
 }

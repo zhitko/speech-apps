@@ -429,7 +429,8 @@ include(deployment.pri)
 DISTFILES += \
     logic/white-bull-logic.qml \
     logic/parot-logic.qml \
-    logic/Utils/Messages.qml
+    logic/Utils/Messages.qml \
+    logic/translate-logic.qml
 
 
 # Copy external qml files post build

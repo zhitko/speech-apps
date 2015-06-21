@@ -100,6 +100,13 @@ ApplicationWindow {
                 PropertyChanges { target: header; isRecording: loader.item.isRecording; }
                 PropertyChanges { target: header; titleText: loader.item.title; }
             }
+            , State {
+                name: "translate"
+                PropertyChanges { target: loader; source: "ScreenTranslate.qml"; }
+                PropertyChanges { target: header; backButtonVisible: true; }
+                PropertyChanges { target: header; isRecording: loader.item.isRecording; }
+                PropertyChanges { target: header; titleText: loader.item.title; }
+            }
         ]
     }
 }
