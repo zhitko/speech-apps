@@ -47,6 +47,13 @@ Item {
                 "userName": "User",
                 "recognitionFail": "Not recognized, repeat please",
                 "greetings": "Hello! let's start work!"
+            },
+            "be_BY": {
+                "translated": "Пераклад",
+                "computerName": "Камп'ютар",
+                "userName": "Карыстальнік",
+                "recognitionFail": "Фраза не распазнаюцца, калі ласка паўторыце.",
+                "greetings": "Прывітанне! Пачнем працу?"
             }
         }
     }
