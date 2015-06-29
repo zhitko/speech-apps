@@ -434,7 +434,16 @@ DISTFILES += \
 
 
 # Copy external qml files post build
-external-logic.commands = $(COPY_DIR) $$PWD/logic $$OUT_PWD
+win32{
+    CONFIG(release, debug|release) {
+        external-logic.commands = $(COPY_DIR) \"$$PWD/logic\" \"$$OUT_PWD/release/logic\"
+    } else {
+        external-logic.commands = $(COPY_DIR) \"$$PWD/logic\" \"$$OUT_PWD/debug/logic\"
+    }
+}
+unix{
+    external-logic.commands = $(COPY_DIR) $$PWD/logic $$OUT_PWD
+}
 first.depends = $(first) external-logic
 export(first.depends)
 export(external-logic.commands)

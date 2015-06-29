@@ -65,8 +65,7 @@ void loadExternalJs(QQmlApplicationEngine * engine)
     QDir logicDir = QDir(QApplication::applicationDirPath());
     logicDir.cd("logic");
     QStringList externalFiles = scanDirIter(logicDir, "qml");
-    for (QString externalFile: externalFiles)
-    {
+    foreach (QString externalFile, externalFiles) {
         QString filePath = logicDir.absolutePath() + externalFile;
         qDebug() << "try load " << filePath;
         QQmlComponent component(engine, QUrl::fromLocalFile(filePath));
