@@ -13,6 +13,7 @@ public:
     ~TranslateController();
 
     Q_INVOKABLE void translate(QString text, QString from, QString to);
+    Q_INVOKABLE QList<QObject *> getLanguageList();
 
 signals:
     void translated(QString);

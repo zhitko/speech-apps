@@ -50,7 +50,7 @@ Item {
                     "Ты говоришь: %1, а я говорю: %1. Давай я тебе сказку про белого бычка расскажу?"
                 ]
             },
-            "en_EN": {
+            "en_US": {
                 "computerName": "Computer",
                 "userName": "User",
                 "recognitionFail": "Not recognized, repeat please",

@@ -41,7 +41,7 @@ Item {
                 "recognitionFail": "Фраза не распознана, пожалуйста повторите.",
                 "greetings": "Привет! Начнем работу?"
             },
-            "en_EN": {
+            "en_US": {
                 "translated": "Translation",
                 "computerName": "Computer",
                 "userName": "User",
@@ -55,7 +55,7 @@ Item {
       Функция вызывается при старте режима
     */
     function start() {
-        var text = messages.get("greetings")
+        var text = messages.get("greetings", speechScreen.destinationLanguage)
         speechScreen.synthesize(text)
         speechScreen.appendText(messages.get("computerName"), text)
     }
@@ -82,7 +82,7 @@ Item {
     function recognitionFinsh(records) {
         console.log("ScreenParrotDelegate::recognitionFinsh()")
         speechScreen.appendText(messages.get("userName"), records[0])
-        speechScreen.translate(records[0], "ru-ru", "en-en");
+        speechScreen.translate(records[0], speechScreen.sourceLanguage, speechScreen.destinationLanguage);
     }
 
     /*
@@ -90,7 +90,7 @@ Item {
     */
     function recognitionFail(file) {
         console.log("ScreenParrotDelegate::recognitionFail()")
-        var text = messages.get("recognitionFail")
+        var text = messages.get("recognitionFail", speechScreen.destinationLanguage)
         speechScreen.appendText(messages.get("computerName"), text)
         speechScreen.synthesize(text)
     }

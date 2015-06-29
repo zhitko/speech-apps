@@ -21,6 +21,7 @@
         <file>images/Voice Recognition Scan-64.png</file>
         <file>images/Menu-32.png</file>
         <file>images/Translation-32.png</file>
+        <file>images/Right Arrow-32.png</file>
     </qresource>
     <qresource prefix="/">
         <file>qml/main.qml</file>

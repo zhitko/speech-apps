@@ -40,7 +40,7 @@ Item {
                 "recognitionFail": "Фраза не распознана, пожалуйста повторите.",
                 "greetings": "Привет! Начнем работу?"
             },
-            "en_EN": {
+            "en_US": {
                 "computerName": "Computer",
                 "userName": "User",
                 "recognitionFail": "Not recognized, repeat please",

@@ -5,12 +5,16 @@ Item {
 
     }
 
-    function get(key) {
-        return messages[Qt.locale().name][key]
+    property var locale: Qt.locale().name
+
+    function get(key, loc) {
+        loc = !!loc ? loc : locale
+        return messages[loc][key]
     }
 
-    function getRandom(key) {
-        var variants = messages[Qt.locale().name][key];
+    function getRandom(key, loc) {
+        loc = !!loc ? loc : locale
+        var variants = messages[loc][key];
         var min = 0
         var max = variants.length - 1
         var index = Math.floor(Math.random() * (max - min + 1)) + min
