@@ -36,6 +36,16 @@
         <source>It will be tell White Bull storry tell</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../MainMenu.qml" line="47"/>
+        <source>Translate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MainMenu.qml" line="48"/>
+        <source>It will be repeat all your words in anouther language</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ScreenParrot</name>
@@ -127,6 +137,19 @@
     <message>
         <location filename="../ScreenTests.qml" line="124"/>
         <source>Тест синтеза речи</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ScreenTranslate</name>
+    <message>
+        <location filename="../ScreenTranslate.qml" line="8"/>
+        <source>Translate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ScreenTranslate.qml" line="92"/>
+        <source>Start</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

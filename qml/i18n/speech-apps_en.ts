@@ -54,6 +54,14 @@
         <source>Main menu</source>
         <translation>Main menu</translation>
     </message>
+    <message>
+        <source>Translate</source>
+        <translation>Translate</translation>
+    </message>
+    <message>
+        <source>It will be repeat all your words in anouther language</source>
+        <translation>It will be repeat all your words in anouther language</translation>
+    </message>
 </context>
 <context>
     <name>ScreenParrot</name>
@@ -145,6 +153,17 @@
     <message>
         <source>Tests</source>
         <translation>Test</translation>
+    </message>
+</context>
+<context>
+    <name>ScreenTranslate</name>
+    <message>
+        <source>Translate</source>
+        <translation>Translate</translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation>Start</translation>
     </message>
 </context>
 <context>

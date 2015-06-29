@@ -85,6 +85,7 @@ Item {
         }
 
         Button {
+            id: startTranslate
             anchors.left: destinationVoice.right
             anchors.right: parent.right
             height: 32
@@ -92,6 +93,7 @@ Item {
             onClicked: {
                 console.log("Start translations")
                 translateLogic.start()
+                startTranslate.enabled = false
             }
         }
     }

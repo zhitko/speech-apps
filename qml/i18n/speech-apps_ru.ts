@@ -54,6 +54,14 @@
         <source>Main menu</source>
         <translation>Главное меню</translation>
     </message>
+    <message>
+        <source>Translate</source>
+        <translation>Переводчик</translation>
+    </message>
+    <message>
+        <source>It will be repeat all your words in anouther language</source>
+        <translation>Голосовой переводчик</translation>
+    </message>
 </context>
 <context>
     <name>ScreenParrot</name>
@@ -149,6 +157,17 @@
     <message>
         <source>Tests</source>
         <translation>Тестирование</translation>
+    </message>
+</context>
+<context>
+    <name>ScreenTranslate</name>
+    <message>
+        <source>Translate</source>
+        <translation>Переводчик</translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation>Начать</translation>
     </message>
 </context>
 <context>
