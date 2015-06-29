@@ -18,7 +18,8 @@ Item {
         destinationVoice.currentIndex = settingsController.getTtsVoice()
 
         destinationLanguage.model = translateController.getLanguageList()
-        //destinationLanguage.currentIndex =
+        speechScreen.sourceLanguage = "auto"
+        speechScreen.destinationLanguage = destinationLanguage.model[0].code
 
         translateLogic.speechScreen = speechScreen
         speechScreen.init()
@@ -107,7 +108,7 @@ Item {
 
         delegate: translateLogic
 
-        property string sourceLanguage: "auto"
+        property string sourceLanguage
         property string destinationLanguage
 
         function translate(text, from, to) {
