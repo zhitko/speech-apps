@@ -22,6 +22,10 @@
         <file>images/Menu-32.png</file>
         <file>images/Translation-32.png</file>
         <file>images/Right Arrow-32.png</file>
+        <file>images/Ticket-32.png</file>
+        <file>images/Calculator-32.png</file>
+        <file>images/Therapy-32.png</file>
+        <file>images/Virgo-32.png</file>
     </qresource>
     <qresource prefix="/">
         <file>qml/main.qml</file>
@@ -42,5 +46,9 @@
         <file>qml/Header.qml</file>
         <file>qml/SideMenu.qml</file>
         <file>qml/ScreenTranslate.qml</file>
+        <file>qml/ScreenTicket.qml</file>
+        <file>qml/ScreenHoroscope.qml</file>
+        <file>qml/ScreenCalculator.qml</file>
+        <file>qml/ScreenPsychoanalyst.qml</file>
     </qresource>
 </RCC>

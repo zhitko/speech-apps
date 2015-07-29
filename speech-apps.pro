@@ -430,7 +430,11 @@ DISTFILES += \
     logic/white-bull-logic.qml \
     logic/parot-logic.qml \
     logic/Utils/Messages.qml \
-    logic/translate-logic.qml
+    logic/translate-logic.qml \
+    logic/ticket-logic.qml \
+    logic/horoscope-logic.qml \
+    logic/calculator-logic.qml \
+    logic/psychoanalyst-logic.qml
 
 
 # Copy external qml files post build
