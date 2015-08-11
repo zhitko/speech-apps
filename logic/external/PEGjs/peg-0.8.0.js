@@ -3368,9 +3368,9 @@ var PEG = (function(undefined) {
       }
     
       function buildSemanticPredicate(code, negative, context) {
-        var functionIndex  = addFunctionConst(utils.keys(context.env), code);
-        var undefinedIndex = addConst('void 0');
-        var failedIndex    = addConst('peg$FAILED');
+        var functionIndex  = addFunctionConst(utils.keys(context.env), code),
+            undefinedIndex = addConst('void 0'),
+            failedIndex    = addConst('peg$FAILED');
     
         return buildSequence(
           [op.REPORT_CURR_POS],
@@ -3484,6 +3484,7 @@ var PEG = (function(undefined) {
     
         sequence: function(node, context) {
           var emptyArrayIndex;
+          var failedIndex;
     
           function buildElementsCode(elements, context) {
             var processedCount, functionIndex;
@@ -3609,7 +3610,7 @@ var PEG = (function(undefined) {
         },
     
         zero_or_more: function(node, context) {
-          var emptyArrayIndex = addConst('[]');
+          var emptyArrayIndex = addConst('[]'),
               expressionCode  = generate(node.expression, {
                 sp:     context.sp + 1,
                 env:    { },
@@ -3625,8 +3626,8 @@ var PEG = (function(undefined) {
         },
     
         one_or_more: function(node, context) {
-          var emptyArrayIndex = addConst('[]');
-              failedIndex     = addConst('peg$FAILED');
+          var emptyArrayIndex = addConst('[]'),
+              failedIndex     = addConst('peg$FAILED'),
               expressionCode  = generate(node.expression, {
                 sp:     context.sp + 1,
                 env:    { },

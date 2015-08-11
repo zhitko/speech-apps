@@ -438,9 +438,8 @@ DISTFILES += \
     logic/calculator-logic.qml \
     logic/psychoanalyst-logic.qml \
     logic/external/mathjs/math.js \
-    logic/external/urim/stemmer/lib/Snowball.js \
+    logic/external/urim/Snowball.js \
     logic/external/PEGjs/peg-0.8.0.js \
-    logic/calculator/grammar.js \
     logic/calculator/grammar.peg
 
 

@@ -4,9 +4,8 @@ import FileIO 1.0
 import "Utils"
 
 import "external/mathjs/math.js" as Mathjs
-import "external/urim/stemmer/lib/Snowball.js" as Snowball
+import "external/urim/Snowball.js" as Snowball
 import "external/PEGjs/peg-0.8.0.js" as PEG
-import "calculator/parser.js" as Parser
 
 Item {
     property string id: "calculatorLogic"
@@ -132,8 +131,7 @@ Item {
             else if (!isNaN(word)) processedWords.push(word)
         }
 
-//        if (!parser) parser = PEG.PEG.buildParser(grammar.read())
-        if (!parser) parser = Parser.PEG
+        if (!parser) parser = PEG.PEG.buildParser(grammar.read())
         var mathQuery = parser.parse(processedWords.join(" "))
 
         return mathQuery
