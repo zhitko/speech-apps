@@ -1,0 +1,40 @@
+{
+  function rep(m) { return Array(m.length).join("(") }
+  function mk1(v,o) { 
+    if(v.length==1) {
+      return v.join("")
+    }else {
+      return "("+v.join(o)+")"
+    }
+  }
+  function mk2(v,o) { 
+    if(v.length==1) {
+      return o+v.join("")
+    }else {
+      return "("+v.join(o)+")"
+    }
+  }
+}
+
+start 
+  = sep q:query comment* { return q }
+
+query 
+= v:integer p:prefix* { return rep(p)+v+p.join(")") }
+  / p1:prefix p2:prefix* { return rep(p2) + p1 + p2.join(")") }
+
+prefix
+= o:operator v:integer+ { return mk2(v,o) }
+  / o:operator o2:operator v:integer+ { return o+mk1(v,o2) }
+
+integer
+= d:[0-9]+ sep { return d.join("") }
+
+operator 
+= o:[+-/*^] sep { return o }
+
+sep
+= " "*
+
+comment
+= "#" .*

@@ -49,16 +49,16 @@ Item {
             goto_state: "translate"
         }
         ListElement {
-            image_src: "qrc:/images/images/Ticket-32.png"
-            title_text: qsTr("Ticket Marketplace Demo")
-            description_text: qsTr("Demo ticket marketplace application with voice interface")
-            goto_state: "ticket"
-        }
-        ListElement {
             image_src: "qrc:/images/images/Calculator-32.png"
             title_text: qsTr("Calculator")
             description_text: qsTr("Calculator application")
             goto_state: "calculator"
+        }
+        ListElement {
+            image_src: "qrc:/images/images/Ticket-32.png"
+            title_text: qsTr("Ticket Marketplace Demo")
+            description_text: qsTr("Demo ticket marketplace application with voice interface")
+            goto_state: "ticket"
         }
         ListElement {
             image_src: "qrc:/images/images/Virgo-32.png"

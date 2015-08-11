@@ -10,11 +10,13 @@ win32 {
 CONFIG  += c++11
 
 SOURCES += main.cpp \
-    system/settingsvalult.cpp
+    system/settingsvalult.cpp \
+    qmlexp/qmlfile.cpp
 
 HEADERS += \
     defines.h \
-    system/settingsvalult.h
+    system/settingsvalult.h \
+    qmlexp/qmlfile.h
 
 # ===========================================================
 # Controllers
@@ -434,7 +436,12 @@ DISTFILES += \
     logic/ticket-logic.qml \
     logic/horoscope-logic.qml \
     logic/calculator-logic.qml \
-    logic/psychoanalyst-logic.qml
+    logic/psychoanalyst-logic.qml \
+    logic/external/mathjs/math.js \
+    logic/external/urim/stemmer/lib/Snowball.js \
+    logic/external/PEGjs/peg-0.8.0.js \
+    logic/calculator/grammar.js \
+    logic/calculator/grammar.peg
 
 
 # Copy external qml files post build

@@ -23,11 +23,15 @@
 
 #include "services/tts/tts.h"
 
+#include "qmlexp/qmlfile.h"
+
 void loadExternalJs(QQmlApplicationEngine * engine);
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
+
+    qmlRegisterType<QmlFile, 1>("FileIO", 1, 0, "FileIO");
 
     SettingsValult * settings = &Singleton<SettingsValult>::Instance();
 
@@ -55,7 +59,6 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("soundController", &soundController);
     engine.rootContext()->setContextProperty("speechController", &speechController);
     engine.rootContext()->setContextProperty("translateController", &translateController);
-
 
     return app.exec();
 }
