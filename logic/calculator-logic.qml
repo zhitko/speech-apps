@@ -48,6 +48,8 @@ Item {
                 , "parse": parseRu
                 , "eval": evalRu
                 , "split": splitRu
+                , "generate": generateRu
+                , "resultAnswer": "Результат вычесления равен %1"
                 , "stemmer": "russian"
             }
             , "en_US": {
@@ -58,6 +60,8 @@ Item {
                 , "parse": parseEn
                 , "eval": evalEn
                 , "split": splitEn
+                , "generate": generateEn
+                , "resultAnswer": "Result is %1"
                 , "stemmer": "english"
             }
         }
@@ -74,10 +78,6 @@ Item {
 
     function test() {
         var texts = [
-//                    "2 + 2"
-//                    , "2 * 3"
-//                    , "2 + 3 * 4"
-//                    , "(2 + 3) * 4"
                     "2 плюс 2"
                     , "сложить 2 и 3"
                     , "к 2 добавить 5"
@@ -92,15 +92,28 @@ Item {
                     , "5 умножить на 2 и прибавить 10"
                     , "сложить 5 и 2 затем умножить результат на 10 и добавить 3"
                     , "10 разделить на сумму 3 и 2"
+                    , "возвести 2 в степень 3"
                 ]
         for (var i=0; i<texts.length; ++i) {
-            var inText = texts[i]
-            speechScreen.appendText(messages.get("userName"), inText)
-            var query = messages.get("parse")(inText)
-            var result = messages.get("eval")(query)
-            var outText = query + " = " + result
-            speechScreen.appendText(messages.get("computerName"), outText)
+            var phrase = texts[i]
+            speechScreen.appendText(messages.get("userName"), phrase)
+            processInput(phrase)
         }
+    }
+
+    function processInput(phrase) {
+        var query = messages.get("parse")(phrase)
+        console.log("Math  \t" + query)
+
+        var result = messages.get("eval")(query)
+        console.log("Result \t" + result)
+
+        var answer = messages.get("generate")(result)
+        console.log("Answer \t" + result)
+
+        var outText = query + " = " + result
+
+        return [outText, answer]
     }
 
     function parseRu(text) {
@@ -108,7 +121,7 @@ Item {
         var substractWords = ["минус","отнять","вычесть"]
         var multiplyWords = ["умножить","произведение"]
         var divideWords = ["делить","разделить","деление"]
-        var powerWords = ["степень","возвести"]
+        var powerWords = ["степень"]
 
         var operatorMap = {}
 
@@ -176,6 +189,18 @@ Item {
         return text.split(" ")
     }
 
+    function generateRu(result) {
+        var re = new RegExp("%1", 'g');
+        var answer = messages.get("resultAnswer").replace(re, result)
+        return answer
+    }
+
+    function generateEn(result) {
+        var re = new RegExp("%1", 'g');
+        var answer = messages.get("resultAnswer").replace(re, result)
+        return answer
+    }
+
     /*
       Функция вызывается при старте режима
     */
@@ -184,7 +209,10 @@ Item {
 //        var text = messages.get("greetings")
 //        speechScreen.synthesize(text)
 //        speechScreen.appendText(messages.get("computerName"), text)
-        test()
+
+//        test()
+
+        speechScreen.startStopAutoRecording()
     }
 
     /*
@@ -208,8 +236,13 @@ Item {
     */
     function recognitionFinsh(records) {
         console.log("ScreenCalculatorDelegate::recognitionFinsh()")
+
         speechScreen.appendText(messages.get("userName"), records[0])
-        speechScreen.synthesize(records[0])
+        var result = processInput(records[0])
+
+        speechScreen.appendText(messages.get("computerName"), result[0])
+
+        speechScreen.synthesize(result[1])
     }
 
     /*

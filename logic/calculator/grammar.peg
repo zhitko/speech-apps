@@ -17,7 +17,7 @@
 }
 
 start 
-  = sep q:query comment* { return q }
+= sep q:query comment* { return q }
 
 query 
 = v:integer p:prefix* { return rep(p)+v+p.join(")") }
