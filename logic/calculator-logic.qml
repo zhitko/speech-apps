@@ -45,12 +45,12 @@ Item {
                 , "userName": "Пользователь"
                 , "recognitionFail": "Фраза не распознана, пожалуйста повторите."
                 , "greetings": "2+2=4"
-                , "error": "Не удалось расчитать формулу"
+                , "error": "Не удалось рассчитать формулу"
                 , "parse": parseRu
                 , "eval": evalRu
                 , "split": splitRu
                 , "generate": generateRu
-                , "resultAnswer": "Результат вычесления равен %1"
+                , "resultAnswer": "Результат вычисления равен %1"
                 , "stemmer": "russian"
             }
             , "en_US": {
