@@ -44,7 +44,7 @@ Item {
                 "computerName": "Компьютер"
                 , "userName": "Пользователь"
                 , "recognitionFail": "Фраза не распознана, пожалуйста повторите."
-                , "greetings": "2+2=4"
+                , "greetings": "Могу рассчитать любую формулу"
                 , "error": "Не удалось рассчитать формулу"
                 , "parse": parseRu
                 , "eval": evalRu
@@ -232,9 +232,9 @@ Item {
     */
     function start() {
         if (!stemmer) stemmer = Snowball.Snowball(messages.get("stemmer"))
-//        var text = messages.get("greetings")
-//        speechScreen.synthesize(text)
-//        speechScreen.appendText(messages.get("computerName"), text)
+        var text = messages.get("greetings")
+        speechScreen.synthesize(text)
+        speechScreen.appendText(messages.get("computerName"), text)
 
 //        test()
 
