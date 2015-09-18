@@ -1,6 +1,9 @@
 #include "qmlfile.h"
 #include <QFile>
+#include <QFileInfo>
 #include <QTextStream>
+
+#include <QDebug>
 
 QmlFile::QmlFile(QObject *parent) :
     QObject(parent)
@@ -16,6 +19,8 @@ QString QmlFile::read()
     }
 
     QFile file(mSource);
+    QFileInfo fileInfo(file);
+    qDebug() << fileInfo.absoluteFilePath();
     QString fileContent;
     if ( file.open(QIODevice::ReadOnly) ) {
         QString line;

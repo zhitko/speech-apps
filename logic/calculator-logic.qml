@@ -45,6 +45,7 @@ Item {
                 , "userName": "Пользователь"
                 , "recognitionFail": "Фраза не распознана, пожалуйста повторите."
                 , "greetings": "2+2=4"
+                , "error": "Не удалось расчитать формулу"
                 , "parse": parseRu
                 , "eval": evalRu
                 , "split": splitRu
@@ -57,6 +58,7 @@ Item {
                 , "userName": "User"
                 , "recognitionFail": "Not recognized, repeat please"
                 , "greetings": "2x2=4"
+                , "error": "Can't parse it"
                 , "parse": parseEn
                 , "eval": evalEn
                 , "split": splitEn
@@ -72,7 +74,7 @@ Item {
 
     FileIO {
         id: grammar
-        source: "./logic/calculator/grammar.peg"
+        source: "./release/logic/calculator/grammar.peg"
         onError: console.log(msg)
     }
 
@@ -97,11 +99,13 @@ Item {
         for (var i=0; i<texts.length; ++i) {
             var phrase = texts[i]
             speechScreen.appendText(messages.get("userName"), phrase)
-            processInput(phrase)
+            var result = processInput(phrase)
+            speechScreen.appendText(messages.get("computerName"), result)
         }
     }
 
     function processInput(phrase) {
+        console.log("Input \t" + phrase)
         var query = messages.get("parse")(phrase)
         console.log("Math  \t" + query)
 
@@ -117,11 +121,22 @@ Item {
     }
 
     function parseRu(text) {
-        var addWords = ["плюс","добавить","сложить","прибавить","сумма"]
-        var substractWords = ["минус","отнять","вычесть"]
-        var multiplyWords = ["умножить","произведение"]
-        var divideWords = ["делить","разделить","деление"]
-        var powerWords = ["степень"]
+        var addWords = ["+","плюс","добавить","сложить","прибавить","сумма","plus"]
+        var substractWords = ["-","минус","отнять","вычесть"]
+        var multiplyWords = ["*","умножить","произведение"]
+        var divideWords = ["/","делить","разделить","деление","поделить"]
+        var powerWords = ["^","степень"]
+
+        var word1 = ["один","единица"]
+        var word2 = ["два","двойка"]
+        var word3 = ["три","тройка"]
+        var word4 = ["четыре","терверка"]
+        var word5 = ["пять","пятерка","пятёрка"]
+        var word6 = ["шесть","шестерка","шестёрка"]
+        var word7 = ["семь","семерка","семёрка"]
+        var word8 = ["восемь","восьмерка","восьмёрка"]
+        var word9 = ["девять","девятка"]
+        var word0 = ["ноль"]
 
         var operatorMap = {}
 
@@ -130,6 +145,16 @@ Item {
         fillOperator(operatorMap, multiplyWords, "*")
         fillOperator(operatorMap, divideWords, "/")
         fillOperator(operatorMap, powerWords, "^")
+        fillOperator(operatorMap, word1, "1")
+        fillOperator(operatorMap, word2, "2")
+        fillOperator(operatorMap, word3, "3")
+        fillOperator(operatorMap, word4, "4")
+        fillOperator(operatorMap, word5, "5")
+        fillOperator(operatorMap, word6, "6")
+        fillOperator(operatorMap, word7, "7")
+        fillOperator(operatorMap, word8, "8")
+        fillOperator(operatorMap, word9, "9")
+        fillOperator(operatorMap, word0, "0")
 
         var inWords = messages.get("split")(text)
 
@@ -138,13 +163,14 @@ Item {
         var processedWords = []
 
         for (var i=0; i<stemmedWords.length; ++i) {
-            var word = stemmedWords[i]
+            var word = stemmedWords[i].toLowerCase()
             var operator = operatorMap[word]
             if (!!operator) processedWords.push(operator)
             else if (!isNaN(word)) processedWords.push(word)
         }
 
         if (!parser) parser = PEG.PEG.buildParser(grammar.read())
+        console.log("Peg << \t" + processedWords.join(" "))
         var mathQuery = parser.parse(processedWords.join(" "))
 
         return mathQuery
@@ -237,12 +263,42 @@ Item {
     function recognitionFinsh(records) {
         console.log("ScreenCalculatorDelegate::recognitionFinsh()")
 
-        speechScreen.appendText(messages.get("userName"), records[0])
-        var result = processInput(records[0])
+        var sentense = findBest(records)
+
+        speechScreen.appendText(messages.get("userName"), sentense)
+        var result = [messages.get("error"),messages.get("error")]
+        try {
+            result = processInput(sentense)
+        }
+        catch(err) {
+            console.log(err)
+        }
 
         speechScreen.appendText(messages.get("computerName"), result[0])
 
         speechScreen.synthesize(result[1])
+    }
+
+    function isDigit(letter) {
+        return !isNaN(parseInt(letter, 10))
+    }
+
+    function findBest(list) {
+        var best = {};
+        best.mark = -1;
+        best.index = 0;
+        var mark = 0;
+        for (var i=0; i<list.length; ++i) {
+            for (var j=0; j<list[i].length; j++)
+                if (isDigit(list[i][j]))
+                    mark++
+            if (best.mark < mark) {
+                best.index = i
+                best.mark = mark
+            }
+            mark = 0
+        }
+        return list[best.index]
     }
 
     /*
