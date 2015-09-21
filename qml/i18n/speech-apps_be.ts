@@ -46,6 +46,72 @@
         <source>It will be repeat all your words in anouther language</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../MainMenu.qml" line="53"/>
+        <source>Calculator</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MainMenu.qml" line="54"/>
+        <source>Calculator application</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MainMenu.qml" line="59"/>
+        <source>Ticket Marketplace Demo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MainMenu.qml" line="60"/>
+        <source>Demo ticket marketplace application with voice interface</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MainMenu.qml" line="65"/>
+        <source>Horoscope</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MainMenu.qml" line="66"/>
+        <source>Voice horoscope assistant</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MainMenu.qml" line="71"/>
+        <source>Psychoanalyst Eliza Demo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MainMenu.qml" line="72"/>
+        <source>Classic chat bot with voice interface</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ScreenCalculator</name>
+    <message>
+        <location filename="../ScreenCalculator.qml" line="8"/>
+        <source>Calculator</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ScreenCalculator.qml" line="27"/>
+        <source>Welcome to Calculator</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ScreenHoroscope</name>
+    <message>
+        <location filename="../ScreenHoroscope.qml" line="8"/>
+        <source>Horoscope</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ScreenHoroscope.qml" line="27"/>
+        <source>Welcome to Horoscope</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ScreenParrot</name>
@@ -57,6 +123,19 @@
     <message>
         <location filename="../ScreenParrot.qml" line="27"/>
         <source>Voice recognition test</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ScreenPsychoanalyst</name>
+    <message>
+        <location filename="../ScreenPsychoanalyst.qml" line="8"/>
+        <source>Psychoanalyst Eliza Demo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ScreenPsychoanalyst.qml" line="27"/>
+        <source>Welcome to Psychoanalyst Eliza Demo</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -141,6 +220,19 @@
     </message>
 </context>
 <context>
+    <name>ScreenTicket</name>
+    <message>
+        <location filename="../ScreenTicket.qml" line="8"/>
+        <source>Ticket Marketplace Demo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ScreenTicket.qml" line="27"/>
+        <source>Welcome to Ticket Marketplace Demo</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ScreenTranslate</name>
     <message>
         <location filename="../ScreenTranslate.qml" line="8"/>
@@ -148,7 +240,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ScreenTranslate.qml" line="92"/>
+        <location filename="../ScreenTranslate.qml" line="93"/>
         <source>Start</source>
         <translation type="unfinished"></translation>
     </message>

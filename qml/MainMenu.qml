@@ -60,17 +60,17 @@ Item {
             description_text: qsTr("Demo ticket marketplace application with voice interface")
             goto_state: "ticket"
         }
-        ListElement {
-            image_src: "qrc:/images/images/Virgo-32.png"
-            title_text: qsTr("Horoscope")
-            description_text: qsTr("Voice horoscope assistant")
-            goto_state: "horoscope"
-        }
-        ListElement {
-            image_src: "qrc:/images/images/Therapy-32.png"
-            title_text: qsTr("Psychoanalyst Eliza Demo")
-            description_text: qsTr("Classic chat bot with voice interface")
-            goto_state: "psychoanalyst"
-        }
+//        ListElement {
+//            image_src: "qrc:/images/images/Virgo-32.png"
+//            title_text: qsTr("Horoscope")
+//            description_text: qsTr("Voice horoscope assistant")
+//            goto_state: "horoscope"
+//        }
+//        ListElement {
+//            image_src: "qrc:/images/images/Therapy-32.png"
+//            title_text: qsTr("Psychoanalyst Eliza Demo")
+//            description_text: qsTr("Classic chat bot with voice interface")
+//            goto_state: "psychoanalyst"
+//        }
     }
 }

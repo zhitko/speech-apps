@@ -12,11 +12,11 @@
     <name>MainMenu</name>
     <message>
         <source>Parrot</source>
-        <translation>Попугай</translation>
+        <translation>Телеграф</translation>
     </message>
     <message>
         <source>It will be repeat all your words</source>
-        <translation>Приложение будет повторять все фразы пользователя</translation>
+        <translation>Приложение преобразует речь в текст, передает данные по условному каналу связи и преобразует обратно в речь</translation>
     </message>
     <message>
         <source>White Bull</source>
@@ -62,6 +62,60 @@
         <source>It will be repeat all your words in anouther language</source>
         <translation>Голосовой переводчик</translation>
     </message>
+    <message>
+        <source>Calculator</source>
+        <translation type="unfinished">Калькулятор</translation>
+    </message>
+    <message>
+        <source>Calculator application</source>
+        <translation type="unfinished">расчет различных формул</translation>
+    </message>
+    <message>
+        <source>Ticket Marketplace Demo</source>
+        <translation type="unfinished">Подбор билетов</translation>
+    </message>
+    <message>
+        <source>Demo ticket marketplace application with voice interface</source>
+        <translation type="unfinished">Приложение для подбора и заказа билетов на транспорт</translation>
+    </message>
+    <message>
+        <source>Horoscope</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Voice horoscope assistant</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Psychoanalyst Eliza Demo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Classic chat bot with voice interface</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ScreenCalculator</name>
+    <message>
+        <source>Calculator</source>
+        <translation type="unfinished">Калькулятор</translation>
+    </message>
+    <message>
+        <source>Welcome to Calculator</source>
+        <translation type="unfinished">Могу рассчитать любую формулу</translation>
+    </message>
+</context>
+<context>
+    <name>ScreenHoroscope</name>
+    <message>
+        <source>Horoscope</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Welcome to Horoscope</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ScreenParrot</name>
@@ -88,6 +142,17 @@
     <message>
         <source>Hello, let&apos;s start work</source>
         <translation type="vanished">Добрый день, начнем работу</translation>
+    </message>
+</context>
+<context>
+    <name>ScreenPsychoanalyst</name>
+    <message>
+        <source>Psychoanalyst Eliza Demo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Welcome to Psychoanalyst Eliza Demo</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -157,6 +222,17 @@
     <message>
         <source>Tests</source>
         <translation>Тестирование</translation>
+    </message>
+</context>
+<context>
+    <name>ScreenTicket</name>
+    <message>
+        <source>Ticket Marketplace Demo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Welcome to Ticket Marketplace Demo</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -16,7 +16,7 @@
     </message>
     <message>
         <source>It will be repeat all your words</source>
-        <translation>It will be repeat all your words</translation>
+        <translation>App will transform speech to text, transfer it and synthesize speech</translation>
     </message>
     <message>
         <source>White Bull</source>
@@ -62,6 +62,60 @@
         <source>It will be repeat all your words in anouther language</source>
         <translation>It will be repeat all your words in anouther language</translation>
     </message>
+    <message>
+        <source>Calculator</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Calculator application</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ticket Marketplace Demo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Demo ticket marketplace application with voice interface</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Horoscope</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Voice horoscope assistant</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Psychoanalyst Eliza Demo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Classic chat bot with voice interface</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ScreenCalculator</name>
+    <message>
+        <source>Calculator</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Welcome to Calculator</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ScreenHoroscope</name>
+    <message>
+        <source>Horoscope</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Welcome to Horoscope</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ScreenParrot</name>
@@ -84,6 +138,17 @@
     <message>
         <source>User</source>
         <translation type="vanished">User</translation>
+    </message>
+</context>
+<context>
+    <name>ScreenPsychoanalyst</name>
+    <message>
+        <source>Psychoanalyst Eliza Demo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Welcome to Psychoanalyst Eliza Demo</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -153,6 +218,17 @@
     <message>
         <source>Tests</source>
         <translation>Test</translation>
+    </message>
+</context>
+<context>
+    <name>ScreenTicket</name>
+    <message>
+        <source>Ticket Marketplace Demo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Welcome to Ticket Marketplace Demo</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
