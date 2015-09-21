@@ -21,11 +21,11 @@ public:
     }
 
     virtual QString getUserAgent() {
-        return "Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.7.2) Gecko/20040803";
+        return "User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome Safari/537.36";
     }
 
     virtual QString getApiUrl() {
-        return "http://translate.google.com.br/translate_a/t?client=t&hl=en&sl=%1&tl=%2&otf=2&multires=1&ssel=0&tsel=0&sc=1";
+        return "https://translate.google.com/translate_a/single?client=t&sl=%1&tl=%2&dt=t&q=%3";
     }
 
     virtual QMap<QString, QString> getAvailableLanguages() {

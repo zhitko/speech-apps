@@ -21,7 +21,7 @@ GoogleTranslateService::~GoogleTranslateService()
 
 void GoogleTranslateService::translate(QString text, QString inLang, QString outLang)
 {
-    QString url_s = config->getApiUrl().arg(inLang).arg(outLang);
+    QString url_s = config->getApiUrl().arg(inLang).arg(outLang).arg(text);
     QUrl url(url_s);
 
     QNetworkRequest request(url);
@@ -31,13 +31,7 @@ void GoogleTranslateService::translate(QString text, QString inLang, QString out
     config.setProtocol(QSsl::TlsV1SslV3);
     request.setSslConfiguration(config);
 
-    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-www-form-urlencoded");
-    QUrlQuery query;
-    query.addQueryItem("text", text);
-    QByteArray data;
-    data.append(query.query());
-
-    nam->post(request, data);
+    nam->get(request);
 }
 
 QMap<QString, QString> GoogleTranslateService::getAvailableLanguages()

@@ -74,7 +74,8 @@ Item {
 
     FileIO {
         id: grammar
-        source: "./release/logic/calculator/grammar.peg"
+//        source: "./release/logic/calculator/grammar.peg"
+        source: "./logic/calculator/grammar.peg"
         onError: console.log(msg)
     }
 
@@ -237,8 +238,6 @@ Item {
         speechScreen.appendText(messages.get("computerName"), text)
 
 //        test()
-
-        speechScreen.startStopAutoRecording()
     }
 
     /*

@@ -58,6 +58,10 @@ Item {
         }
     }
 
+    function test() {
+        speechScreen.translate("hello cruel world", speechScreen.sourceLanguage, speechScreen.destinationLanguage);
+    }
+
     /*
       Функция вызывается при старте режима
     */
