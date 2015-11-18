@@ -7,6 +7,11 @@ Item {
     property alias isRecording: speechScreen.isRecording
     property string title: qsTr("Ticket Marketplace Demo")
 
+    function setSpeechControl(mainSpeechControl) {
+        console.log("ScreenTicket::setSpeechControl()")
+        ticketLogic.mainSpeechControl = mainSpeechControl
+    }
+
     Component.onCompleted: {
         console.log("ScreenTicket::show()")
         ticketLogic.speechScreen = speechScreen

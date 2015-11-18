@@ -442,7 +442,6 @@ DISTFILES += \
     logic/external/PEGjs/peg-0.8.0.js \
     logic/calculator/grammar.peg
 
-
 # Copy external qml files post build
 win32{
     CONFIG(release, debug|release) {

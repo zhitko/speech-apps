@@ -50,5 +50,6 @@
         <file>qml/ScreenHoroscope.qml</file>
         <file>qml/ScreenCalculator.qml</file>
         <file>qml/ScreenPsychoanalyst.qml</file>
+        <file>qml/MainSpeechControl.qml</file>
     </qresource>
 </RCC>

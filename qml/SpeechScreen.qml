@@ -28,8 +28,10 @@ Item {
 
     function recordFinished(file) {
         console.log("SpeechScreen::recordFinished >> " + file )
-        isRecording = false
-        delegate.recordFinish(file)
+        if (isRecording) {
+            isRecording = false
+            delegate.recordFinish(file)
+        }
     }
 
     function recognitionFinsh(file, records) {

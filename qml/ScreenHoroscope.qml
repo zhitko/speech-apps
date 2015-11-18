@@ -7,6 +7,11 @@ Item {
     property alias isRecording: speechScreen.isRecording
     property string title: qsTr("Horoscope")
 
+    function setSpeechControl(mainSpeechControl) {
+        console.log("ScreenHoroscope::setSpeechControl()")
+        horoscopeLogic.mainSpeechControl = mainSpeechControl
+    }
+
     Component.onCompleted: {
         console.log("ScreenHoroscope::show()")
         horoscopeLogic.speechScreen = speechScreen

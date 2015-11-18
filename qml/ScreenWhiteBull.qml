@@ -6,6 +6,11 @@ Item {
 
     property alias isRecording: speechScreen.isRecording
 
+    function setSpeechControl(mainSpeechControl) {
+        console.log("ScreenWhiteBull::setSpeechControl()")
+        whiteBullLogic.mainSpeechControl = mainSpeechControl
+    }
+
     Component.onCompleted: {
         console.log("ScreenWhiteBull::show()")
         whiteBullLogic.speechScreen = speechScreen

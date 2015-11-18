@@ -7,6 +7,11 @@ Item {
     property alias isRecording: speechScreen.isRecording
     property string title: qsTr("Psychoanalyst Eliza Demo")
 
+    function setSpeechControl(mainSpeechControl) {
+        console.log("ScreenPsychoanalyst::setSpeechControl()")
+        psychoanalystLogic.mainSpeechControl = mainSpeechControl
+    }
+
     Component.onCompleted: {
         console.log("ScreenPsychoanalyst::show()")
         psychoanalystLogic.speechScreen = speechScreen

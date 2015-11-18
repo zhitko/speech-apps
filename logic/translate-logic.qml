@@ -27,6 +27,7 @@ Item {
         Синтез текста
     */
     property Item speechScreen
+    property Item mainSpeechControl
 
     /*
       Перечень доступных языков
@@ -92,8 +93,10 @@ Item {
     */
     function recognitionFinsh(records) {
         console.log("ScreenParrotDelegate::recognitionFinsh()")
-        speechScreen.appendText(messages.get("userName"), records[0])
-        speechScreen.translate(records[0], speechScreen.sourceLanguage, speechScreen.destinationLanguage);
+        if (!mainSpeechControl.processInlineCommands(records)) {
+            speechScreen.appendText(messages.get("userName"), records[0])
+            speechScreen.translate(records[0], speechScreen.sourceLanguage, speechScreen.destinationLanguage);
+        }
     }
 
     /*

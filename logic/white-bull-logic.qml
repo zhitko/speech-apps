@@ -31,6 +31,7 @@ Item {
         Синтез текста
     */
     property Item speechScreen
+    property Item mainSpeechControl
 
     /*
       Перечень доступных языков
@@ -93,11 +94,13 @@ Item {
     */
     function recognitionFinsh(records) {
         console.log("ScreenWhiteBullDelegate::recognitionFinsh()")
-        speechScreen.appendText(messages.get("userName"), records[0])
-        var text = messages.getRandom("answers").arg(records[0])
-        console.log(text)
-        speechScreen.appendText(messages.get("computerName"), text)
-        speechScreen.synthesize(text)
+        if (!mainSpeechControl.processInlineCommands(records)) {
+            speechScreen.appendText(messages.get("userName"), records[0])
+            var text = messages.getRandom("answers").arg(records[0])
+            console.log(text)
+            speechScreen.appendText(messages.get("computerName"), text)
+            speechScreen.synthesize(text)
+        }
     }
 
     /*

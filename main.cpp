@@ -55,10 +55,29 @@ int main(int argc, char *argv[])
     loadExternalJs(&engine);
     engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
     engine.rootContext()->setContextProperty("settingsController", &settingsController);
+    qDebug() << "loaded: settingsController";
     engine.rootContext()->setContextProperty("fileController", &fileController);
+    qDebug() << "loaded: fileController";
     engine.rootContext()->setContextProperty("soundController", &soundController);
+    qDebug() << "loaded: soundController";
     engine.rootContext()->setContextProperty("speechController", &speechController);
+    qDebug() << "loaded: speechController";
     engine.rootContext()->setContextProperty("translateController", &translateController);
+    qDebug() << "loaded: translateController";
+
+    QList<QObject*> rootObjects = engine.rootObjects();
+    if (rootObjects.size() > 0) {
+        QObject *mainSpeechControl = rootObjects.at(0)->findChild<QObject*>("mainSpeechControl");
+        if (mainSpeechControl) {
+            qDebug() << "founded mainSpeechControl";
+            mainSpeechControl->setProperty("isLoaded", true);
+            QMetaObject::invokeMethod(mainSpeechControl, "startAppSpeechControl");
+        } else {
+            qDebug() << "ERROR: not found mainSpeechControl";
+        }
+    } else {
+        qDebug() << "ERROR: rootObjects empty";
+    }
 
     return app.exec();
 }

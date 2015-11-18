@@ -9,6 +9,12 @@ ApplicationWindow {
     height: 480
     visible: true
 
+    function gotoState(name) {
+        console.log("gotoState " + name)
+        mainSpeechControl.stopAppSpeechControl()
+        root.state = name
+    }
+
     Item {
         id: root
         anchors.fill: parent
@@ -36,6 +42,8 @@ ApplicationWindow {
             anchors.left: parent.left
             anchors.bottom: parent.bottom
             onLoaded: {
+                if (item.setSpeechControl)
+                    item.setSpeechControl(mainSpeechControl)
             }
         }
 
@@ -48,10 +56,10 @@ ApplicationWindow {
         }
 
         Connections {
-            id: connections
+            id: connectionsMenu
             ignoreUnknownSignals: true
             onMenuSelected: {
-                root.state = name
+                gotoState(name)
             }
         }
 
@@ -64,7 +72,10 @@ ApplicationWindow {
                 PropertyChanges { target: header; titleText: loader.item.title; }
                 StateChangeScript {
                     name: "onMenuLoad"
-                    script: connections.target = loader.item
+                    script: {
+                        connectionsMenu.target = loader.item
+                        mainSpeechControl.startAppSpeechControl()
+                    }
                 }
             }
             , State {
@@ -136,5 +147,61 @@ ApplicationWindow {
                 PropertyChanges { target: header; titleText: loader.item.title; }
             }
         ]
+
+        MainSpeechControl {
+            id: mainSpeechControl
+            objectName: "mainSpeechControl"
+            statesData: {
+                "menu" : {
+                    "paterns": [qsTr("меню"), qsTr("назад")]
+                }
+                , "parrot" : {
+                    "paterns": [qsTr("телеграф"), qsTr("попугай")]
+                    , "message": qsTr("запуск телеграфа")
+                }
+                , "white-bull" : {
+                    "paterns": [qsTr("бычок"), qsTr("сказка")]
+                    , "message": qsTr("запуск сказки белый бычок")
+                }
+    //            , "records" : {
+    //                "paterns": [qsTr("записи")]
+    //            }
+                , "settings" : {
+                    "paterns": [qsTr("настройки")]
+                }
+    //            , "tests" : {
+    //                "paterns": [qsTr("тесты")]
+    //                , "message": qsTr("запуск тестов")
+    //            }
+                , "translate" : {
+                    "paterns": [qsTr("переводчик")]
+                    , "message": qsTr("запуск переводчика")
+                }
+    //            , "ticket" : {
+    //                "paterns": [qsTr("билеты")]
+    //                , "message": qsTr("запуск подбора билетов")
+    //            }
+    //            , "horoscope" : {
+    //                "paterns": [qsTr("гороскоп")]
+    //                , "message": qsTr("запуск гороскопа")
+    //            }
+                , "calculator" : {
+                    "paterns": [qsTr("калькулятор")]
+                    , "message": qsTr("запуск калькулятора")
+                }
+    //            , "psychoanalyst" : {
+    //                "paterns": [qsTr("прихоаналитик")]
+    //                , "message": qsTr("запуск психоаналитика")
+    //            }
+            }
+        }
+
+        Connections {
+            id: connectionsSpeech
+            target: mainSpeechControl
+            onGotoState: {
+                gotoState(name)
+            }
+        }
     }
 }

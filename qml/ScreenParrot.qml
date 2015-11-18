@@ -7,9 +7,15 @@ Item {
     property alias isRecording: speechScreen.isRecording
     property string title: qsTr("Parrot")
 
+    function setSpeechControl(mainSpeechControl) {
+        console.log("ScreenParrot::setSpeechControl()")
+        parotLogic.mainSpeechControl = mainSpeechControl
+    }
+
     Component.onCompleted: {
         console.log("ScreenParrot::show()")
         parotLogic.speechScreen = speechScreen
+
         speechScreen.init()
         parotLogic.start()
     }

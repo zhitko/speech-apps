@@ -27,6 +27,7 @@ Item {
         Синтез текста
     */
     property Item speechScreen
+    property Item mainSpeechControl
 
     /*
       Перечень доступных языков
@@ -79,8 +80,10 @@ Item {
     */
     function recognitionFinsh(records) {
         console.log("ScreenHoroscopeDelegate::recognitionFinsh()")
-        speechScreen.appendText(messages.get("userName"), records[0])
-        speechScreen.synthesize(records[0])
+        if (!mainSpeechControl.processInlineCommands(records)) {
+            speechScreen.appendText(messages.get("userName"), records[0])
+            speechScreen.synthesize(records[0])
+        }
     }
 
     /*

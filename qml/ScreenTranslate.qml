@@ -7,6 +7,11 @@ Item {
     property alias isRecording: speechScreen.isRecording
     property string title: qsTr("Translate")
 
+    function setSpeechControl(mainSpeechControl) {
+        console.log("ScreenTranslate::setSpeechControl()")
+        translateLogic.mainSpeechControl = mainSpeechControl
+    }
+
     Component.onCompleted: {
         console.log("ScreenTranslate::show()")
         translateController.translated.connect(translateLogic.translated)

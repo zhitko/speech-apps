@@ -33,6 +33,7 @@ Item {
         Синтез текста
     */
     property Item speechScreen
+    property Item mainSpeechControl
 
     /*
       Перечень доступных языков
@@ -261,21 +262,22 @@ Item {
     */
     function recognitionFinsh(records) {
         console.log("ScreenCalculatorDelegate::recognitionFinsh()")
+        if (!mainSpeechControl.processInlineCommands(records)) {
+            var sentense = findBest(records)
 
-        var sentense = findBest(records)
+            speechScreen.appendText(messages.get("userName"), sentense)
+            var result = [messages.get("error"),messages.get("error")]
+            try {
+                result = processInput(sentense)
+            }
+            catch(err) {
+                console.log(err)
+            }
 
-        speechScreen.appendText(messages.get("userName"), sentense)
-        var result = [messages.get("error"),messages.get("error")]
-        try {
-            result = processInput(sentense)
+            speechScreen.appendText(messages.get("computerName"), result[0])
+
+            speechScreen.synthesize(result[1])
         }
-        catch(err) {
-            console.log(err)
-        }
-
-        speechScreen.appendText(messages.get("computerName"), result[0])
-
-        speechScreen.synthesize(result[1])
     }
 
     function isDigit(letter) {

@@ -7,6 +7,11 @@ Item {
     property alias isRecording: speechScreen.isRecording
     property string title: qsTr("Calculator")
 
+    function setSpeechControl(mainSpeechControl) {
+        console.log("ScreenCalculator::setSpeechControl()")
+        calculatorLogic.mainSpeechControl = mainSpeechControl
+    }
+
     Component.onCompleted: {
         console.log("ScreenCalculator::show()")
         calculatorLogic.speechScreen = speechScreen

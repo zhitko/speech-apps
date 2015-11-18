@@ -7,19 +7,23 @@ Item {
 
     property alias isRecording: speechScreen.isRecording
 
+    function setSpeechControl(mainSpeechControl) {
+        console.log("ScreenTests::setSpeechControl()")
+    }
+
     Component.onCompleted: {
-        console.log("ScreenParrot::show")
+        console.log("ScreenTests::show")
         speechController.recognized.connect(recognitionFinsh)
     }
 
     Component.onDestruction: {
-        console.log("ScreenParrot::destroy")
+        console.log("ScreenTests::destroy")
         speechController.recognized.disconnect(recognitionFinsh)
     }
 
     function recognitionFinsh(file, records) {
-        console.log("ScreenParrot::recognitionFinsh " + records);
-        console.log("ScreenParrot::recognitionFinsh " + records.length);
+        console.log("ScreenTests::recognitionFinsh " + records);
+        console.log("ScreenTests::recognitionFinsh " + records.length);
         if (records.length > 0 && records[0] != "") {
             speechScreen.appendText(qsTr("User"), "")
             for (var i=0; i<records.length; i++)
@@ -50,7 +54,7 @@ Item {
                 iconSource: speechScreen.isRecording ? "qrc:/images/images/Microphone-32 (1).png"
                                                      : "qrc:/images/images/Microphone-32.png"
                 onClicked: {
-                    console.log("ScreenParrot::recording")
+                    console.log("ScreenTests::recording")
                     speechScreen.startStopManualRecording()
                 }
             }
@@ -69,7 +73,7 @@ Item {
                     var files = fileController.getFileList()
                     if (files.length > 0)
                     {
-                        console.log("ScreenParrot::play >> " + files[0].name)
+                        console.log("ScreenTests::play >> " + files[0].name)
                         soundController.playFile(files[0].name)
                     }
                 }
@@ -81,7 +85,7 @@ Item {
                     var files = fileController.getFileList()
                     if (files.length > 0)
                     {
-                        console.log("ScreenParrot::recognize >> " + files[0].name)
+                        console.log("ScreenTests::recognize >> " + files[0].name)
                         speechController.recognizeFile(files[0].name)
                     }
                 }
@@ -93,7 +97,7 @@ Item {
                     var text = userInput.text;
                     if (text.length > 0)
                     {
-                        console.log("ScreenParrot::talk >> " + text)
+                        console.log("ScreenTests::talk >> " + text)
                         speechScreen.appendText(qsTr("PC"), text)
                         speechController.synthesize(text)
                     }
