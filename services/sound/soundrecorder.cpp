@@ -69,7 +69,7 @@ int getValue(void* data, int size)
 
 void SoundRecorder::allocateNewBuffer()
 {
-    qDebug() << "allocate new buffer";
+//    qDebug() << "allocate new buffer";
     if(currentBuffer){
         buffer * current = this->currentBuffer;
         this->currentBuffer = makeBuffer(INIT_BUFFER_SIZE);

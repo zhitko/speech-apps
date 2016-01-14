@@ -10,13 +10,15 @@ extern "C" {
 
 #include <QDebug>
 
-AutoSoundRecorder::AutoSoundRecorder(oal_device *device, int sampleByteSize, QObject *parent) :
+AutoSoundRecorder::AutoSoundRecorder(oal_device *device, int sampleByteSize, int maxTime, QObject *parent) :
     SoundRecorder(device, sampleByteSize, parent),
     lastActiveBuffer(NULL),
     buffersCounter(0),
     emptyBuffersCounter(0),
-    isOver(false)
+    isSpeechDetected(false)
 {
+    maxRecordSize = maxTime * OW_FREQUENCY * this->sampleByteSize;
+    qDebug() << "AutoSoundRecorder " << maxRecordSize;
 }
 
 AutoSoundRecorder::~AutoSoundRecorder()
@@ -31,34 +33,24 @@ AutoSoundRecorder::~AutoSoundRecorder()
 void AutoSoundRecorder::allocateNewBuffer()
 {
     if(!recording) return;
+    if(this->maxRecordSize > 0 && this->allocatedSize > this->maxRecordSize) {
+        stopRecording();
+        return;
+    }
     if(this->currentBuffer)
     {
-        buffersCounter++;
-        if(!isOver && buffersCounter >= MAX_EMPTY_BUFFERS && this->initBuffer->next)
-        {
-            buffersCounter--;
-            buffer * tmp = this->initBuffer;
-            this->initBuffer = this->initBuffer->next;
-            this->initBuffer->prev = NULL;
-            freeBuffer(tmp);
-
-        }
-
-        qDebug() << "sound data";
         vector wave = sptk_v2v(this->currentBuffer->buffer_data, this->currentBuffer->size, this->sampleByteSize*CHAR_BIT);
-        qDebug() << "sound pitch";
         vector pitch = sptk_pitch(wave, initPitchSettings());
 
         double val = 0.0;
         for(int i=0; i<pitch.x; i++) val += pitch.v[i];
-        qDebug() << "Sound pitch sum " << val;
         if( val > 0)
         {
-            this->isOver = true;
+            this->isSpeechDetected = true;
             this->emptyBuffersCounter = 0;
             this->lastActiveBuffer = NULL;
-        }
-        else if(this->isOver && this->emptyBuffersCounter >= MAX_EMPTY_BUFFERS)
+            SoundRecorder::allocateNewBuffer();
+        } else if(this->isSpeechDetected && this->emptyBuffersCounter >= MAX_EMPTY_BUFFERS)
         {
             if(this->lastActiveBuffer && this->lastActiveBuffer->prev)
             {
@@ -69,12 +61,14 @@ void AutoSoundRecorder::allocateNewBuffer()
                 this->currentBuffer->prev->next = NULL;
             }
             stopRecording();
-            return;
-        }else{
+        } else if(this->isSpeechDetected) {
             this->emptyBuffersCounter++;
             if(!this->lastActiveBuffer) this->lastActiveBuffer = this->currentBuffer;
+            SoundRecorder::allocateNewBuffer();
+        } else {
+
         }
+    } else {
+        SoundRecorder::allocateNewBuffer();
     }
-    SoundRecorder::allocateNewBuffer();
-    qDebug() << "AutoSoundRecorder::allocateNewBuffer";
 }

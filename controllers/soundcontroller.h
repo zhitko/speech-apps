@@ -18,7 +18,7 @@ public:
     Q_INVOKABLE void playFile(const QString);
 
     Q_INVOKABLE void startManualRecording();
-    Q_INVOKABLE void startAutoRecording();
+    Q_INVOKABLE void startAutoRecording(int maxTime = -1);
     Q_INVOKABLE void stopRecording();
 
 signals:

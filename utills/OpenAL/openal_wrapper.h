@@ -4,6 +4,8 @@
 #include <AL/al.h>
 #include <AL/alc.h>
 
+#define OW_FREQUENCY 8000
+
 typedef enum _oal_device_state {
     device_failed,
     device_founed,

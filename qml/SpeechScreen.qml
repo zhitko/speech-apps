@@ -66,14 +66,15 @@ Item {
         isRecording = !isRecording
     }
 
-    function startStopAutoRecording () {
+    function startStopAutoRecording (maxTime) {
+        if (maxTime === undefined) maxTime = -1
         isAuto = true
         if (isRecording) {
             console.log("SpeechScreen::stopManualRecording")
             soundController.stopRecording()
         } else {
             console.log("SpeechScreen::startManualRecording")
-            soundController.startAutoRecording()
+            soundController.startAutoRecording(maxTime)
         }
 
         isRecording = !isRecording

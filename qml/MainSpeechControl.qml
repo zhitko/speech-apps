@@ -10,6 +10,7 @@ Item {
     property bool isGotoState
     property string stateName
     property variant statesData
+    property int maxRecordTime: 2
 
     signal gotoState(string name)
 
@@ -36,7 +37,7 @@ Item {
 
     function start() {
         console.log("MainSpeechControl::start()")
-        speechScreen.startStopAutoRecording()
+        speechScreen.startStopAutoRecording(maxRecordTime)
     }
 
     function synthesizeFinish() {
@@ -52,7 +53,7 @@ Item {
             return
         }
 
-        speechScreen.startStopAutoRecording()
+        speechScreen.startStopAutoRecording(maxRecordTime)
     }
 
     function recordFinish(file) {
@@ -115,12 +116,12 @@ Item {
             }
         }
 
-        if (!isSynthesize) speechScreen.startStopAutoRecording()
+        if (!isSynthesize) speechScreen.startStopAutoRecording(maxRecordTime)
     }
 
     function recognitionFail(file) {
         console.log("MainSpeechControl::recognitionFail()")
-        speechScreen.startStopAutoRecording()
+        speechScreen.startStopAutoRecording(maxRecordTime)
     }
 
     function containsAll(where, what) {

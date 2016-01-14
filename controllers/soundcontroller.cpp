@@ -55,16 +55,16 @@ void SoundController::startManualRecording()
     recorder->startRecording();
 }
 
-void SoundController::startAutoRecording()
+void SoundController::startAutoRecording(int maxTime)
 {
-    qDebug() << "SoundController::startAutoRecording";
+    qDebug() << "SoundController::startAutoRecording(" << maxTime << ")";
 
     if(this->recorder == NULL)
     {
         SettingsValult * settings = &Singleton<SettingsValult>::Instance();
         oal_device * currentDevice = settings->getCurrentInputDevice()->device();
         qDebug() << "new SoundRecorder: " << currentDevice->name;
-        this->recorder = new AutoSoundRecorder(currentDevice, sizeof(short int), this);
+        this->recorder = new AutoSoundRecorder(currentDevice, sizeof(short int), maxTime, this);
         connect(this->recorder, SIGNAL(resultReady(SoundRecorder *)), this, SLOT(recordFinished(SoundRecorder *)));
     }
     this->stopRecording();

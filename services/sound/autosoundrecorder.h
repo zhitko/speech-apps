@@ -11,14 +11,15 @@ class AutoSoundRecorder : public SoundRecorder
 {
     Q_OBJECT
 public:
-    explicit AutoSoundRecorder(oal_device *device, int sampleByteSize, QObject *parent = 0);
+    explicit AutoSoundRecorder(oal_device *device, int sampleByteSize, int maxTime = -1, QObject *parent = 0);
     ~AutoSoundRecorder();
 
 protected:
     void allocateNewBuffer();
     int buffersCounter, emptyBuffersCounter;
-    bool isOver;
+    bool isSpeechDetected;
     buffer * lastActiveBuffer;
+    int maxRecordSize;
 
 signals:
 
