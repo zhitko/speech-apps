@@ -39,7 +39,7 @@ Item {
                 "computerName": "Компьютер",
                 "userName": "Пользователь",
                 "recognitionFail": "Фраза не распознана, пожалуйста повторите.",
-                "greetings": "Привет! Начнем работу?"
+                "greetings": "Привет! Начнем работу."
             },
             "en_US": {
                 "computerName": "Computer",

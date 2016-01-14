@@ -92,7 +92,7 @@ Item {
             isSynthesize = true
             speechScreen.synthesize(qsTr("выберете приложение"))
         } else if (
-            containsAll(records, qsTr("конец работы"))
+            containsSome(records, [qsTr("конец работы"), qsTr("завершить работу")])
         ) {
             console.log("MainSpeechControl::recognitionFinsh() exit")
             speechScreen.synthesize(qsTr("ещё увидимся"))

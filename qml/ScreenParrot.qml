@@ -5,7 +5,7 @@ import QtQuick.Layouts 1.0
 Item {
 
     property alias isRecording: speechScreen.isRecording
-    property string title: qsTr("Parrot")
+    property string title: qsTr("Телеграф")
 
     function setSpeechControl(mainSpeechControl) {
         console.log("ScreenParrot::setSpeechControl()")

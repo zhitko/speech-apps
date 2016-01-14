@@ -40,7 +40,7 @@ Item {
                 "computerName": "Компьютер",
                 "userName": "Пользователь",
                 "recognitionFail": "Фраза не распознана, пожалуйста повторите.",
-                "greetings": "Привет! Начнем работу?"
+                "greetings": "Привет! Начнем работу."
             },
             "en_US": {
                 "translated": "Translation",
@@ -53,7 +53,7 @@ Item {
                 "translated": "Пераклад",
                 "computerName": "Камп'ютар",
                 "userName": "Карыстальнік",
-                "recognitionFail": "Фраза не распазнаюцца, калі ласка паўторыце.",
+                "recognitionFail": "Фраза не распазнае+цца, калі ласка паўторыце.",
                 "greetings": "Прывітанне! Пачнем працу?"
             }
         }

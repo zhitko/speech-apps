@@ -51,7 +51,7 @@ Item {
                 , "eval": evalRu
                 , "split": splitRu
                 , "generate": generateRu
-                , "resultAnswer": "Результат вычисления равен %1"
+                , "resultAnswer": "Результат вычисления, равен %1"
                 , "stemmer": "russian"
             }
             , "en_US": {
