@@ -10,9 +10,9 @@ public:
     explicit SpeechController(QObject *parent = 0);
     ~SpeechController();
 
-    Q_INVOKABLE void recognizeFile(QString);
+    Q_INVOKABLE void recognizeFile(const QString);
 
-    Q_INVOKABLE void synthesize(QString);
+    Q_INVOKABLE void synthesize(const QString);
 
 signals:
     void finishSpeaking();

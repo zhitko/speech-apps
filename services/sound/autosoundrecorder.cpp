@@ -39,6 +39,17 @@ void AutoSoundRecorder::allocateNewBuffer()
     }
     if(this->currentBuffer)
     {
+        buffersCounter++;
+        if(!this->isSpeechDetected && buffersCounter >= MAX_EMPTY_BUFFERS && this->initBuffer->next)
+        {
+            buffersCounter--;
+            buffer * tmp = this->initBuffer;
+            this->initBuffer = this->initBuffer->next;
+            this->initBuffer->prev = NULL;
+            freeBuffer(tmp);
+            // TODO: reuse first empty buffer
+
+        }
         vector wave = sptk_v2v(this->currentBuffer->buffer_data, this->currentBuffer->size, this->sampleByteSize*CHAR_BIT);
         vector pitch = sptk_pitch(wave, initPitchSettings());
 

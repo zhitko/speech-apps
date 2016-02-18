@@ -29,7 +29,7 @@ SpeechController::~SpeechController()
     qDebug() << "SpeechController::~SpeechController";
 }
 
-void SpeechController::recognizeFile(QString file)
+void SpeechController::recognizeFile(const QString file)
 {
     qDebug() << "SpeechController::recognizeFile >> " << file;
     QString filePath = FileController::getUserFilesDir() + file;
@@ -45,12 +45,17 @@ void SpeechController::recognizeFile(QString file)
                 );
 }
 
-void SpeechController::synthesize(QString text)
+void SpeechController::synthesize(const QString text)
 {
+    QString text_to_speech = text;
+    if (!text_to_speech.endsWith(".") &&
+            !text_to_speech.endsWith("!") &&
+            !text_to_speech.endsWith("?"))
+        text_to_speech += ".";
     qDebug() << "SpeechController::synthesize >> " << text;
     TTS * tts = &Singleton<TTS>::Instance();
     SettingsValult * settingsValult = &Singleton<SettingsValult>::Instance();
     tts->setVoice(settingsValult->getTtsVoice());
-    tts->tell(text);
-//    tts->say(text);
+    tts->tell(text_to_speech);
+//    tts->say(text_to_speech);
 }

@@ -51,7 +51,7 @@ ApplicationWindow {
             id: sideMenu
             anchors.fill: parent
             onMenuSelected: {
-                root.state = name
+                gotoState(name)
             }
         }
 
@@ -160,7 +160,7 @@ ApplicationWindow {
                     , "message": qsTr("запуск телеграфа")
                 }
                 , "white-bull" : {
-                    "paterns": [qsTr("бычок"), qsTr("сказка")]
+                    "paterns": [qsTr("бычок"), qsTr("сказка"), qsTr("сказку")]
                     , "message": qsTr("запуск сказки белый бычок")
                 }
     //            , "records" : {
@@ -177,10 +177,10 @@ ApplicationWindow {
                     "paterns": [qsTr("переводчик")]
                     , "message": qsTr("запуск переводчика")
                 }
-    //            , "ticket" : {
-    //                "paterns": [qsTr("билеты")]
-    //                , "message": qsTr("запуск подбора билетов")
-    //            }
+                , "ticket" : {
+                    "paterns": [qsTr("билеты"), qsTr("билетов"), qsTr("билет")]
+                    , "message": qsTr("запуск подбора билетов")
+                }
     //            , "horoscope" : {
     //                "paterns": [qsTr("гороскоп")]
     //                , "message": qsTr("запуск гороскопа")

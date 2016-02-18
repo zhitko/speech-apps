@@ -39,7 +39,7 @@ Item {
                 "computerName": "Компьютер",
                 "userName": "Пользователь",
                 "recognitionFail": "Фраза не распознана, пожалуйста повторите.",
-                "greetings": "Здравствуйте! Сделайте запрос и ответьте на последующие вопросы."
+                "greetings": "Здравствуйте! Какой билет вам нужен?"
             },
             "en_US": {
                 "computerName": "Computer",
@@ -48,6 +48,32 @@ Item {
                 "greetings": "Hello! Make request and make answer following questions."
             }
         }
+    }
+
+    property var enums: {
+        "type": ["train", "plane", "bus"]
+    }
+
+    property var dictionary: {
+        "type": {
+            "train": ["поезд"],
+            "plane": ["самолет"],
+            "bus": ["автобус"]
+        }
+    }
+
+    property var urls: {
+        "train": "http://rasp.rw.by/ru/route/?from={}&to={}&date={}&from_esr=&from_exp=&to_esr=&to_exp="
+    }
+
+    property var context: {
+        "source": "",
+        "destination": "",
+        "source_time": "",
+        "source_day": "",
+        "destination_time": "",
+        "destination_day": "",
+        "type": ""
     }
 
     /*
